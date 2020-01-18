@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import routes from './routes';
+import routes from '../routes';
 /* import - components and pages */
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import AuthPage from './pages/AuthPage/AuthPage';
-import MainPage from './pages/MainPage/MainPage';
-import DashboardPage from './pages/DashboardPage/DashboardPage';
-import ResultPage from './pages/ResultPage/ResultPage';
-import MaterialsPage from './pages/MaterialsPage/MaterialsPage';
-import ContactsPage from './pages/ContactsPage/ContactsPage';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import AuthPage from '../pages/AuthPage/AuthPage';
+import MainPage from '../pages/MainPage/MainPage';
+import DashboardPage from '../pages/DashboardPage/DashboardPage';
+import ResultPage from '../pages/ResultPage/ResultPage';
+import MaterialsPage from '../pages/MaterialsPage/MaterialsPage';
+import ContactsPage from '../pages/ContactsPage/ContactsPage';
 
 const App = () => {
   return (
