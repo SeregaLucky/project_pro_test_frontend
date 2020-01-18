@@ -1,13 +1,20 @@
 import { combineReducers } from 'redux';
 
-const questionsReduser = (state = null, { type, payload }) => {
+const questionsReduсer = (state = null, { type, payload }) => {
   switch (type) {
     default:
       return state;
   }
 };
 
-const passedQuestionsReduser = (state = [], { type, payload }) => {
+const passedQuestionsReduсer = (state = [], { type, payload }) => {
+  switch (type) {
+    default:
+      return state;
+  }
+};
+
+const resultReduсer = (state = null, { type, payload }) => {
   switch (type) {
     default:
       return state;
@@ -15,6 +22,7 @@ const passedQuestionsReduser = (state = [], { type, payload }) => {
 };
 
 export default combineReducers({
-  questions: questionsReduser,
-  passedQuestions: passedQuestionsReduser,
+  questions: questionsReduсer,
+  passedQuestions: passedQuestionsReduсer,
+  result: resultReduсer,
 });
