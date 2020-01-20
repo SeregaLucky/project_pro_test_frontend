@@ -1,0 +1,57 @@
+@import '../../stylesheet/main.css';
+@import '../../stylesheet/vars.css';
+@import '../../stylesheet/fonts.css';
+
+.section {
+  background-color: var(--background-color);
+  color: var(--dark-blue);
+}
+
+.main_header {
+  text-align: center;
+  font-family: 'MontserratBold', sans-serif;
+  font-size: 20px;
+  padding: 20px 0 10px 0;
+}
+
+.img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px 0;
+}
+
+.test_title {
+  font-family: 'MontserratMedium', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 0 0 25px 0;
+}
+
+.result_bar {
+  margin: 0 auto;
+  width: 100%;
+  height: 300px;
+  background-color: white;
+}
+
+.test_info {
+  text-align: center;
+  font-family: 'MontserratMedium', sans-serif;
+  font-size: 16px;
+  word-spacing: 5px;
+}
+
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (min-width: 768px) {
+  .result_bar {
+    width: 600px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+}
