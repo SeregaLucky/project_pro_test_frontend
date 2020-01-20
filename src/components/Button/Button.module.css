@@ -1,22 +1,20 @@
 @media (min-width: 320px) {
   .button {
     display: inline-flex;
-    align-items: center;
     justify-content: center;
     text-align: center;
     cursor: pointer;
     border: 0;
-    outline: 0;
     letter-spacing: 0px;
-    background-color: #ff6b08;
-    color: #fff;
+    background-color: var(--orange);
+    color: var(--background-color);
     font-size: 10px;
     font-weight: 500;
     font-family: 'Montserrat', sans-serif;
     padding: 20px 22px;
     width: 130px;
 
-    transition: background-color 200ms ease-in-out;
+    transition: background-color 250ms ease-in-out;
   }
 
   .button:hover,
