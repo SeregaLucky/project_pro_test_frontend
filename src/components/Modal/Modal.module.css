@@ -25,7 +25,7 @@
 
   .text {
     text-align: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'MontserratMedium', sans-serif;
     font-size: 18px;
     font-weight: 500;
   }
@@ -38,7 +38,7 @@
   .button {
     display: inline-flex;
     text-align: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'MontserratMedium', sans-serif;
     font-size: 16px;
     font-weight: normal;
     padding: 5px 20px;
