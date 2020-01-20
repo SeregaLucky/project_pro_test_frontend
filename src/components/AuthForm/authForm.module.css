@@ -1,0 +1,158 @@
+/* Не подтягивается шрифт, который лежит в assets для кириллицы */
+
+@font-face {
+  font-family: 'Montserrat Medium';
+  src: url('../../assets/fonts/MontserratMedium/montserrat-v14-latin-500.woff');
+  src: url('../../assets/fonts/MontserratMedium/montserrat-v14-latin-500.woff2')
+    format('woff2');
+}
+
+/* Подтягивается для кириллицы */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap&subset=cyrillic,cyrillic-ext');
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  src: url('../../assets/fonts/MontserratBold/montserrat-v14-latin-700.woff');
+  src: url('../../assets/fonts/MontserratBold/montserrat-v14-latin-700.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  src: url('../../assets/fonts/MontserratBold/montserrat-v14-latin-700.woff');
+  src: url('../../assets/fonts/MontserratBold/montserrat-v14-latin-700.woff2')
+    format('woff2');
+}
+
+@import '../../stylesheet//vars.css';
+
+.formWrapper {
+  width: 280px;
+  padding: 45px 17px 53px 17px;
+  margin: auto;
+  -webkit-box-shadow: 0px 8px 14px -4px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 8px 14px -4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 14px -4px rgba(0, 0, 0, 0.1);
+}
+
+.formText {
+  /* Не подтягивается шрифт, который лежит в assets для кириллицы (смотри закоментированую нижнюю строку) */
+  font-family: 'Montserrat Medium', sans-serif;
+  /* Шрифт с Google Fonts (импорт вверху) */
+  /* font-family: "Montserrat", sans-serif; */
+  font-size: 10px;
+  margin: 0 0 20px 0;
+  line-height: 1.7;
+}
+
+.googleSignUpButton > div {
+  text-align: center;
+}
+
+.googleSignUpButton > div > span {
+  font-family: 'Montserrat Bold', sans-serif;
+  vertical-align: 4px;
+  font-size: 14px;
+}
+
+.googleSignUpButton > div > img {
+  width: 18px;
+  margin: 0 12px 0 0;
+  height: auto;
+}
+
+.googleSignUpButton {
+  padding: 15px 0;
+  margin: 0 auto 30px auto;
+  display: block;
+  width: 160px;
+  background-color: rgb(250, 250, 250);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.signUpForm > input {
+  border: 1px solid rgb(206, 210, 209);
+  padding: 18.5px 0 18.5px 17px;
+  width: 246px;
+  margin: 0 0 20px 0;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+}
+
+.signUpForm > input::placeholder {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+  color: rgb(187, 187, 187);
+}
+
+.signUpForm > input:focus {
+  border: 1px solid var(--orange);
+  box-shadow: 0 0 5px var(--orange);
+}
+
+.formButtonWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.formButton {
+  width: 113px;
+  height: 60px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 11px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(206, 210, 209);
+}
+
+.formButton:hover {
+  background-color: var(--orange);
+  color: rgb(255, 255, 255);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .formWrapper {
+    width: 540px;
+    padding: 50px 60px 50px 60px;
+  }
+
+  .formText {
+    font-size: 13px;
+    margin: 0 0 35px 0;
+  }
+
+  .googleSignUpButton {
+    padding: 15px 0;
+    margin: 0 0 45px 0;
+  }
+
+  .signUpForm > input {
+    width: 420px;
+    display: block;
+  }
+
+  .signUpForm > input:last-child {
+    margin-bottom: 35px;
+  }
+
+  .formButton {
+    width: 200px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .formWrapper {
+    width: 506px;
+    padding: 50px 40px 50px 40px;
+  }
+}
