@@ -33,11 +33,11 @@ class AuthForm extends Component {
             placeholder="Пароль"
             autoComplete="on"
           />
+          <div className={styles.formButtonWrapper}>
+            <button className={styles.formButton}>ВОЙТИ</button>
+            <button className={styles.formButton}>РЕГИСТРАЦИЯ</button>
+          </div>
         </form>
-        <div className={styles.formButtonWrapper}>
-          <button className={styles.formButton}>ВОЙТИ</button>
-          <button className={styles.formButton}>РЕГИСТРАЦИЯ</button>
-        </div>
       </div>
     );
   }
