@@ -19,7 +19,7 @@
 @media screen and (min-width: 768px) {
   .button {
     width: 396px;
-    padding: 65px 77px 45px;
+    padding: 65px 75px 45px 75px;
     font-size: 30px;
   }
 }
