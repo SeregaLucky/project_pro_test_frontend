@@ -1,13 +1,20 @@
 .section {
   background-color: var(--background-color);
-  color: var(--dark-blue);
+  padding: 15px 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: 320px;
+  padding: 0 20px;
 }
 
 .main_header {
   text-align: center;
   font-family: 'MontserratBold', sans-serif;
   font-size: 20px;
-  padding: 20px 0 10px 0;
+  padding: 10px;
+  color: var(--dark-blue);
 }
 
 .img {
@@ -37,17 +44,9 @@
   letter-spacing: 0.03em;
 }
 
-@media screen and (max-width: 767px) {
-  .section {
-    width: 320px;
-    padding: 0 20px;
-  }
-}
-
-@media screen and (min-width: 767px) {
-  .section {
-    margin: auto;
-    width: 767px;
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
   }
 
   .result_bar {
@@ -56,10 +55,8 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .section {
-    margin: auto;
+@media screen and (min-width: 1280px) {
+  container {
     width: 1280px;
-    padding: 0 20px;
   }
 }
