@@ -9,10 +9,7 @@ const MainTestButton = () => {
     <div>
       <ul>
         <li>
-          <Link
-            to={{ pathname: `${routes.DASHBOARD_PAGE}` }}
-            className={styles.button}
-          >
+          <Link to={routes.DASHBOARD_PAGE} className={styles.button}>
             Теория тестирования
             <Arrow className={styles.arrow} width="25px" alt="arrow" />
           </Link>
