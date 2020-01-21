@@ -6,18 +6,20 @@
   width: 280px;
   font-size: 24px;
   font-family: 'MontserratExtraBold', sans-serif;
-  font-weight: bold;
   color: var(--background-color);
   background-color: var(--orange);
   padding: 55px 45px 35px;
   display: block;
   line-height: 1.2;
   text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.arrow g {
+  fill: var(--background-color);
 }
 
 .arrow {
-  display: block;
-  margin: 0 auto;
   padding-top: 10px;
 }
 
@@ -27,13 +29,9 @@
     padding: 65px 77px 45px;
     font-size: 30px;
   }
-
-  .arrow {
-    margin: 0 auto;
-  }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 1280px) {
   .button {
     width: 400px;
   }

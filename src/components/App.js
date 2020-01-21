@@ -10,12 +10,13 @@ import DashboardPage from '../pages/DashboardPage/DashboardPage';
 import ResultPage from '../pages/ResultPage/ResultPage';
 import MaterialsPage from '../pages/MaterialsPage/MaterialsPage';
 import ContactsPage from '../pages/ContactsPage/ContactsPage';
+import MainTestButton from './MainTestButton/MainTestButton';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Header />
-
+      <MainTestButton />
       <Switch>
         <Route path={routes.AUTH_PAGE} component={AuthPage} />
         <Route path={routes.MAIN_PAGE} component={MainPage} />
