@@ -3,8 +3,9 @@ import styles from './ContactsPage.module.css';
 
 const ContactsPage = () => {
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <h2 className={styles.mainTitle}>Наша команда</h2>
+
       <ul className={styles.contactsListItemContainer}>
         <li className={styles.contactsListItem}>
           <img src="http://via.placeholder.com/280x245" alt="img" />
@@ -31,7 +32,7 @@ const ContactsPage = () => {
           <p>Lorem dvsdvs dbhdbs </p>
         </li>
       </ul>
-    </div>
+    </section>
   );
 };
 
