@@ -1,0 +1,108 @@
+.authPage {
+  padding: 42px 0 46px 0;
+  background-color: var(--background-color);
+}
+
+.container {
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.blockInfo {
+  margin: 0 0 28px 0;
+}
+
+.title {
+  font-family: 'MontserratExtraBold', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.03em;
+  margin: 0 0 20px 0;
+}
+
+.text {
+  font-family: 'MontserratMedium', sans-serif;
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  color: #555555;
+}
+
+.textSpan {
+  font-family: 'MontserratBold', sans-serif;
+  color: #000;
+}
+
+.divForm {
+  height: 448px;
+  background-color: #fff;
+}
+
+/*
+ * 768 - starting
+ */
+@media screen and (min-width: 768px) {
+  .authPage {
+    padding: 80px 0;
+  }
+
+  .container {
+    width: 582px;
+  }
+
+  .blockInfo {
+    margin: 0 0 56px 0;
+  }
+
+  .title {
+    font-size: 30px;
+    margin: 0 0 36px 0;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  .divForm {
+    height: 525px;
+  }
+}
+
+/*
+ * 1280 - starting
+ */
+@media screen and (min-width: 1280px) {
+  .authPage {
+    padding: 98px 0;
+  }
+
+  .container {
+    width: 1070px;
+  }
+
+  .addFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .blockInfo {
+    flex: 0 0 420px;
+    margin: 0;
+  }
+
+  .title {
+    font-size: 34px;
+    margin: 0 0 36px 0;
+  }
+
+  .text {
+    font-size: 18px;
+    line-height: 36px;
+  }
+
+  .divForm {
+    flex: 0 0 505px;
+  }
+}
