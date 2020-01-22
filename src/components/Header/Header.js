@@ -119,36 +119,28 @@ class Header extends Component {
       <div className={styles.NavAndUserContainer}>
         <nav className={styles.mainNav}>
           <ul className={styles.mainNavList}>
-            <li
-              className={`${styles.mainNavListItem} ${styles.mainNavListItemMainPage}`}
-            >
+            <li className={styles.mainNavListItem}>
               <NavLink
                 to={routes.MAIN_PAGE}
                 className={styles.mainNavListItemLink}
               >
-                <p className={styles.mainNavListItemLink__text}>Главная</p>
+                Главная
               </NavLink>
             </li>
-            <li
-              className={`${styles.mainNavListItem} ${styles.mainNavListItemMaterials}`}
-            >
+            <li className={styles.mainNavListItem}>
               <NavLink
                 to={routes.MATERIALS_PAGE}
                 className={styles.mainNavListItemLink}
               >
-                <p className={styles.mainNavListItemLink__text}>
-                  Полезные материалы
-                </p>
+                Полезные материалы
               </NavLink>
             </li>
-            <li
-              className={`${styles.mainNavListItem} ${styles.mainNavListItemContacts}`}
-            >
+            <li className={styles.mainNavListItem}>
               <NavLink
                 to={routes.CONTACTS_PAGE}
                 className={styles.mainNavListItemLink}
               >
-                <p className={styles.mainNavListItemLink__text}>Контакты</p>
+                Контакты
               </NavLink>
             </li>
           </ul>
@@ -165,9 +157,9 @@ class Header extends Component {
 
   renderType = () => {
     let obj;
-    if (window.matchMedia('(max-width: 768px)').matches) {
+    if (window.matchMedia('(max-width: 767px)').matches) {
       obj = this.renderMobile();
-    } else if (window.matchMedia('(min-width: 769px)').matches) {
+    } else if (window.matchMedia('(min-width: 768px)').matches) {
       obj = this.renderTablet();
     }
     return obj;
