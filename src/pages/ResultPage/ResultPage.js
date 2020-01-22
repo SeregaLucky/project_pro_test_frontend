@@ -1,10 +1,11 @@
 import React from 'react';
 // import styles from './ResultPage.module.css';
+import ResultProgressBar from '../../components/ResultProgressBar/ResultProgressBar';
 
 const ResultPage = () => {
   return (
     <div>
-      <h2>ResultPage</h2>
+      <ResultProgressBar />
     </div>
   );
 };
