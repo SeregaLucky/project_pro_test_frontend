@@ -4,12 +4,6 @@
   margin-right: 40px;
 }
 
-.HeaderUserLink {
-  color: #000000;
-  display: flex;
-  align-items: center;
-}
-
 .HeaderUserLetter {
   background-color: #ffffff;
   border-radius: 50%;
@@ -34,7 +28,6 @@
 
 @media screen and (min-width: 1280px) {
   .HeaderUserLetter {
-    font-family: 'MontserratSemiBold', sans-serif;
     font-size: 13px;
   }
 }

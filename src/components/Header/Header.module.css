@@ -1,12 +1,12 @@
 .headerContainer {
   background-color: var(--background-color);
+  border-bottom: 0.5px solid #ced2d1;
 }
 .header {
   display: flex;
   margin: 0 auto;
   justify-content: space-between;
   height: 70px;
-  /*Шрифты не грузятся*/
   font-family: 'MontserratMedium', sans-serif;
   font-size: 14px;
   letter-spacing: 0.02rem;
@@ -28,22 +28,51 @@
   bottom: 0;
 }
 
-.mainNavList {
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  justify-content: center;
+.mainNavListItemLink__text {
+  position: relative;
 }
 
 .mainNavListItemMobile {
   height: 60px;
-}
-.mainNavListItemMobile:not(:last-child):hover .mainNavListItemLink__text {
-  border-bottom: 1px solid #ff6b08;
+  border-top: 0.5px solid #ced2d1;
+  position: relative;
 }
 
-.mainNavListItem:not(:last-child):hover .mainNavListItemLink__text {
-  border-bottom: 1px solid #ff6b08;
+.mainNavListItemMobile:last-child {
+  border-bottom: 0.5px solid #ced2d1;
+}
+
+.mainNavListItemMainPage:hover .mainNavListItemLink__text::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 56px;
+  height: 1px;
+  background: var(--orange);
+}
+
+.mainNavListItemMaterials:hover .mainNavListItemLink__text::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 148px;
+  height: 1px;
+  background: var(--orange);
+}
+
+.mainNavListItemContacts:hover .mainNavListItemLink__text::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 63px;
+  height: 1px;
+  background: var(--orange);
 }
 
 .mainNavListItemLink {
@@ -54,6 +83,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .logoLink {
   align-self: center;
 }
@@ -61,6 +91,12 @@
 .headerBtn {
   border: none;
   background-color: inherit;
+}
+
+.headerBtnMobile {
+  composes: headerBtn;
+  border-left: 0.5px solid #ced2d1;
+  padding-left: 20px;
 }
 
 .SignOutLogo {
@@ -73,6 +109,7 @@
     align-items: stretch;
     font-size: 12px;
   }
+
   .NavAndUserContainer {
     display: flex;
     width: 500px;
@@ -96,6 +133,7 @@
 
     width: 320px;
   }
+
   .mainNavList {
     display: flex;
     align-items: center;
@@ -104,8 +142,20 @@
     width: 100%;
   }
 
-  .mainNavListItem:hover .mainNavListItemLink__text {
-    border-bottom: 1px solid #ff6b08;
+  .mainNavListItem:hover {
+    position: relative;
+  }
+
+  .mainNavListItemMainPage:hover .mainNavListItemLink__text::after {
+    width: 48px;
+  }
+
+  .mainNavListItemMaterials:hover .mainNavListItemLink__text::after {
+    width: 127px;
+  }
+
+  .mainNavListItemContacts:hover .mainNavListItemLink__text::after {
+    width: 54px;
   }
 
   .mainNavListItemLink {
@@ -116,6 +166,7 @@
     justify-content: stretch;
     align-items: center;
   }
+
   .headerBtn {
     padding: 10px 0 10px 10px;
   }
@@ -126,8 +177,21 @@
     /*max-width: 1280px;*/
     font-size: 13px;
   }
+
   .mainNav {
     width: 380px;
+  }
+
+  .mainNavListItemMainPage:hover .mainNavListItemLink__text::after {
+    width: 52px;
+  }
+
+  .mainNavListItemMaterials:hover .mainNavListItemLink__text::after {
+    width: 137px;
+  }
+
+  .mainNavListItemContacts:hover .mainNavListItemLink__text::after {
+    width: 59px;
   }
 
   .NavAndUserContainer {
@@ -135,6 +199,7 @@
     width: 650px;
     justify-content: space-between;
   }
+
   .userInfoAndLogout {
     width: 160px;
     display: flex;

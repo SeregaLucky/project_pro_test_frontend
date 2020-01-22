@@ -4,19 +4,13 @@ import styles from './HeaderUserInfo.module.css';
 
 const HeaderUserInfo = ({ isMobile }) => {
   return isMobile === true ? (
-    <>
-      <div className={styles.HeaderUserContainer}>
-        <a href="#" className={styles.HeaderUserLink}>
-          <p className={styles.HeaderUserLetter}>Д</p>
-        </a>
-      </div>
-    </>
+    <div className={styles.HeaderUserContainer}>
+      <p className={styles.HeaderUserLetter}>Д</p>
+    </div>
   ) : (
     <div className={styles.HeaderUserContainer}>
-      <a href="#" className={styles.HeaderUserLink}>
-        <p className={styles.HeaderUserLetter}>Д</p>
-        <p className={styles.HeaderUserName}>Дмитрий</p>
-      </a>
+      <p className={styles.HeaderUserLetter}>Д</p>
+      <p className={styles.HeaderUserName}>Дмитрий</p>
     </div>
   );
 };

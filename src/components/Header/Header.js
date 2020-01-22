@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import routes from '../../routes';
 import HeaderUserInfo from '../HeaderUserInfo/HeaderUserInfo';
 import { ReactComponent as MainLogo } from '../../assets/images/logo.svg';
 import { ReactComponent as MenuLogo } from '../../assets/icons/svg/menu-24px.svg';
@@ -21,6 +23,10 @@ class Header extends Component {
     });
   };
 
+  handleClickLogo = () => {
+    this.setState({ isOpen: false });
+  };
+
   componentDidMount() {
     if (window.matchMedia('(max-width: 768px)').matches) {
       this.setState({ isMobile: true });
@@ -33,7 +39,7 @@ class Header extends Component {
         <HeaderUserInfo isMobile={this.state.isMobile} />
         <button
           type="click"
-          className={styles.headerBtn}
+          className={styles.headerBtnMobile}
           onClick={this.handleClick}
         >
           <MenuLogo />
@@ -45,7 +51,7 @@ class Header extends Component {
           <HeaderUserInfo isMobile={this.state.isMobile} />
           <button
             type="click"
-            className={styles.headerBtn}
+            className={styles.headerBtnMobile}
             onClick={this.handleClick}
           >
             <ExitLogo />
@@ -54,31 +60,53 @@ class Header extends Component {
 
         <nav className={styles.mainNav}>
           <ul className={styles.mainNavList}>
-            <li key={1} className={styles.mainNavListItemMobile}>
-              <a href="#" className={styles.mainNavListItemLink}>
+            <li
+              className={`${styles.mainNavListItemMobile} ${styles.mainNavListItemMainPage}`}
+            >
+              <NavLink
+                to={routes.MAIN_PAGE}
+                onClick={this.handleClick}
+                className={styles.mainNavListItemLink}
+              >
                 <p className={styles.mainNavListItemLink__text}>Главная</p>
-              </a>
+              </NavLink>
             </li>
-            <li key={2} className={styles.mainNavListItemMobile}>
-              <a href="#" className={styles.mainNavListItemLink}>
+            <li
+              className={`${styles.mainNavListItemMobile} ${styles.mainNavListItemMaterials}`}
+            >
+              <NavLink
+                to={routes.MATERIALS_PAGE}
+                onClick={this.handleClick}
+                className={styles.mainNavListItemLink}
+              >
                 <p className={styles.mainNavListItemLink__text}>
                   Полезные материалы
                 </p>
-              </a>
+              </NavLink>
             </li>
-            <li key={3} className={styles.mainNavListItemMobile}>
-              <a href="#" className={styles.mainNavListItemLink}>
+            <li
+              className={`${styles.mainNavListItemMobile} ${styles.mainNavListItemContacts}`}
+            >
+              <NavLink
+                to={routes.CONTACTS_PAGE}
+                onClick={this.handleClick}
+                className={styles.mainNavListItemLink}
+              >
                 <p className={styles.mainNavListItemLink__text}>Контакты</p>
-              </a>
+              </NavLink>
             </li>
-            <li key={4} className={styles.mainNavListItemMobile}>
-              <a href="#" className={styles.mainNavListItemLink}>
+            <li className={styles.mainNavListItemMobile}>
+              <NavLink
+                to={routes.AUTH_PAGE}
+                onClick={this.handleClick}
+                className={styles.mainNavListItemLink}
+              >
                 <p className={styles.mainNavListItemLink__text}>
                   <button type="click" className={styles.headerBtn}>
                     <SignOutLogo className={styles.SignOutLogo} />
                   </button>
                 </p>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -91,22 +119,37 @@ class Header extends Component {
       <div className={styles.NavAndUserContainer}>
         <nav className={styles.mainNav}>
           <ul className={styles.mainNavList}>
-            <li key={1} className={styles.mainNavListItem}>
-              <a href="#" className={styles.mainNavListItemLink}>
+            <li
+              className={`${styles.mainNavListItem} ${styles.mainNavListItemMainPage}`}
+            >
+              <NavLink
+                to={routes.MAIN_PAGE}
+                className={styles.mainNavListItemLink}
+              >
                 <p className={styles.mainNavListItemLink__text}>Главная</p>
-              </a>
+              </NavLink>
             </li>
-            <li key={2} className={styles.mainNavListItem}>
-              <a href="#" className={styles.mainNavListItemLink}>
+            <li
+              className={`${styles.mainNavListItem} ${styles.mainNavListItemMaterials}`}
+            >
+              <NavLink
+                to={routes.MATERIALS_PAGE}
+                className={styles.mainNavListItemLink}
+              >
                 <p className={styles.mainNavListItemLink__text}>
                   Полезные материалы
                 </p>
-              </a>
+              </NavLink>
             </li>
-            <li key={3} className={styles.mainNavListItem}>
-              <a href="#" className={styles.mainNavListItemLink}>
+            <li
+              className={`${styles.mainNavListItem} ${styles.mainNavListItemContacts}`}
+            >
+              <NavLink
+                to={routes.CONTACTS_PAGE}
+                className={styles.mainNavListItemLink}
+              >
                 <p className={styles.mainNavListItemLink__text}>Контакты</p>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -134,9 +177,13 @@ class Header extends Component {
     return (
       <div className={styles.headerContainer}>
         <header className={styles.header}>
-          <a href="#" className={styles.logoLink}>
+          <NavLink
+            to={routes.MAIN_PAGE}
+            className={styles.logoLink}
+            onClick={this.handleClickLogo}
+          >
             <MainLogo />
-          </a>
+          </NavLink>
           {this.renderType()}
         </header>
       </div>
