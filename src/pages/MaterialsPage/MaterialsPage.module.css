@@ -1,0 +1,67 @@
+.wrapper {
+  background: no-repeat url('../../assets/images/backgroundMaterialsPage.jpg')
+    top center;
+  background-size: 220%;
+}
+
+.container {
+  width: 320px;
+  margin: 0 auto;
+  padding: 45px 20px;
+}
+
+.title {
+  font-family: 'MontserratBold', sans-serif;
+  font-size: 18px;
+  color: #000000;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  max-width: 150px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.title::after {
+  content: '';
+  height: 1px;
+  border-bottom: 1px solid #ced2d1;
+  opacity: 0.502;
+  width: 130px;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  right: 0;
+}
+
+.list:not(:last-child) {
+  margin-bottom: 45px;
+}
+
+.listItem,
+.listLink {
+  font-family: 'MontserratMedium', sans-serif;
+  font-size: 10px;
+  color: #000000;
+  line-height: 13px;
+  letter-spacing: 0.03em;
+}
+
+.listLink {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    /* background-position: bottom 10px right 20px; */
+    background-position: top center;
+    background-size: auto;
+  }
+
+  .container {
+    width: 768px;
+    padding: 125px 114px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+}
