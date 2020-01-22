@@ -18,11 +18,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-family: 'MontserratSemiBold', sans-serif;
   font-size: 12px;
+  color: #555555;
 }
-.HeaderUserName{
+.HeaderUserName {
   margin-left: 10px;
 }
 
