@@ -1,31 +1,26 @@
 @import '../../stylesheet/vars.css';
 @import '../../stylesheet/fonts.css';
 
-body {
+.dashboardPage {
   background-color: #f4f6fb;
 }
 
-button {
-  border: 0;
-  display: block;
-}
-
 .dashboardPageContainer {
-  width: 280px;
   margin: 0 auto;
+  width: 320px;
+  padding: 0 20px;
 }
 
 .titleContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px auto;
-  height: 100px;
+  margin: 0 auto 20px;
 }
 
 .titleContainer__title {
   font-size: 14px;
-  width: 120px;
+  width: 125px;
   font-family: 'MontserratMedium', sans-serif;
   letter-spacing: 0.03em;
 }
@@ -33,9 +28,11 @@ button {
 .titleContainer__btnEnd {
   width: 130px;
   height: 48px;
+  border: 0;
+  display: block;
 }
 
-.DashboardForm {
+.dashboardForm {
   height: 450px;
   margin: 0 auto 20px;
   background: #fff;
@@ -44,7 +41,7 @@ button {
 .btnContainer {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .btnContainer__forward,
@@ -54,6 +51,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 0;
 }
 
 .btnContainer__forwardText,
@@ -101,6 +99,7 @@ button {
     width: 210px;
     height: 33px;
     line-height: 33px;
+    border: 0;
   }
 
   .btnContainer__forwardText,
@@ -122,7 +121,7 @@ button {
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1280px) {
   .dashboardPageContainer {
     width: 820px;
   }
