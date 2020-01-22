@@ -1,11 +1,17 @@
 import React from 'react';
-// import styles from './MainTestButton.module.css';
+import routes from '../../routes';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Arrow } from '../../assets/icons/svg/arrow.svg';
+import styles from './MainTestButton.module.css';
 
 const MainTestButton = () => {
   return (
-    <div>
-      <h2>MainTestButton</h2>
-    </div>
+    <li>
+      <Link to={routes.DASHBOARD_PAGE} className={styles.button}>
+        Теория тестирования
+        <Arrow className={styles.arrow} width="25px" alt="arrow" />
+      </Link>
+    </li>
   );
 };
 

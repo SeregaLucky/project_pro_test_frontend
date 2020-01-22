@@ -10,12 +10,13 @@ import DashboardPage from '../pages/DashboardPage/DashboardPage';
 import ResultPage from '../pages/ResultPage/ResultPage';
 import MaterialsPage from '../pages/MaterialsPage/MaterialsPage';
 import ContactsPage from '../pages/ContactsPage/ContactsPage';
-
+import Loader from './Loader/Loader';
 const App = () => {
   return (
     <BrowserRouter>
-      <Header />
+      <Loader />
 
+      <Header />
       <Switch>
         <Route path={routes.AUTH_PAGE} component={AuthPage} />
         <Route path={routes.MAIN_PAGE} component={MainPage} />
@@ -26,7 +27,6 @@ const App = () => {
 
         <Redirect to={routes.MAIN_PAGE} />
       </Switch>
-
       <Footer />
     </BrowserRouter>
   );

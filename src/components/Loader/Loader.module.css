@@ -1,0 +1,6 @@
+.container {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  margin-left: -40px;
+}
