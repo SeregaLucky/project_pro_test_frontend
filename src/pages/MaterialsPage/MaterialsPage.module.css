@@ -1,7 +1,7 @@
 .wrapper {
   background: no-repeat url('../../assets/images/backgroundMaterialsPage.jpg')
-    top center;
-  background-size: 220%;
+    top right 45%;
+  background-size: auto 100%;
 }
 
 .container {
@@ -52,16 +52,51 @@
 
 @media screen and (min-width: 768px) {
   .wrapper {
-    /* background-position: bottom 10px right 20px; */
-    background-position: top center;
-    background-size: auto;
+    background-position: top 50% right 35%;
+    background-size: auto 130%;
   }
 
   .container {
     width: 768px;
-    padding: 125px 114px;
+    padding: 125px 115px;
+  }
+
+  .title {
+    font-size: 22px;
+    line-height: 33px;
+    max-width: 280px;
+    margin-bottom: 50px;
+  }
+
+  .title::after {
+    content: '';
+    width: 322px;
+    bottom: -25px;
+  }
+
+  .list {
+    padding-left: 55px;
+  }
+
+  .list:not(:last-child) {
+    margin-bottom: 65px;
+  }
+
+  .listItem,
+  .listLink {
+    font-size: 15px;
+    line-height: 23px;
   }
 }
 
 @media screen and (min-width: 1280px) {
+  .wrapper {
+    background-position: top right 33%;
+    background-size: auto 160%;
+  }
+
+  .container {
+    width: 1280px;
+    padding: 105px 190px;
+  }
 }
