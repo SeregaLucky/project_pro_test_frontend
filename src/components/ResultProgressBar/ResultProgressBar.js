@@ -41,7 +41,7 @@ const ResultProgressBar = ({ correctAnswers, allAnswers = 12 }) => {
   const chartInCorrect = 100 - chartCorrect;
 
   return (
-    <>
+    <div className={styles.result_wrapper}>
       <div className={styles.chart}>
         <Pie
           data={() => getChartData(chartCorrect, chartInCorrect)}
@@ -59,7 +59,7 @@ const ResultProgressBar = ({ correctAnswers, allAnswers = 12 }) => {
           Всего вопросов - <span className={styles.result}>{allAnswers}</span>
         </p>
       </div>
-    </>
+    </div>
   );
 };
 

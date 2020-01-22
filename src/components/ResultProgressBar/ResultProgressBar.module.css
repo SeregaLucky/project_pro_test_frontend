@@ -1,3 +1,7 @@
+.result_wrapper {
+  background-color: var(--background-color);
+  /* margin-bottom: 20px; */
+}
 .chart {
   max-width: 160px;
   margin: 0 auto 24px;
@@ -11,7 +15,7 @@
 }
 
 .legend__text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'MontserratMedium', sans-serif;
   font-size: 15px;
   letter-spacing: 0px;
   line-height: 23px;
@@ -20,15 +24,15 @@
   padding: 0 10px;
 }
 .result {
-  font-weight: 700;
+  font-family: 'MontserratBold', sans-serif;
 }
 
 .legend__text:first-child {
-  /* border-right: 1px solid #ced2d1; */
-  position: relative;
+  border-right: 1px solid #ced2d1;
+  /* position: relative; */
 }
 
-.legend__text:first-child::after {
+/* .legend__text:first-child::after {
   content: ' ';
   position: absolute;
   background-color: #ced2d1;
@@ -36,9 +40,9 @@
   height: 22px;
   bottom: 0;
   right: -1px;
-}
+} */
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .chart {
     max-width: 280px;
     margin-bottom: 36px;

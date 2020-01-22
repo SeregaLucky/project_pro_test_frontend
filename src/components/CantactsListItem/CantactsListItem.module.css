@@ -17,7 +17,7 @@
   letter-spacing: 1px;
   line-height: 18px;
   color: #000000;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'MontserratBold', sans-serif;
   font-weight: 700;
 }
 .position {
@@ -26,7 +26,7 @@
   letter-spacing: 1px;
   line-height: 21px;
   color: #555555;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'MontserratMedium', sans-serif;
   font-weight: 400;
   margin-bottom: 12px;
 }
@@ -37,11 +37,11 @@
   letter-spacing: 1px;
   line-height: 16px;
   color: #000000;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'MontserratMedium', sans-serif;
   font-weight: 400;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .card {
     max-width: 354px;
   }
@@ -53,7 +53,7 @@
     padding: 28px;
   }
 }
-@media (min-width: 1280px) {
+@media screen and (min-width: 1280px) {
   .card {
     max-width: 295px;
   }

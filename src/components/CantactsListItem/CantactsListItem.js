@@ -4,12 +4,12 @@ import cardImage from '../../assets/images/cardimage.jpg';
 
 const CantactsListItem = ({ image, name, position, description }) => {
   return (
-    <div className={styles.card}>
+    <li className={styles.card}>
       <img src={image} className={styles.image} alt={name} />
       <p className={styles.name}>{name}</p>
       <p className={styles.position}>{position}</p>
       <p className={styles.description}>{description}</p>
-    </div>
+    </li>
   );
 };
 
