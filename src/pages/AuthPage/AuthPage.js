@@ -1,4 +1,5 @@
 import React from 'react';
+import AuthForm from '../../components/AuthForm';
 import styles from './AuthPage.module.css';
 
 const AuthPage = () => {
@@ -16,8 +17,7 @@ const AuthPage = () => {
             <span className={styles.textSpan}>_ ]</span>
           </p>
         </div>
-
-        <div className={styles.divForm}></div>
+        <AuthForm className={styles.divForm} />
       </div>
     </section>
   );

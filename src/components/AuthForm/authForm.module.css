@@ -1,0 +1,121 @@
+.formWrapper {
+  width: 280px;
+  padding: 45px 17px 53px 17px;
+  margin: auto;
+  box-shadow: 0px 8px 14px -4px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255);
+}
+
+.formText {
+  font-family: 'MontserratMedium', sans-serif;
+  letter-spacing: 0.03em;
+  font-size: 10px;
+  margin: 0 0 20px 0;
+  line-height: 1.7;
+}
+
+.googleSignUpButton > div {
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.googleSignUpButton > div > span {
+  font-family: 'MontserratBold', sans-serif;
+  letter-spacing: 0.03em;
+  vertical-align: 4px;
+  font-size: 14px;
+}
+
+.googleSignUpButton > div > img {
+  width: 18px;
+  margin: 0 12px 0 0;
+  height: auto;
+}
+
+.googleSignUpButton {
+  padding: 15px 0;
+  margin: 0 auto 30px auto;
+  letter-spacing: 0.03em;
+  display: block;
+  width: 160px;
+  background-color: rgb(250, 250, 250);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.signUpForm > input {
+  border: 1px solid rgb(206, 210, 209);
+  padding: 18.5px 0 18.5px 17px;
+  width: 246px;
+  margin: 0 0 20px 0;
+  transition: all 0.4s ease-in-out;
+}
+
+.signUpForm > input::placeholder {
+  font-family: 'MontserratMedium', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: rgb(187, 187, 187);
+}
+
+.signUpForm > input:focus {
+  border: 1px solid var(--orange);
+  box-shadow: 0 0 5px var(--orange);
+}
+
+.formButtonWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.formButton {
+  width: 113px;
+  height: 60px;
+  letter-spacing: 0.03em;
+  font-family: 'MontserratBold', sans-serif;
+  font-size: 11px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(206, 210, 209);
+}
+
+.formButton:hover {
+  background-color: var(--orange);
+  color: rgb(255, 255, 255);
+  transition: all 0.4s ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .formWrapper {
+    width: 540px;
+    padding: 50px 60px 50px 60px;
+  }
+
+  .formText {
+    font-size: 13px;
+    margin: 0 0 35px 0;
+  }
+
+  .googleSignUpButton {
+    padding: 15px 0;
+    margin: 0 0 45px 0;
+  }
+
+  .signUpForm > input {
+    width: 420px;
+    display: block;
+  }
+
+  .signUpForm > input:last-child {
+    margin-bottom: 35px;
+  }
+
+  .formButton {
+    width: 200px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .formWrapper {
+    width: 506px;
+    padding: 50px 40px 50px 40px;
+  }
+}
