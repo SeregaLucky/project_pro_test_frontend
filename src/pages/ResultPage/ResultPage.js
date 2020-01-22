@@ -5,7 +5,7 @@ import ResultProgressBar from '../../components/ResultProgressBar/ResultProgress
 const ResultPage = () => {
   return (
     <div>
-      <ResultProgressBar />
+      <h2>ResultPage</h2>
     </div>
   );
 };
