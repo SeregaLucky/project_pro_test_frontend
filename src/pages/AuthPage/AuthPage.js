@@ -17,6 +17,7 @@ const AuthPage = () => {
             <span className={styles.textSpan}>_ ]</span>
           </p>
         </div>
+
         <AuthForm className={styles.divForm} />
       </div>
     </section>
