@@ -1,11 +1,25 @@
 import React from 'react';
-// import styles from './AuthPage.module.css';
+import AuthForm from '../../components/AuthForm';
+import styles from './AuthPage.module.css';
 
 const AuthPage = () => {
   return (
-    <div>
-      <h2>AuthPage</h2>
-    </div>
+    <section className={styles.authPage}>
+      <div className={`${styles.container} ${styles.addFlex}`}>
+        <div className={styles.blockInfo}>
+          <h2 className={styles.title}>Pro Test</h2>
+
+          <p className={styles.text}>
+            <span className={styles.textSpan}>[</span> Мы поможем найти слабые
+            места в знаниях, чтобы вы смогли их усилить. Покажем что актуально
+            знать для <span className={styles.textSpan}>QA Engineer</span> и
+            постараемся сделать процесс познания более разнообразным
+            <span className={styles.textSpan}>_ ]</span>
+          </p>
+        </div>
+        <AuthForm className={styles.divForm} />
+      </div>
+    </section>
   );
 };
 
