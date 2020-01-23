@@ -1,0 +1,175 @@
+.headerContainer {
+  background-color: var(--background-color);
+  border-bottom: 0.5px solid #ced2d1;
+}
+.header {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  height: 70px;
+  font-family: 'MontserratMedium', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.02rem;
+  padding: 0 20px;
+}
+
+.userAndBtnContainer {
+  display: flex;
+  width: 120px;
+  justify-content: flex-end;
+}
+
+.mainNav {
+  position: fixed;
+  background-color: var(--background-color);
+  top: 70px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.mainNavListItemLink__text {
+  position: relative;
+}
+
+.mainNavListItemMobile {
+  height: 60px;
+  border-top: 0.5px solid #ced2d1;
+  position: relative;
+}
+
+.mainNavListItemMobile:last-child {
+  border-bottom: 0.5px solid #ced2d1;
+}
+
+.mainNavListItemMobile:hover .mainNavListItemLink__text::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--orange);
+}
+
+.mainNavListItemLink {
+  color: #000000;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoLink {
+  align-self: center;
+}
+
+.headerBtn {
+  border: none;
+  background-color: inherit;
+}
+
+.headerBtnMobile {
+  composes: headerBtn;
+  border-left: 0.5px solid #ced2d1;
+  padding-left: 20px;
+}
+
+.SignOutLogo {
+  width: 14px;
+  height: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    align-items: stretch;
+    font-size: 12px;
+  }
+
+  .NavAndUserContainer {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+  }
+
+  .userInfoAndLogout {
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mainNav {
+    position: relative;
+    top: inherit;
+    right: inherit;
+    left: inherit;
+    bottom: inherit;
+    display: flex;
+    justify-content: space-between;
+
+    width: 320px;
+  }
+
+  .mainNavList {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .mainNavListItem {
+    position: relative;
+    height: 100%;
+  }
+
+  .mainNavListItem:hover .mainNavListItemLink::after {
+    content: '';
+    position: absolute;
+    bottom: 26px;
+    left: 0;
+    height: 1px;
+    background: var(--orange);
+    display: block;
+    width: 100%;
+  }
+
+  .mainNavListItemLink {
+    color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+  }
+
+  .headerBtn {
+    padding: 10px 0 10px 10px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    /*max-width: 1280px;*/
+    font-size: 13px;
+  }
+
+  .mainNav {
+    width: 380px;
+  }
+
+  .NavAndUserContainer {
+    display: flex;
+    width: 650px;
+    justify-content: space-between;
+  }
+
+  .userInfoAndLogout {
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
