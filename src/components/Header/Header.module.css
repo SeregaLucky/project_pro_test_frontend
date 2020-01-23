@@ -42,35 +42,13 @@
   border-bottom: 0.5px solid #ced2d1;
 }
 
-.mainNavListItemMainPage:hover .mainNavListItemLink__text::after {
+.mainNavListItemMobile:hover .mainNavListItemLink__text::after {
   content: '';
-  display: inline-block;
+  display: block;
   position: absolute;
-  bottom: -5px;
+  bottom: -3px;
   left: 0;
-  width: 56px;
-  height: 1px;
-  background: var(--orange);
-}
-
-.mainNavListItemMaterials:hover .mainNavListItemLink__text::after {
-  content: '';
-  display: inline-block;
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 148px;
-  height: 1px;
-  background: var(--orange);
-}
-
-.mainNavListItemContacts:hover .mainNavListItemLink__text::after {
-  content: '';
-  display: inline-block;
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 63px;
+  width: 100%;
   height: 1px;
   background: var(--orange);
 }

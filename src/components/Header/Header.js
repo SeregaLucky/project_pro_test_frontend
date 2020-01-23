@@ -60,9 +60,7 @@ class Header extends Component {
 
         <nav className={styles.mainNav}>
           <ul className={styles.mainNavList}>
-            <li
-              className={`${styles.mainNavListItemMobile} ${styles.mainNavListItemMainPage}`}
-            >
+            <li className={styles.mainNavListItemMobile}>
               <NavLink
                 to={routes.MAIN_PAGE}
                 onClick={this.handleClick}
@@ -71,9 +69,7 @@ class Header extends Component {
                 <p className={styles.mainNavListItemLink__text}>Главная</p>
               </NavLink>
             </li>
-            <li
-              className={`${styles.mainNavListItemMobile} ${styles.mainNavListItemMaterials}`}
-            >
+            <li className={styles.mainNavListItemMobile}>
               <NavLink
                 to={routes.MATERIALS_PAGE}
                 onClick={this.handleClick}
@@ -84,9 +80,7 @@ class Header extends Component {
                 </p>
               </NavLink>
             </li>
-            <li
-              className={`${styles.mainNavListItemMobile} ${styles.mainNavListItemContacts}`}
-            >
+            <li className={styles.mainNavListItemMobile}>
               <NavLink
                 to={routes.CONTACTS_PAGE}
                 onClick={this.handleClick}
