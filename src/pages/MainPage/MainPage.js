@@ -14,8 +14,11 @@ const MainPage = () => {
         <p className={styles.mainPage_descr}>
           Финский программист, хакер, 1969 г.
         </p>
-        <div className={`${styles.container} ${styles.mainPage_buttons}`}>
-          <MainTestButton />
+        <div className={styles.mainPage_buttons}>
+          <ul className={styles.mainPage_buttonItems}>
+            <MainTestButton />
+            <MainTestButton />
+          </ul>
         </div>
       </div>
     </section>

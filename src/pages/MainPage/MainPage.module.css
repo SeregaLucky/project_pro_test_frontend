@@ -42,10 +42,9 @@
   font-family: 'MontserratLight', sans-serif;
 }
 
-.mainPage_buttons {
-  width: 300px;
-  height: 450px;
-  background-color: rgb(255, 255, 255);
+.mainPage_buttonItems {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 768px) {
@@ -72,8 +71,7 @@
   }
 
   .mainPage_buttons {
-    width: 410px;
-    height: 465px;
+    width: 400px;
     margin: 0 auto;
   }
 }
@@ -98,5 +96,10 @@
   .mainPage_buttons {
     width: 820px;
     height: 225px;
+  }
+
+  .mainPage_buttonItems {
+    flex-direction: row;
+    align-content: space-between;
   }
 }
