@@ -15,7 +15,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <Loader />
-
       <Header />
 
       <Switch>
