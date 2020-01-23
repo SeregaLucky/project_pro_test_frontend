@@ -5,10 +5,14 @@ import cardImage from '../../assets/images/cardimage.jpg';
 const CantactsListItem = ({ image, name, position, description }) => {
   return (
     <li className={styles.card}>
-      <img src={image} className={styles.image} alt={name} />
-      <p className={styles.name}>{name}</p>
-      <p className={styles.position}>{position}</p>
-      <p className={styles.description}>{description}</p>
+      <figure>
+        <img src={image} className={styles.image} alt={name} />
+        <figcaption>
+          <p className={styles.name}>{name}</p>
+          <p className={styles.position}>{position}</p>
+          <p className={styles.description}>{description}</p>
+        </figcaption>
+      </figure>
     </li>
   );
 };
