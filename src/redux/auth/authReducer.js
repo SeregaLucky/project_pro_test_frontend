@@ -1,7 +1,18 @@
 import { combineReducers } from 'redux';
+import actionTypes from './authTypes';
 
-const userReducer = (state = null, { type, payload }) => {
+const userReducer = (
+  state = { name: null, email: null, id: '', createdAt: '' },
+  { type, payload },
+) => {
   switch (type) {
+    case actionTypes.REGISTER_SUCCESS:
+    case actionTypes.LOGIN_SUCCESS:
+    case actionTypes.GET_CURRENT_SUCCESS:
+      return payload.user;
+    case actionTypes.LOGOUT_SUCCESS:
+      return { name: null, email: null, id: '', createdAt: '' };
+
     default:
       return state;
   }
@@ -9,6 +20,12 @@ const userReducer = (state = null, { type, payload }) => {
 
 const tokenReducer = (state = null, { type, payload }) => {
   switch (type) {
+    case actionTypes.REGISTER_SUCCESS:
+    case actionTypes.LOGIN_SUCCESS:
+      return payload.token;
+    case actionTypes.LOGOUT_SUCCESS:
+      return null;
+
     default:
       return state;
   }
@@ -16,6 +33,10 @@ const tokenReducer = (state = null, { type, payload }) => {
 
 const isAuthReducer = (state = false, { type, payload }) => {
   switch (type) {
+    case actionTypes.REGISTER_SUCCESS:
+    case actionTypes.LOGIN_SUCCESS:
+    case actionTypes.GET_CURRENT_SUCCESS:
+      return true;
     default:
       return state;
   }
@@ -23,6 +44,11 @@ const isAuthReducer = (state = false, { type, payload }) => {
 
 const errorReducer = (state = null, { type, payload }) => {
   switch (type) {
+    case actionTypes.REGISTER_FAILURE:
+    case actionTypes.LOGOUT_FAILURE:
+    case actionTypes.LOGIN_FAILURE:
+    case actionTypes.GET_CURRENT_FAILURE:
+      return payload.error;
     default:
       return state;
   }

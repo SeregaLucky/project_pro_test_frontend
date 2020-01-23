@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import googleIcon from '../../assets/icons/google-auth.png';
 import styles from './authForm.module.css';
 import { connect } from 'react-redux';
 import formikEnhancer from './formic-yup/formikEnhancer';
 import authOperations from '../../redux/auth/authOperations';
-import { Formik, ErrorMessage, Form, Field } from 'formik';
+import { ErrorMessage, Form, Field } from 'formik';
+import withAuthRedirect from './redirect';
 import { compose } from 'redux';
-// import withAuthRedirect from '../../common/hoc/withAuthRedirect';
 
-const AuthForm = () => {
+const AuthForm = ({ onLogin, values }) => {
   return (
     <div className={styles.formWrapper}>
       <p className={styles.formText}>
@@ -26,12 +26,18 @@ const AuthForm = () => {
         Или войдите в приложение используя e-mail и пароль:
       </p>
       <Form className={styles.signUpForm}>
+        <div className={styles.invalid}>
+          <ErrorMessage className={styles.invalid} name="email" />
+        </div>
         <Field
           type="email"
           name="email"
           placeholder="E-mail"
           autoComplete="on"
         />
+        <div className={styles.invalid}>
+          <ErrorMessage className={styles.invalid} name="password" />
+        </div>
         <Field
           type="password"
           name="password"
@@ -39,15 +45,30 @@ const AuthForm = () => {
           autoComplete="on"
         />
         <div className={styles.formButtonWrapper}>
-          <button className={styles.formButton}>ВОЙТИ</button>
-          <button className={styles.formButton}>РЕГИСТРАЦИЯ</button>
+          <button
+            onClick={() => onLogin(values)}
+            type="button"
+            className={styles.formButton}
+          >
+            ВОЙТИ
+          </button>
+          <button type="submit" className={styles.formButton}>
+            РЕГИСТРАЦИЯ
+          </button>
         </div>
       </Form>
     </div>
   );
 };
 
-export default AuthForm;
+const mdtp = dispatch => ({
+  onRegister: values => dispatch(authOperations.registerUser(values)),
+  onLogin: values => dispatch(authOperations.loginUser(values)),
+});
+export default compose(
+  withAuthRedirect,
+  connect(null, mdtp),
+)(formikEnhancer(AuthForm));
 
 // class AuthForm extends Component {
 //   render() {

@@ -2,12 +2,12 @@ import * as Yup from 'yup';
 
 const schema = Yup.object().shape({
   email: Yup.string()
-    .email('Invalid email address')
-    .required('Required'),
+    .email('Невалидный e-mail')
+    .required('Обязательное поле'),
   password: Yup.string()
-    .max(15, 'Must be 15 characters or less')
-    .min(7, 'Must be 7 characters or more')
-    .required('Required'),
+    .max(20, 'Пароль должен быть меньше 20 символов')
+    .min(6, 'Минимум 6 символов')
+    .required('Обязательное поле'),
 });
 
 export default schema;
