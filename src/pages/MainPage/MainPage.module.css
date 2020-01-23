@@ -1,0 +1,105 @@
+.mainPage {
+  background-color: #f4f6fb;
+  padding-top: 95px;
+  padding-bottom: 30px;
+}
+
+.container {
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.mainPage_quote,
+.mainPage_author,
+.mainPage_descr {
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  line-height: 1.583;
+  text-align: center;
+}
+
+.mainPage_quote {
+  margin-bottom: 20px;
+  font-family: 'MontserratExtraBold', sans-serif;
+}
+
+.mainPage_quote::after {
+  content: '';
+  border-bottom: 1px solid rgb(206, 210, 209);
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  margin-top: 20px;
+}
+
+.mainPage_author {
+  font-family: 'MontserratSemiBold', sans-serif;
+}
+
+.mainPage_descr {
+  margin-bottom: 30px;
+  font-family: 'MontserratLight', sans-serif;
+}
+
+.mainPage_buttonItems {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+
+  .mainPage {
+    padding: 95px 30px 100px 30px;
+  }
+
+  .mainPage_quote,
+  .mainPage_author {
+    font-size: 19px;
+    line-height: 1.211;
+  }
+
+  .mainPage_quote::after {
+    width: 320px;
+  }
+
+  .mainPage_descr {
+    margin-bottom: 65px;
+  }
+
+  .mainPage_buttons {
+    width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
+
+  .mainPage_quote {
+    width: 650px;
+    margin: 0 auto;
+    font-size: 22px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .mainPage_descr {
+    margin-bottom: 95px;
+  }
+
+  .mainPage_buttons {
+    width: 820px;
+    height: 225px;
+  }
+
+  .mainPage_buttonItems {
+    flex-direction: row;
+    align-content: space-between;
+  }
+}
