@@ -5,7 +5,7 @@ import { ReactComponent as Arrow } from '../../assets/icons/svg/arrow.svg';
 const DashboardPage = () => {
   return (
     <div className={styles.dashboardPage}>
-      <div className={styles.dashboardPageContainer}>
+      <section className={styles.dashboardPageContainer}>
         <div className={styles.titleContainer}>
           <h2 className={styles.titleContainer__title}>
             [ Теория тестирования_ ]
@@ -29,7 +29,7 @@ const DashboardPage = () => {
             <Arrow className={styles.btnContainer__arrow_forward} />
           </button>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

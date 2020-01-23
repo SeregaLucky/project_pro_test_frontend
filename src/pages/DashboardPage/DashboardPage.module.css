@@ -3,12 +3,17 @@
 
 .dashboardPage {
   background-color: #f4f6fb;
+  padding: 0 20px;
 }
 
 .dashboardPageContainer {
   width: 320px;
   margin: 0 auto;
-  padding: 0 20px;
+}
+
+.dashboardPageContainer {
+  margin: 0 auto;
+  width: 320px;
 }
 
 .titleContainer {
