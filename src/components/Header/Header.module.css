@@ -1,16 +1,14 @@
-.headerContainer {
-  background-color: var(--background-color);
-  border-bottom: 0.5px solid #ced2d1;
-}
 .header {
+  background-color: var(--background-color);
+  border-bottom: 1px solid #ced2d1;
   display: flex;
   margin: 0 auto;
   justify-content: space-between;
+  align-items: center;
   height: 70px;
   font-family: 'MontserratMedium', sans-serif;
   font-size: 14px;
   letter-spacing: 0.02rem;
-  padding: 0 20px;
 }
 
 .userAndBtnContainer {
@@ -34,12 +32,12 @@
 
 .mainNavListItemMobile {
   height: 60px;
-  border-top: 0.5px solid #ced2d1;
+  border-top: 1px solid #ced2d1;
   position: relative;
 }
 
 .mainNavListItemMobile:last-child {
-  border-bottom: 0.5px solid #ced2d1;
+  border-bottom: 1px solid #ced2d1;
 }
 
 .mainNavListItemMobile:hover .mainNavListItemLink__text::after {
@@ -63,7 +61,7 @@
 }
 
 .logoLink {
-  align-self: center;
+  padding: 20px;
 }
 
 .headerBtn {
@@ -73,8 +71,8 @@
 
 .headerBtnMobile {
   composes: headerBtn;
-  border-left: 0.5px solid #ced2d1;
-  padding-left: 20px;
+  border-left: 1px solid #ced2d1;
+  padding: 20px;
 }
 
 .SignOutLogo {
@@ -98,7 +96,6 @@
     display: flex;
     width: 150px;
     justify-content: space-between;
-    align-items: center;
   }
 
   .mainNav {
@@ -147,13 +144,12 @@
   }
 
   .headerBtn {
-    padding: 10px 0 10px 10px;
+    padding: 20px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .header {
-    /*max-width: 1280px;*/
     font-size: 13px;
   }
 

@@ -161,18 +161,16 @@ class Header extends Component {
 
   render() {
     return (
-      <div className={styles.headerContainer}>
-        <header className={styles.header}>
-          <NavLink
-            to={routes.MAIN_PAGE}
-            className={styles.logoLink}
-            onClick={this.handleClickLogo}
-          >
-            <MainLogo />
-          </NavLink>
-          {this.renderType()}
-        </header>
-      </div>
+      <header className={styles.header}>
+        <NavLink
+          to={routes.MAIN_PAGE}
+          className={styles.logoLink}
+          onClick={this.handleClickLogo}
+        >
+          <MainLogo />
+        </NavLink>
+        {this.renderType()}
+      </header>
     );
   }
 }
