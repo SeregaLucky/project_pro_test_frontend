@@ -26,17 +26,20 @@ img {
   border: 1px solid #e1e4e6;
   margin: 0 auto;
   margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .contactsListItemContainer {
   display: grid;
-  width: 320px;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  grid-gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px;
   margin-left: auto;
   margin-right: auto;
 }
-
+figcaption {
+  background-color: #fff;
+  padding: 25px 20px;
+}
 @media screen and (min-width: 768px) {
   .wrapper {
     padding-top: 60px;
@@ -51,15 +54,11 @@ img {
   .mainTitle:after {
     width: 325px;
     margin-top: 30px;
+    margin-bottom: 30px;
   }
-  .contactsListItemContainer {
-    width: 768px;
-  }
+
   @media screen and (min-width: 1280px) {
     .container {
-      width: 1280px;
-    }
-    .contactsListItemContainer {
       width: 1280px;
     }
   }
