@@ -1,23 +1,25 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import T from 'prop-types';
+
 import styles from './Button.module.css';
 
-const Button = ({ type = 'button', lable = '', onClick = () => null }) => (
-  <button className={styles.button} type={type} onClick={onClick}>
-    {lable}
-  </button>
+const Button = ({ lable = '', url }) => (
+  <>
+    <NavLink
+      to={{
+        pathname: `${url}`,
+      }}
+      className={styles.button}
+    >
+      {lable}
+    </NavLink>
+  </>
 );
 
-Button.defaultProps = {
-  type: 'button',
-  lable: '',
-  onClick: () => null,
-};
-
 Button.propTypes = {
-  type: T.string,
   lable: T.string,
-  onClick: T.func,
+  url: T.string.isRequired,
 };
 
 export default Button;
