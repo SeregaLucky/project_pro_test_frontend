@@ -11,11 +11,6 @@
   margin: 0 auto;
 }
 
-.dashboardPageContainer {
-  margin: 0 auto;
-  width: 320px;
-}
-
 .titleContainer {
   display: flex;
   justify-content: space-between;
