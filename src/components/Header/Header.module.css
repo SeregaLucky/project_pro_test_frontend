@@ -40,7 +40,7 @@
   border-bottom: 1px solid #ced2d1;
 }
 
-.mainNavListItemMobile:hover .mainNavListItemLink__text::after {
+.mainNavListItemMobile .mainNavListItemLink__text::after {
   content: '';
   display: block;
   position: absolute;
@@ -88,14 +88,12 @@
 
   .NavAndUserContainer {
     display: flex;
-    width: 500px;
     justify-content: space-between;
   }
 
   .userInfoAndLogout {
     display: flex;
-    width: 150px;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   .mainNav {
@@ -106,8 +104,6 @@
     bottom: inherit;
     display: flex;
     justify-content: space-between;
-
-    width: 320px;
   }
 
   .mainNavList {
@@ -115,15 +111,25 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
   }
 
   .mainNavListItem {
     position: relative;
+    padding: 0 15px;
     height: 100%;
+    white-space: nowrap;
   }
 
-  .mainNavListItem:hover .mainNavListItemLink::after {
+  /*todo style of hover?*/
+  .mainNavListItem:hover {
+    background-color: #dbdde2;
+  }
+
+  .testClass {
+    position: relative;
+  }
+
+  .testClass::after {
     content: '';
     position: absolute;
     bottom: 26px;
@@ -139,8 +145,6 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: stretch;
-    align-items: center;
   }
 
   .headerBtn {
@@ -154,17 +158,20 @@
   }
 
   .mainNav {
-    width: 380px;
+    margin-right: 20px;
+  }
+
+  .mainNavListItem {
+    padding: 0 25px;
   }
 
   .NavAndUserContainer {
     display: flex;
-    width: 650px;
+
     justify-content: space-between;
   }
 
   .userInfoAndLogout {
-    width: 160px;
     display: flex;
     justify-content: space-between;
   }

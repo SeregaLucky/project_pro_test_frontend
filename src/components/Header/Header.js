@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Media from 'react-media';
 import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
 import HeaderUserInfo from '../HeaderUserInfo/HeaderUserInfo';
@@ -13,6 +14,7 @@ class Header extends Component {
   state = {
     isOpen: false,
     isMobile: false,
+    isAuth: true,
   };
 
   handleClick = () => {
@@ -27,16 +29,12 @@ class Header extends Component {
     this.setState({ isOpen: false });
   };
 
-  componentDidMount() {
-    if (window.matchMedia('(max-width: 768px)').matches) {
-      this.setState({ isMobile: true });
-    }
-  }
+  //TODO check, how private routes appear and disappear
 
   renderMobile = () => {
     return !this.state.isOpen ? (
       <div className={styles.userAndBtnContainer}>
-        <HeaderUserInfo isMobile={this.state.isMobile} />
+        {this.state.isAuth && <HeaderUserInfo isMobile={this.state.isMobile} />}
         <button
           type="click"
           className={styles.headerBtnMobile}
@@ -48,7 +46,9 @@ class Header extends Component {
     ) : (
       <>
         <div className={styles.userAndBtnContainer}>
-          <HeaderUserInfo isMobile={this.state.isMobile} />
+          {this.state.isAuth && (
+            <HeaderUserInfo isMobile={this.state.isMobile} />
+          )}
           <button
             type="click"
             className={styles.headerBtnMobile}
@@ -57,7 +57,7 @@ class Header extends Component {
             <ExitLogo />
           </button>
         </div>
-
+        //todo correct Navlink activeStyleName
         <nav className={styles.mainNav}>
           <ul className={styles.mainNavList}>
             <li className={styles.mainNavListItemMobile}>
@@ -65,6 +65,7 @@ class Header extends Component {
                 to={routes.MAIN_PAGE}
                 onClick={this.handleClick}
                 className={styles.mainNavListItemLink}
+                activeClassName={styles.mainNavListItemMobile}
               >
                 <p className={styles.mainNavListItemLink__text}>Главная</p>
               </NavLink>
@@ -74,6 +75,7 @@ class Header extends Component {
                 to={routes.MATERIALS_PAGE}
                 onClick={this.handleClick}
                 className={styles.mainNavListItemLink}
+                activeClassName={styles.mainNavListItemMobile}
               >
                 <p className={styles.mainNavListItemLink__text}>
                   Полезные материалы
@@ -85,6 +87,7 @@ class Header extends Component {
                 to={routes.CONTACTS_PAGE}
                 onClick={this.handleClick}
                 className={styles.mainNavListItemLink}
+                activeClassName={styles.mainNavListItemMobile}
               >
                 <p className={styles.mainNavListItemLink__text}>Контакты</p>
               </NavLink>
@@ -108,6 +111,7 @@ class Header extends Component {
     );
   };
 
+  //todo check private and public routes
   renderTablet = () => {
     return (
       <div className={styles.NavAndUserContainer}>
@@ -117,6 +121,7 @@ class Header extends Component {
               <NavLink
                 to={routes.MAIN_PAGE}
                 className={styles.mainNavListItemLink}
+                activeClassName={styles.testClass}
               >
                 Главная
               </NavLink>
@@ -125,6 +130,7 @@ class Header extends Component {
               <NavLink
                 to={routes.MATERIALS_PAGE}
                 className={styles.mainNavListItemLink}
+                activeClassName={styles.testClass}
               >
                 Полезные материалы
               </NavLink>
@@ -133,6 +139,7 @@ class Header extends Component {
               <NavLink
                 to={routes.CONTACTS_PAGE}
                 className={styles.mainNavListItemLink}
+                activeClassName={styles.testClass}
               >
                 Контакты
               </NavLink>
@@ -140,23 +147,15 @@ class Header extends Component {
           </ul>
         </nav>
         <div className={styles.userInfoAndLogout}>
-          <HeaderUserInfo isMobile={this.state.isMobile} />
+          {this.state.isAuth && (
+            <HeaderUserInfo isMobile={this.state.isMobile} />
+          )}
           <button type="click" className={styles.headerBtn}>
             <SignOutLogo className={styles.SignOutLogo} />
           </button>
         </div>
       </div>
     );
-  };
-
-  renderType = () => {
-    let obj;
-    if (window.matchMedia('(max-width: 767px)').matches) {
-      obj = this.renderMobile();
-    } else if (window.matchMedia('(min-width: 768px)').matches) {
-      obj = this.renderTablet();
-    }
-    return obj;
   };
 
   render() {
@@ -169,10 +168,21 @@ class Header extends Component {
         >
           <MainLogo />
         </NavLink>
-        {this.renderType()}
+        <Media
+          queries={{ small: { maxWidth: 767 } }}
+          onChange={matches =>
+            matches.small
+              ? this.setState({ isMobile: true })
+              : this.setState({ isMobile: false, isOpen: false })
+          }
+        >
+          {matches =>
+            matches.small ? this.renderMobile() : this.renderTablet()
+          }
+        </Media>
       </header>
     );
   }
 }
-
+//todo connect to store and check back-end
 export default Header;
