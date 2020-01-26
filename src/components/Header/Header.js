@@ -7,6 +7,7 @@ import { ReactComponent as MainLogo } from '../../assets/images/logo.svg';
 import { ReactComponent as MenuLogo } from '../../assets/icons/svg/menu-24px.svg';
 import { ReactComponent as ExitLogo } from '../../assets/icons/svg/close-24px.svg';
 import { ReactComponent as SignOutLogo } from '../../assets/icons/svg/sign-out.svg';
+import Modal from '../Modal';
 
 import styles from './Header.module.css';
 
@@ -14,7 +15,7 @@ class Header extends Component {
   state = {
     isOpen: false,
     isMobile: false,
-    isAuth: true,
+    isAuth: false,
   };
 
   handleClick = () => {
@@ -28,8 +29,6 @@ class Header extends Component {
   handleClickLogo = () => {
     this.setState({ isOpen: false });
   };
-
-  //TODO check, how private routes appear and disappear
 
   renderMobile = () => {
     return !this.state.isOpen ? (
@@ -57,103 +56,111 @@ class Header extends Component {
             <ExitLogo />
           </button>
         </div>
-        //todo correct Navlink activeStyleName
         <nav className={styles.mainNav}>
           <ul className={styles.mainNavList}>
-            <li className={styles.mainNavListItemMobile}>
-              <NavLink
-                to={routes.MAIN_PAGE}
-                onClick={this.handleClick}
-                className={styles.mainNavListItemLink}
-                activeClassName={styles.mainNavListItemMobile}
-              >
-                <p className={styles.mainNavListItemLink__text}>Главная</p>
-              </NavLink>
-            </li>
-            <li className={styles.mainNavListItemMobile}>
-              <NavLink
-                to={routes.MATERIALS_PAGE}
-                onClick={this.handleClick}
-                className={styles.mainNavListItemLink}
-                activeClassName={styles.mainNavListItemMobile}
-              >
-                <p className={styles.mainNavListItemLink__text}>
-                  Полезные материалы
-                </p>
-              </NavLink>
-            </li>
+            {this.state.isAuth && (
+              <>
+                <li className={styles.mainNavListItemMobile}>
+                  <NavLink
+                    to={routes.MAIN_PAGE}
+                    onClick={this.handleClick}
+                    className={styles.mainNavListItemLink}
+                    activeClassName={styles.activeLink}
+                  >
+                    <p className={styles.mainNavListItemLink__text}>Главная</p>
+                  </NavLink>
+                </li>
+                <li className={styles.mainNavListItemMobile}>
+                  <NavLink
+                    to={routes.MATERIALS_PAGE}
+                    onClick={this.handleClick}
+                    className={styles.mainNavListItemLink}
+                    activeClassName={styles.activeLink}
+                  >
+                    <p className={styles.mainNavListItemLink__text}>
+                      Полезные материалы
+                    </p>
+                  </NavLink>
+                </li>
+              </>
+            )}
+
             <li className={styles.mainNavListItemMobile}>
               <NavLink
                 to={routes.CONTACTS_PAGE}
                 onClick={this.handleClick}
                 className={styles.mainNavListItemLink}
-                activeClassName={styles.mainNavListItemMobile}
+                activeClassName={styles.activeLink}
               >
                 <p className={styles.mainNavListItemLink__text}>Контакты</p>
               </NavLink>
             </li>
-            <li className={styles.mainNavListItemMobile}>
-              <NavLink
-                to={routes.AUTH_PAGE}
-                onClick={this.handleClick}
-                className={styles.mainNavListItemLink}
-              >
-                <p className={styles.mainNavListItemLink__text}>
-                  <button type="click" className={styles.headerBtn}>
-                    <SignOutLogo className={styles.SignOutLogo} />
-                  </button>
-                </p>
-              </NavLink>
-            </li>
+            {this.state.isAuth && (
+              <li className={styles.mainNavListItemMobile}>
+                <button type="click" className={styles.headerBtnLogOut}>
+                  <SignOutLogo className={styles.SignOutLogo} />
+                </button>
+              </li>
+            )}
           </ul>
         </nav>
       </>
     );
   };
 
-  //todo check private and public routes
   renderTablet = () => {
     return (
       <div className={styles.NavAndUserContainer}>
         <nav className={styles.mainNav}>
           <ul className={styles.mainNavList}>
-            <li className={styles.mainNavListItem}>
-              <NavLink
-                to={routes.MAIN_PAGE}
-                className={styles.mainNavListItemLink}
-                activeClassName={styles.testClass}
-              >
-                Главная
-              </NavLink>
-            </li>
-            <li className={styles.mainNavListItem}>
-              <NavLink
-                to={routes.MATERIALS_PAGE}
-                className={styles.mainNavListItemLink}
-                activeClassName={styles.testClass}
-              >
-                Полезные материалы
-              </NavLink>
-            </li>
+            {this.state.isAuth && (
+              <li className={styles.mainNavListItem}>
+                <NavLink
+                  to={routes.MAIN_PAGE}
+                  className={styles.mainNavListItemLink}
+                  activeClassName={styles.activeLink}
+                >
+                  <p className={styles.mainNavListItemLink__text}>Главная</p>
+                </NavLink>
+              </li>
+            )}
+            {this.state.isAuth && (
+              <li className={styles.mainNavListItem}>
+                <NavLink
+                  to={routes.MATERIALS_PAGE}
+                  className={styles.mainNavListItemLink}
+                  activeClassName={styles.activeLink}
+                >
+                  <p className={styles.mainNavListItemLink__text}>
+                    Полезные материалы
+                  </p>
+                </NavLink>
+              </li>
+            )}
             <li className={styles.mainNavListItem}>
               <NavLink
                 to={routes.CONTACTS_PAGE}
-                className={styles.mainNavListItemLink}
-                activeClassName={styles.testClass}
+                className={
+                  this.state.isAuth
+                    ? styles.mainNavListItemLink
+                    : `${styles.mainNavListItemLinkNoUser} ${styles.mainNavListItemLink}`
+                }
+                activeClassName={styles.activeLink}
               >
-                Контакты
+                <p className={styles.mainNavListItemLink__text}>Контакты</p>
               </NavLink>
             </li>
           </ul>
         </nav>
-        <div className={styles.userInfoAndLogout}>
-          {this.state.isAuth && (
+
+        {this.state.isAuth && (
+          <div className={styles.userInfoAndLogout}>
             <HeaderUserInfo isMobile={this.state.isMobile} />
-          )}
-          <button type="click" className={styles.headerBtn}>
-            <SignOutLogo className={styles.SignOutLogo} />
-          </button>
-        </div>
+            <button type="click" className={styles.headerBtn}>
+              <SignOutLogo className={styles.SignOutLogo} />
+            </button>
+          </div>
+        )}
       </div>
     );
   };
@@ -184,5 +191,5 @@ class Header extends Component {
     );
   }
 }
-//todo connect to store and check back-end
+
 export default Header;

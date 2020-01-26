@@ -4,11 +4,8 @@ import styles from './HeaderUserInfo.module.css';
 
 const HeaderUserInfo = ({ isMobile, name = 'Дмитрий' }) => {
   const letter = name.slice(0, 1);
+  const shortName = name.slice(0, 10);
 
-  //todo how many letters?
-  //todo name is always present?
-
-  const shortName = name.slice(0, 8);
   return isMobile === true ? (
     <div className={styles.HeaderUserContainer}>
       <p className={styles.HeaderUserLetter}>{letter}</p>
@@ -16,7 +13,7 @@ const HeaderUserInfo = ({ isMobile, name = 'Дмитрий' }) => {
   ) : (
     <div className={styles.HeaderUserContainer}>
       <p className={styles.HeaderUserLetter}>{letter}</p>
-      <p className={styles.HeaderUserName}>{name}</p>
+      <p className={styles.HeaderUserName}>{shortName}</p>
     </div>
   );
 };
@@ -25,5 +22,5 @@ HeaderUserInfo.propTypes = {
   isMobile: T.bool.isRequired,
   name: T.string,
 };
-//todo connect to store
+
 export default HeaderUserInfo;

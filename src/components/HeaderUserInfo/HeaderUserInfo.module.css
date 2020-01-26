@@ -4,20 +4,17 @@
   margin-right: 20px;
 }
 
-/*todo box-shadow check*/
-
 .HeaderUserLetter {
   background-color: #ffffff;
   border-radius: 50%;
-  padding: 7px;
-  /*width: 30px;*/
-  /*height: 30px;*/
+  padding: 9px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'MontserratSemiBold', sans-serif;
   font-size: 12px;
   color: #555555;
+  box-shadow: 0 2px 2px 0 rgba(29, 29, 27, 0.1);
 }
 .HeaderUserName {
   margin-left: 10px;
