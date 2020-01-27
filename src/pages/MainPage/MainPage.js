@@ -1,11 +1,27 @@
 import React from 'react';
-// import styles from './MainPage.module.css';
+import MainTestButton from '../../components/MainTestButton/MainTestButton';
+import styles from './MainPage.module.css';
 
 const MainPage = () => {
   return (
-    <div>
-      <h2>MainPage</h2>
-    </div>
+    <section className={styles.mainPage}>
+      <div className={styles.container}>
+        <h2 className={styles.mainPage_quote}>
+          "Регресионное тестирование. Что это? Если система комплириется, то это
+          хорошо, если загружается, то это просто здорово!"
+        </h2>
+        <h3 className={styles.mainPage_author}>Линус Торвальдс</h3>
+        <p className={styles.mainPage_descr}>
+          Финский программист, хакер, 1969 г.
+        </p>
+        <div className={styles.mainPage_buttons}>
+          <ul className={styles.mainPage_buttonItems}>
+            <MainTestButton />
+            <MainTestButton />
+          </ul>
+        </div>
+      </div>
+    </section>
   );
 };
 

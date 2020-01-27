@@ -1,0 +1,170 @@
+.header {
+  background-color: var(--background-color);
+  border-bottom: 1px solid #ced2d1;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'MontserratMedium', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.02rem;
+}
+
+.userAndBtnContainer {
+  display: flex;
+  width: 120px;
+  justify-content: flex-end;
+}
+
+.mainNav {
+  position: fixed;
+  background-color: var(--background-color);
+  top: 70px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.mainNavList {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.mainNavListItemLink__text {
+  position: relative;
+}
+
+.mainNavListItemMobile {
+  border-top: 1px solid #ced2d1;
+  display: flex;
+  justify-content: center;
+}
+
+.activeLink p::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--orange);
+}
+
+.mainNavListItemLink {
+  color: #000000;
+  padding: 25px 0;
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+}
+
+.logoLink {
+  padding: 20px;
+}
+
+.headerBtn {
+  border: none;
+  padding: 20px;
+  background-color: inherit;
+}
+
+.headerBtnMobile {
+  composes: headerBtn;
+  border-left: 1px solid #ced2d1;
+}
+
+.headerBtnLogOut {
+  composes: headerBtn;
+  padding: 25px 0;
+  flex-basis: 100%;
+}
+
+.SignOutLogo {
+  height: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    align-items: stretch;
+    font-size: 12px;
+  }
+
+  .NavAndUserContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .userInfoAndLogout {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .mainNav {
+    position: relative;
+    top: inherit;
+    right: inherit;
+    left: inherit;
+    bottom: inherit;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mainNavList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .mainNavListItem {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .mainNavListItem:hover {
+    background-color: #e3e5ea;
+  }
+
+  .mainNavListItemLink {
+    color: black;
+    display: flex;
+    flex-basis: auto;
+    align-items: center;
+    padding: 20px 15px;
+  }
+
+  .mainNavListItemLinkNoUser {
+    padding: 20px;
+  }
+
+  .SignOutLogo {
+    width: 14px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    font-size: 13px;
+  }
+
+  .mainNavListItemLink {
+    padding: 20px 25px;
+  }
+
+  .mainNavListItemLinkNoUser {
+    padding: 20px;
+  }
+
+  .NavAndUserContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .userInfoAndLogout {
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
