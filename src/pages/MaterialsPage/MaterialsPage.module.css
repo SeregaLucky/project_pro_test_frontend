@@ -1,7 +1,7 @@
 .wrapper {
   background: no-repeat url('../../assets/images/backgroundMaterialsPage.jpg')
     top right 45%;
-  background-size: auto 100%;
+  background-size: cover;
   padding: 45px 0;
 }
 
@@ -38,6 +38,10 @@
   margin-bottom: 45px;
 }
 
+.listItem {
+  list-style-type: decimal;
+}
+
 .listItem,
 .listLink {
   font-family: 'MontserratMedium', sans-serif;
@@ -55,11 +59,12 @@
   .wrapper {
     background-position: top 50% right 35%;
     background-size: auto 130%;
+    padding: 125px 0;
   }
 
   .container {
     width: 768px;
-    padding: 125px 115px;
+    padding: 0 115px;
   }
 
   .title {
@@ -77,7 +82,6 @@
 
   .list {
     padding-left: 55px;
-    list-style-type: decimal;
   }
 
   .list:not(:last-child) {
@@ -94,11 +98,12 @@
 @media screen and (min-width: 1280px) {
   .wrapper {
     background-position: top right 33%;
-    background-size: auto 160%;
+    background-size: cover;
+    padding: 105px 0;
   }
 
   .container {
     width: 1280px;
-    padding: 105px 190px;
+    padding: 0 190px;
   }
 }

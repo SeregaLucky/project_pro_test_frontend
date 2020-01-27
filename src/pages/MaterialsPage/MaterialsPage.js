@@ -3,7 +3,7 @@ import styles from './MaterialsPage.module.css';
 
 const MaterialsPage = () => {
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <div className={styles.container}>
         <h2 className={styles.title}>Полезная литература</h2>
         <ol className={styles.list}>
@@ -55,7 +55,7 @@ const MaterialsPage = () => {
           </li>
         </ol>
       </div>
-    </div>
+    </section>
   );
 };
 
