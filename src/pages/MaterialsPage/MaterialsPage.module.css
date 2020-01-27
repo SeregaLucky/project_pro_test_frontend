@@ -2,12 +2,13 @@
   background: no-repeat url('../../assets/images/backgroundMaterialsPage.jpg')
     top right 45%;
   background-size: auto 100%;
+  padding: 45px 0;
 }
 
 .container {
   width: 320px;
   margin: 0 auto;
-  padding: 45px 20px;
+  padding: 0 20px;
 }
 
 .title {
@@ -76,6 +77,7 @@
 
   .list {
     padding-left: 55px;
+    list-style-type: decimal;
   }
 
   .list:not(:last-child) {

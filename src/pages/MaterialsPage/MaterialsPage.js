@@ -7,16 +7,13 @@ const MaterialsPage = () => {
       <div className={styles.container}>
         <h2 className={styles.title}>Полезная литература</h2>
         <ol className={styles.list}>
-          <li className={styles.listItem}>1. Тестирование dot.com Савин.</li>
-          <li className={styles.listItem}>
-            2. Психбольница в руках пациентов.
-          </li>
-          <li className={styles.listItem}>3. Scrum. Дж. Сазерленд.</li>
+          <li className={styles.listItem}>Тестирование dot.com Савин.</li>
+          <li className={styles.listItem}>Психбольница в руках пациентов.</li>
+          <li className={styles.listItem}>Scrum. Дж. Сазерленд.</li>
         </ol>
         <h2 className={styles.title}>Полезные ресурсы</h2>
         <ol className={styles.list}>
           <li className={styles.listItem}>
-            1.{' '}
             <a
               className={styles.listLink}
               href="https://dou.ua/"
@@ -27,7 +24,6 @@ const MaterialsPage = () => {
             </a>
           </li>
           <li className={styles.listItem}>
-            2.{' '}
             <a
               className={styles.listLink}
               href="https://habr.com/"
@@ -38,7 +34,6 @@ const MaterialsPage = () => {
             </a>
           </li>
           <li className={styles.listItem}>
-            3.{' '}
             <a
               className={styles.listLink}
               href="https://www.facebook.com/QA"
@@ -49,7 +44,6 @@ const MaterialsPage = () => {
             </a>
           </li>
           <li className={styles.listItem}>
-            4.{' '}
             <a
               className={styles.listLink}
               href="https://goit.ua/"
