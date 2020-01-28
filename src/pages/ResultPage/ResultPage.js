@@ -7,7 +7,7 @@ import ResultProgressBar from '../../components/ResultProgressBar/ResultProgress
 import Button from '../../components/Button';
 import styles from './ResultPage.module.css';
 
-const ResultPage = ({ questions, answeredRight = 7, answeredWrong = 5 }) => {
+const ResultPage = ({ questions, answeredRight = 8, answeredWrong = 5 }) => {
   let allAnswers = answeredRight + answeredWrong;
   let answerParsentResult = (answeredRight * 100) / allAnswers;
   let answerNumber = Math.round(13 * (answerParsentResult / 100));
