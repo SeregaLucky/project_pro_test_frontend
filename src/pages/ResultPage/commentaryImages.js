@@ -12,18 +12,18 @@ import img10 from '../../assets/images/cats/010.png';
 import img11 from '../../assets/images/cats/011.png';
 import img12 from '../../assets/images/cats/012.png';
 
-export {
-  img0,
-  img1,
-  img2,
-  img3,
-  img4,
-  img5,
-  img6,
-  img7,
-  img8,
-  img9,
-  img10,
-  img11,
-  img12,
+export const objCommentImage = {
+  0: img0,
+  1: img1,
+  2: img2,
+  3: img3,
+  4: img4,
+  5: img5,
+  6: img6,
+  7: img7,
+  8: img8,
+  9: img9,
+  10: img10,
+  11: img11,
+  12: img12,
 };
