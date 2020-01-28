@@ -29,10 +29,8 @@ const DashboardForm = () => {
 
   return (
     <div className={styles.dashboardform}>
-      {/* <h2>DashboardForm</h2> */}
       <p className={styles.dashboardform__counter}>
-        {' '}
-        вопрос <span>3</span> / 12 {}{' '}
+        вопрос <span>{3}</span> / 12 {}
       </p>
       <h2 className={styles.dashboardform__question}>{question}</h2>
       <i className={styles.dashboardform__hr}></i>
