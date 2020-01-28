@@ -7,7 +7,7 @@ import ResultProgressBar from '../../components/ResultProgressBar/ResultProgress
 import Button from '../../components/Button';
 import styles from './ResultPage.module.css';
 
-const ResultPage = ({ answeredRight = 9, answeredWrong = 5 }) => {
+const ResultPage = ({ questions, answeredRight = 7, answeredWrong = 5 }) => {
   let allAnswers = answeredRight + answeredWrong;
   let answerParsentResult = (answeredRight * 100) / allAnswers;
   let answerNumber = Math.round(13 * (answerParsentResult / 100));
@@ -20,9 +20,11 @@ const ResultPage = ({ answeredRight = 9, answeredWrong = 5 }) => {
         <div className={styles.result_bar}>
           <ResultProgressBar />
         </div>
-        <div className={styles.img}>
-          <img src={objCommentImage[answerNumber]} alt="cat" />
-        </div>
+        <img
+          className={styles.img}
+          src={objCommentImage[answerNumber]}
+          alt="cat"
+        />
         <h3 className={styles.test_info}>{objCommentInfo[answerNumber]}</h3>
         <div className={styles.result_button}>
           <Button lable={'Пройти еще раз'} />
