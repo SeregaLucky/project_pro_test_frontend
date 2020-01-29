@@ -1,0 +1,57 @@
+.heart {
+  width: 16px;
+  height: 16px;
+  fill: #ff6b08;
+}
+
+.footer {
+  background-color: #121d2e;
+  width: 100%;
+  padding: 14px 20px;
+  text-align: center;
+}
+
+.infoUnit,
+.author {
+  font-family: 'MontserratRegular', sans-serif;
+  font-size: 10px;
+  color: #ffffff61;
+  letter-spacing: 0.03em;
+}
+
+.infoUnit {
+  position: relative;
+}
+
+.infoUnit:not(:last-child) {
+  margin-right: 13px;
+}
+
+.infoUnit:not(:last-child)::after {
+  content: '';
+  border-right: 1px solid #ced2d1;
+  opacity: 0.502;
+  height: 13px;
+  position: absolute;
+  right: -7px;
+  top: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px;
+  }
+
+  .infoUnit:last-child {
+    margin-right: 5px;
+  }
+
+  .infoUnit,
+  .author {
+    font-size: 12px;
+  }
+}
