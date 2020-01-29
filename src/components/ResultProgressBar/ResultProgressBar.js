@@ -4,7 +4,7 @@ import styles from './ResultProgressBar.module.css';
 
 const getChartData = (correct, incorrect) => {
   const data = {
-    labels: ['Верно', 'Не верно'],
+    labels: [`${correct}% Верно`, `${incorrect}% Не верно`],
     datasets: [
       {
         data: [correct, incorrect],
@@ -19,7 +19,7 @@ const getChartData = (correct, incorrect) => {
 
 const options = {
   legend: {
-    display: false,
+    display: true,
   },
   rotation: 0.2 * Math.PI - (25 / 180) * Math.PI,
   maintainAspectRatio: true,
@@ -28,9 +28,7 @@ const options = {
     callbacks: {
       label: (tooltipItem, data) => {
         let label = data.labels[tooltipItem.index] || '';
-        let number =
-          data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] || '';
-        return ` ${number}% ${label}`;
+        return `${label}`;
       },
     },
   },
