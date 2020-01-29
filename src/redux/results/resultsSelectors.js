@@ -1,4 +1,4 @@
-export const getResults = state => state.results;
+export const getResults = state => console.log(state.results);
 
 export const getResultsById = (state, id) => {
   const results = getResults(state);

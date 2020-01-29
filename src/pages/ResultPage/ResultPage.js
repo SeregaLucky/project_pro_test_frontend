@@ -7,10 +7,10 @@ import ResultProgressBar from '../../components/ResultProgressBar/ResultProgress
 import Button from '../../components/Button';
 import styles from './ResultPage.module.css';
 
-const ResultPage = ({ questions, answeredRight = 8, answeredWrong = 5 }) => {
-  let allAnswers = answeredRight + answeredWrong;
-  let answerParsentResult = (answeredRight * 100) / allAnswers;
-  let answerNumber = Math.round(13 * (answerParsentResult / 100));
+const ResultPage = ({ answeredRight = 9, answeredWrong = 1 }) => {
+  const allAnswers = answeredRight + answeredWrong;
+  const answerParsentResult = (answeredRight * 100) / allAnswers;
+  const answerNumber = Math.round(allAnswers * (answerParsentResult / 100));
 
   return (
     <section className={styles.section}>
@@ -35,7 +35,7 @@ const ResultPage = ({ questions, answeredRight = 8, answeredWrong = 5 }) => {
 };
 
 const mapDispatchToProps = state => ({
-  onGetResultsById: id => state(resultsOperations.getResultsById(id)),
+  getResults: examId => state(resultsOperations.getResultsById(examId)),
 });
 
 export default connect(null, mapDispatchToProps)(ResultPage);
