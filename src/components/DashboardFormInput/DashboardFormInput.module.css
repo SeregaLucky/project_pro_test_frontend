@@ -17,8 +17,8 @@
   display: flex;
   cursor: pointer;
   font-size: 11px;
-  font-family: 'Montserrat';
-  color: rgb(0, 0, 0);
+  font-family: 'MontserratMedium', sans-serif;
+  color: var(--dark-blue);
   overflow-wrap: break-word;
   padding-left: 30px;
   cursor: pointer;
@@ -31,9 +31,9 @@
   top: 0;
   width: 16px;
   height: 16px;
-  border: 1px rgb(0, 1, 7) solid;
+  border: 1px #000107 solid;
   border-radius: 100%;
-  background: #fff;
+  background: var(--background-color);
 }
 
 .answer_item__text:after {
@@ -44,29 +44,15 @@
   top: 3px;
   left: 3px;
   border-radius: 100%;
-  -webkit-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
 .answer_item__input:checked + .answer_item__text:after {
-  background: #ff6b08;
+  background: var(--orange);
 }
 
 @media (min-width: 768px) {
-  .answer_item {
-    display: flex;
-    position: relative;
-    margin-bottom: 20px;
-  }
-
   .answer_item__text {
     font-size: 15px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .answer_item {
-    margin-bottom: 22px;
   }
 }
