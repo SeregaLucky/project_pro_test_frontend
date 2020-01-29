@@ -1,14 +1,11 @@
 .dashboardform {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   width: 280px;
-  height: auto;
+  /* height: auto; */
   background-color: var(--background-color);
   box-shadow: 0 8px 24px 0 rgba(29, 29, 27, 0.1);
-  margin: 20px;
   visibility: 36px;
-  padding: 0;
+  padding: 20px;
 }
 
 .dashboardform__counter {
@@ -19,9 +16,8 @@
   text-transform: uppercase;
   text-align: center;
   width: auto;
-  height: 11px;
-  margin-top: 38px;
   letter-spacing: 0.03em;
+  margin-bottom: 20px;
 }
 
 .dashboardform__counter span {
@@ -37,7 +33,7 @@
   font-family: 'MontserratExtraBold', sans-serif;
   color: var(--dark-blue);
   text-align: center;
-  margin: 22px 0;
+  margin: 0 0 22px 0;
   letter-spacing: 0.03em;
   line-height: 1.5;
   overflow-wrap: break-word;
@@ -53,21 +49,21 @@
 }
 
 .dashboardform__answers {
-  display: inline-flex;
+  /* display: inline-flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: auto;
-  margin: 31px 40px 34px 15px;
+  justify-content: space-between; */
+  /* height: auto; */
+  /* margin: 31px 40px 34px 15px; */
 }
 
 .answer_item {
   display: flex;
   position: relative;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .answer_item:last-child {
-  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .answer_item__input {
@@ -115,16 +111,12 @@
 
 @media (min-width: 768px) {
   .dashboardform {
-    width: 655px;
-    height: auto;
-    background-color: var(--background-color);
-    margin: 21px 58px 20px 23px;
+    width: 560px;
   }
 
   .dashboardform__counter {
     font-size: 13px;
-    height: 13px;
-    margin-top: 47px;
+    /* height: 13px; */
     letter-spacing: 0.03em;
   }
 
@@ -150,7 +142,6 @@
     justify-content: space-between;
     width: 562px;
     height: auto;
-    margin: 33px 41px 46px 57px;
   }
 
   .answer_item__text {
@@ -161,14 +152,14 @@
 @media (min-width: 1280px) {
   .dashboardform {
     width: 820px;
-    margin: o auto;
+    margin: 0 auto;
   }
 
   .dashboardform__answers {
-    margin: 33px 170px 46px 92px;
+    /* margin: 33px 170px 46px 92px; */
   }
 
   .answer_item {
-    padding-bottom: 22px;
+    /* padding-bottom: 22px; */
   }
 }
