@@ -14,6 +14,20 @@ const registerFailure = error => ({
   payload: { error },
 });
 
+// const googleLoginStart = () => ({
+//   type: authActionTypes.REGISTER_START,
+// });
+
+// const googleLoginSuccess = ({ user, token }) => ({
+//   type: authActionTypes.REGISTER_SUCCESS,
+//   payload: { user, token },
+// });
+
+// const googleLoginFailure = error => ({
+//   type: authActionTypes.REGISTER_FAILURE,
+//   payload: { error },
+// });
+
 const logOutStart = () => ({
   type: authActionTypes.LOGOUT_START,
 });

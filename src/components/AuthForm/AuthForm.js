@@ -8,7 +8,7 @@ import { ErrorMessage, Form, Field } from 'formik';
 import withAuthRedirect from './redirect';
 import { compose } from 'redux';
 
-const AuthForm = ({ onLogin, values }) => {
+const AuthForm = ({ onLogin, values, onGoogleLogin }) => {
   return (
     <div className={styles.formWrapper}>
       <p className={styles.formText}>
@@ -16,12 +16,13 @@ const AuthForm = ({ onLogin, values }) => {
       </p>
 
       {/*  eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a href="#" className={styles.googleSignUpButton}>
+      {/* <a href="#" className={styles.googleSignUpButton}>
         <div>
           <img alt="google" src={googleIcon} />
           <span>Google</span>
         </div>
-      </a>
+      </a> */}
+      <button onClick={onGoogleLogin}>Google</button>
       <p className={styles.formText}>
         Или войдите в приложение используя e-mail и пароль:
       </p>
@@ -64,6 +65,7 @@ const AuthForm = ({ onLogin, values }) => {
 const mdtp = dispatch => ({
   onRegister: values => dispatch(authOperations.registerUser(values)),
   onLogin: values => dispatch(authOperations.loginUser(values)),
+  onGoogleLogin: () => dispatch(authOperations.googleLogIn()),
 });
 export default compose(
   withAuthRedirect,

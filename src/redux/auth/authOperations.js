@@ -47,6 +47,14 @@ const loginUser = credentials => dispatch => {
     .catch(err => dispatch(authActions.loginFailure(err)));
 };
 
+const googleLogIn = () => dispatch => {
+  //just now - check the GET method. after successful response add authActions
+  axios
+    .get('auth/google')
+    .then(res => console.log('res: ', res))
+    .catch(err => console.log('err', err));
+};
+
 //----------------
 const getCurrentUser = () => (dispatch, getState) => {
   const state = getState();
@@ -76,4 +84,4 @@ const logout = () => (dispatch, getState) => {
     .catch(error => dispatch(authActions.logOutFailure(error)));
 };
 
-export default { registerUser, logout, loginUser, getCurrentUser };
+export default { registerUser, logout, loginUser, getCurrentUser, googleLogIn };
