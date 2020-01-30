@@ -1,0 +1,126 @@
+.wrapper {
+  background: no-repeat url('../../assets/images/backgroundMaterialsPage.jpg')
+    top right 45%;
+  background-size: cover;
+  padding: 45px 0;
+}
+
+.container {
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.useful:not(:last-child) {
+  margin-bottom: 45px;
+}
+
+.title {
+  font-family: 'MontserratBold', sans-serif;
+  font-size: 18px;
+  color: #000000;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  max-width: 150px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.title::after {
+  content: '';
+  height: 1px;
+  border-bottom: 1px solid #ced2d1;
+  opacity: 0.502;
+  width: 130px;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  right: 0;
+}
+
+.listItem {
+  list-style-type: decimal;
+}
+
+.listItem,
+.listLink {
+  font-family: 'MontserratMedium', sans-serif;
+  font-size: 10px;
+  color: #000000;
+  line-height: 13px;
+  letter-spacing: 0.03em;
+}
+
+.listLink {
+  text-decoration: underline;
+}
+
+.showMoreButton {
+  font-family: 'MontserratBold', sans-serif;
+  border: none;
+  font-size: 10px;
+  color: #ff6b08;
+  opacity: 0.5;
+  text-decoration: underline;
+  line-height: 13px;
+  letter-spacing: 0.03em;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    background-position: top 50% right 35%;
+    background-size: auto 130%;
+    padding: 125px 0;
+  }
+
+  .container {
+    width: 768px;
+    padding: 0 115px;
+  }
+
+  .useful:not(:last-child) {
+    margin-bottom: 65px;
+  }
+
+  .title {
+    font-size: 22px;
+    line-height: 33px;
+    max-width: 280px;
+    margin-bottom: 50px;
+  }
+
+  .title::after {
+    content: '';
+    width: 322px;
+    bottom: -25px;
+  }
+
+  .list {
+    padding-left: 55px;
+  }
+
+  .listItem,
+  .listLink {
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  .showMoreButton {
+    margin-left: 55px;
+    font-size: 15px;
+    line-height: 23px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    background-position: top right 33%;
+    background-size: cover;
+    padding: 105px 0;
+  }
+
+  .container {
+    width: 1280px;
+    padding: 0 190px;
+  }
+}

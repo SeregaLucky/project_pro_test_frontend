@@ -33,11 +33,6 @@
   color: #000;
 }
 
-.divForm {
-  height: 448px;
-  background-color: #fff;
-}
-
 /*
  * 768 - starting
  */
@@ -62,10 +57,6 @@
   .text {
     font-size: 16px;
     line-height: 28px;
-  }
-
-  .divForm {
-    height: 525px;
   }
 }
 
@@ -100,9 +91,5 @@
   .text {
     font-size: 18px;
     line-height: 36px;
-  }
-
-  .divForm {
-    flex: 0 0 505px;
   }
 }
