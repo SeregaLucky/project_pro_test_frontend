@@ -71,9 +71,9 @@ const mdtp = dispatch => ({
   onGoogleLogin: () => dispatch(authOperations.googleLogIn()),
 });
 //Works
-// export default compose(
-//   withAuthRedirect,
-//   connect(null, mdtp),
-// )(formikEnhancer(AuthForm));
+export default compose(
+  withAuthRedirect,
+  connect(null, mdtp),
+)(formikEnhancer(AuthForm));
 
-export default connect(null, mdtp)(formikEnhancer(AuthForm));
+// export default connect(null, mdtp)(formikEnhancer(AuthForm));
