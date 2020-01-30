@@ -3,8 +3,6 @@ import resultsTypes from './resultsTypes';
 
 const resultsReducer = (state = null, { type, payload }) => {
   switch (type) {
-    case resultsTypes.RESULTS_STATUS:
-      return payload.result;
     case resultsTypes.RESULTS_SUCCESS:
       return {
         answeredRight: payload.result.answeredRight,
