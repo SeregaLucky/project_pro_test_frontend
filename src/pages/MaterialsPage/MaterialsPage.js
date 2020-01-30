@@ -9,8 +9,7 @@ export default class MaterialsPage extends Component {
   };
 
   onShowMore = e => {
-    e.preventDefault();
-    let buttonId = e.target.id;
+    const buttonId = e.target.id;
     this.setState(state => {
       if (buttonId === 'literature') {
         return {
@@ -27,8 +26,8 @@ export default class MaterialsPage extends Component {
 
   render() {
     const { extendedLiterature, extendedSources } = this.state;
-    let booksToShow = extendedLiterature ? literature.length : 3;
-    let sourcesToShow = extendedSources ? sources.length : 3;
+    const booksToShow = extendedLiterature ? literature.length : 3;
+    const sourcesToShow = extendedSources ? sources.length : 3;
 
     return (
       <section className={styles.wrapper}>
@@ -37,7 +36,9 @@ export default class MaterialsPage extends Component {
             <h2 className={styles.title}>Полезная литература</h2>
             <ol className={styles.list}>
               {literature.slice(0, booksToShow).map(book => (
-                <li className={styles.listItem}>{book}</li>
+                <li key={book} className={styles.listItem}>
+                  {book}
+                </li>
               ))}
             </ol>
             {literature.length > 3 && (
@@ -54,7 +55,7 @@ export default class MaterialsPage extends Component {
             <h2 className={styles.title}>Полезные ресурсы</h2>
             <ol className={styles.list}>
               {sources.slice(0, sourcesToShow).map(source => (
-                <li className={styles.listItem}>
+                <li key={source.name} className={styles.listItem}>
                   <a
                     className={styles.listLink}
                     href={source.link}
