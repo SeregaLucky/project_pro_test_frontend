@@ -8,7 +8,7 @@ import { ErrorMessage, Form, Field } from 'formik';
 import withAuthRedirect from './redirect';
 import { compose } from 'redux';
 
-const AuthForm = ({ onLogin, values, onGoogleLogin }) => {
+const AuthForm = ({ onLogin, values }) => {
   return (
     <div className={styles.formWrapper}>
       <p className={styles.formText}>
@@ -68,12 +68,12 @@ const AuthForm = ({ onLogin, values, onGoogleLogin }) => {
 const mdtp = dispatch => ({
   onRegister: values => dispatch(authOperations.registerUser(values)),
   onLogin: values => dispatch(authOperations.loginUser(values)),
-  onGoogleLogin: () => dispatch(authOperations.googleLogIn()),
 });
 //Works
 export default compose(
   withAuthRedirect,
   connect(null, mdtp),
-)(formikEnhancer(AuthForm));
+  formikEnhancer,
+)(AuthForm);
 
 // export default connect(null, mdtp)(formikEnhancer(AuthForm));
