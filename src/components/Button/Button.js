@@ -1,14 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import T from 'prop-types';
+import routes from '../../routes';
 
 import styles from './Button.module.css';
 
-const Button = ({ lable = '', url }) => (
+const Button = ({ lable = '' }) => (
   <>
     <NavLink
       to={{
-        pathname: `${url}`,
+        pathname: `${routes.MAIN_PAGE}`,
       }}
       className={styles.button}
     >
@@ -19,7 +20,6 @@ const Button = ({ lable = '', url }) => (
 
 Button.propTypes = {
   lable: T.string,
-  url: T.string.isRequired,
 };
 
 export default Button;
