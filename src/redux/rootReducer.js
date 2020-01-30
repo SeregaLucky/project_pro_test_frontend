@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   questions: questionsReduser,
   global: globalReducer,
-  results: resultsReducer,
+  result: resultsReducer,
 });
 
 export default rootReducer;

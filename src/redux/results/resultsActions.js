@@ -4,9 +4,9 @@ const resultsStart = () => ({
   type: resultsTypes.RESULTS_START,
 });
 
-const resultsSuccess = results => ({
+const resultsSuccess = result => ({
   type: resultsTypes.RESULTS_SUCCESS,
-  payload: { results },
+  payload: { result },
 });
 
 const resultsFailure = error => ({

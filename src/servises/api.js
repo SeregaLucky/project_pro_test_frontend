@@ -7,16 +7,16 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
 
 const getResultsStatus = examId => {
-  axios
-    .get(`/exams/?examId=5e2ee3be933b4f3b74d81d92`)
-    .then()
+  return axios
+    .get(`/exams/?examId=${examId}`)
+    .then(response => response.data)
     .catch(error => error);
 };
 
 const getResultsById = examId => {
-  axios
-    .get(`/exams/?examId=5e2ee3be933b4f3b74d81d92/result`)
-    .then()
+  return axios
+    .get(`/exams/?examId=${examId}/result`)
+    .then(response => response.data)
     .catch(error => error);
 };
 

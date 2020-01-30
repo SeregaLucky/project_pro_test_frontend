@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { objCommentImage } from './commentaryImages.js';
 import { objCommentInfo } from './commentaryInfo.js';
-import resultsOperations from '../../redux/results/resultsOperations';
+import resultsOperations from '../../redux/results/resultsOperations.js';
 import ResultProgressBar from '../../components/ResultProgressBar/ResultProgressBar.js';
 import Button from '../../components/Button';
 import styles from './ResultPage.module.css';
@@ -34,8 +34,8 @@ const ResultPage = ({ answeredRight = 9, answeredWrong = 1 }) => {
   );
 };
 
-const mapDispatchToProps = state => ({
-  getResults: examId => state(resultsOperations.getResultsById(examId)),
+const mapDispatchToProps = dispatch => ({
+  getResults: examId => dispatch(resultsOperations.getResultsById(examId)),
 });
 
 export default connect(null, mapDispatchToProps)(ResultPage);

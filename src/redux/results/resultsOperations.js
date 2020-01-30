@@ -5,7 +5,7 @@ const getResultsStatus = () => dispatch => {
   dispatch(resultsActions.resultsStart());
   api
     .getResultsStatus()
-    .then(response => dispatch(resultsActions.resultsSuccess(response.data)))
+    .then(data => dispatch(resultsActions.resultsSuccess(data)))
     .catch(error => dispatch(resultsActions.resultsFailure(error)));
 };
 
@@ -13,7 +13,7 @@ const getResultsById = examId => dispatch => {
   dispatch(resultsActions.resultsStart());
   api
     .getResultsById(examId)
-    .then(response => dispatch(resultsActions.resultsSuccess(response.data)))
+    .then(data => dispatch(resultsActions.resultsSuccess(data)))
     .catch(error => dispatch(resultsActions.resultsFailure(error)));
 };
 

@@ -4,9 +4,12 @@ import resultsTypes from './resultsTypes';
 const resultsReducer = (state = null, { type, payload }) => {
   switch (type) {
     case resultsTypes.RESULTS_STATUS:
-      return payload.results;
+      return payload.result;
     case resultsTypes.RESULTS_SUCCESS:
-      return { answeredRight: null, answeredWrong: null };
+      return {
+        answeredRight: payload.result.answeredRight,
+        answeredWrong: payload.result.answeredWrong,
+      };
     default:
       return state;
   }
@@ -22,6 +25,6 @@ const error = (state = null, { type, payload }) => {
 };
 
 export default combineReducers({
-  results: resultsReducer,
+  result: resultsReducer,
   error: error,
 });
