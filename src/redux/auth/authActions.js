@@ -14,6 +14,15 @@ const registerFailure = error => ({
   payload: { error },
 });
 
+const googleToken = userToken => ({
+  type: authActionTypes.SET_TOKEN_IN_STORE,
+  payload: { token: userToken },
+});
+const setName = name => ({
+  type: authActionTypes.SET_USER_NAME_TO_STORE,
+  payload: { name },
+});
+
 // const googleLoginStart = () => ({
 //   type: authActionTypes.REGISTER_START,
 // });
@@ -82,4 +91,6 @@ export default {
   getCurrentStart,
   getCurrentSuccess,
   getCurrentFailure,
+  googleToken,
+  setName,
 };

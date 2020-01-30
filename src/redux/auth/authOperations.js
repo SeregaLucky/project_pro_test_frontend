@@ -12,19 +12,6 @@ const unsetToken = () => {
   axios.defaults.headers.common['Authorization'] = '';
 };
 
-// const registerUser = credentials => dispatch => {
-//   dispatch(authActions.registerStart());
-//   axios
-//     .post('signup', credentials)
-//     .then(response => {
-//       setToken(response.data.token);
-//       dispatch(authActions.registerSuccess(response.data));
-//     })
-//     .catch(error => dispatch(authActions.registerFailure(error)));
-
-//   // Axios под капотом уже все парсит, поэтому res => res.json() делать не нужно. Сразу пишем response
-// };
-
 const registerUser = (credentials, path, dispatch) => {
   dispatch(authActions.registerStart());
   axios
@@ -35,6 +22,7 @@ const registerUser = (credentials, path, dispatch) => {
     })
     .catch(error => dispatch(authActions.registerFailure(error)));
 };
+
 const loginUser = credentials => dispatch => {
   dispatch(authActions.loginStart());
 
@@ -47,28 +35,19 @@ const loginUser = credentials => dispatch => {
     .catch(err => dispatch(authActions.loginFailure(err)));
 };
 
-const googleLogIn = () => dispatch => {
-  //just now - check the GET method. after successful response add authActions
-  axios
-    .get('auth/google')
-    .then(res => console.log('res: ', res))
-    .catch(err => console.log('err', err));
-};
-
 //----------------
 const getCurrentUser = () => (dispatch, getState) => {
-  const state = getState();
-  console.log(state);
-  const { token } = state.auth;
+  const { token } = getState().auth;
 
   if (!token) return;
+
   setToken(token);
+
   dispatch(authActions.getCurrentStart());
 
   axios
-    .get('current')
+    .get('users/current')
     .then(response => {
-      console.log(response);
       dispatch(authActions.getCurrentSuccess(response.data));
     })
     .catch(err => dispatch(authActions.getCurrentFailure(err)));
@@ -84,4 +63,4 @@ const logout = () => (dispatch, getState) => {
     .catch(error => dispatch(authActions.logOutFailure(error)));
 };
 
-export default { registerUser, logout, loginUser, getCurrentUser, googleLogIn };
+export default { registerUser, logout, loginUser, getCurrentUser };

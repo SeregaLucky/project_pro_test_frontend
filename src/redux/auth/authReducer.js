@@ -10,6 +10,8 @@ const userReducer = (
     case actionTypes.LOGIN_SUCCESS:
     case actionTypes.GET_CURRENT_SUCCESS:
       return payload.user;
+    case actionTypes.SET_USER_NAME_TO_STORE:
+      return { ...state, name: payload.name };
     case actionTypes.LOGOUT_SUCCESS:
       return { name: null, email: null, id: '', createdAt: '' };
 
