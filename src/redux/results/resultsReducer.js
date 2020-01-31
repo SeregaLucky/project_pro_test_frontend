@@ -2,11 +2,12 @@ import { combineReducers } from 'redux';
 import resultsTypes from './resultsTypes';
 
 const resultsReducer = (state = null, { type, payload }) => {
+  console.log(payload);
   switch (type) {
     case resultsTypes.RESULTS_SUCCESS:
       return {
-        answeredRight: payload.result.answeredRight,
-        answeredWrong: payload.result.answeredWrong,
+        answeredRight: payload.answeredRight,
+        answeredWrong: payload.answeredWrong,
       };
     default:
       return state;

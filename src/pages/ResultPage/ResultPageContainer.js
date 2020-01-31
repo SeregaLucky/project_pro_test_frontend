@@ -4,15 +4,23 @@ import ResultPage from './ResultPage.js';
 import * as selects from '../../redux/results/resultsSelectors.js';
 import resultsOperations from '../../redux/results/resultsOperations.js';
 
-class ContainerResultPage extends Component {
+class ResultPageContainer extends Component {
   componentDidMount() {
     const examId = '5e2ee3be933b4f3b74d81d92';
     const { getResults } = this.props;
-    getResults(console.log(examId));
+    getResults(examId);
   }
   render() {
     const { result } = this.props;
-    return <ResultPage result={result} />;
+
+    return (
+      result && (
+        <ResultPage
+          answeredRight={result.answeredRight}
+          answeredWrong={result.answeredWrong}
+        />
+      )
+    );
   }
 }
 
@@ -27,4 +35,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ContainerResultPage);
+)(ResultPageContainer);

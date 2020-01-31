@@ -1,5 +1,5 @@
 export const getResults = state => {
-  return console.log(state.result);
+  return state.result.result;
 };
 
 export const getResultsById = (state, examId) => {

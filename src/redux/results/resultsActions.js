@@ -4,10 +4,15 @@ const resultsStart = () => ({
   type: resultsTypes.RESULTS_START,
 });
 
-const resultsSuccess = result => ({
-  type: resultsTypes.RESULTS_SUCCESS,
-  payload: { result },
-});
+const resultsSuccess = ({ answeredRight, answeredWrong }) => {
+  return {
+    type: resultsTypes.RESULTS_SUCCESS,
+    payload: {
+      answeredRight,
+      answeredWrong,
+    },
+  };
+};
 
 const resultsFailure = error => ({
   type: resultsTypes.RESULTS_FAILURE,

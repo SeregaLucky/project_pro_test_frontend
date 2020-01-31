@@ -1,1 +1,1 @@
-export { default } from './ContainerResultPage.js';
+export { default } from './ResultPageContainer.js';
