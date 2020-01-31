@@ -12,7 +12,7 @@ const formikEnhancer = withFormik({
     const name = values.email.split('@')[0];
     authOperations.registerUser(
       { name, ...values },
-      'auth/sign-up',
+      '/auth/sign-up',
       props.dispatch,
     );
     setSubmitting(false);

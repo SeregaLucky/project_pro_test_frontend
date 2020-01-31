@@ -1,20 +1,10 @@
-import axios from 'axios';
+import { setToken, login, getUser, register } from '../../servises/api';
 import authActions from './authActions';
-
-axios.defaults.baseURL =
-  'http://ec2-3-133-102-159.us-east-2.compute.amazonaws.com/api/';
-
-const setToken = token => {
-  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-};
-const unsetToken = () => {
-  axios.defaults.headers.common['Authorization'] = '';
-};
 
 const registerUser = (credentials, path, dispatch) => {
   dispatch(authActions.registerStart());
-  axios
-    .post(path, credentials)
+
+  register(path, credentials)
     .then(response => {
       setToken(response.data.token);
       dispatch(authActions.registerSuccess(response.data));
@@ -27,14 +17,12 @@ const registerUser = (credentials, path, dispatch) => {
 const loginUser = credentials => dispatch => {
   dispatch(authActions.loginStart());
 
-  axios
-    .post('auth/sign-in', credentials)
+  login(credentials)
     .then(res => {
       setToken(res.data.token);
       dispatch(authActions.loginSuccess(res.data));
     })
     .catch(err => {
-      // console.log(err.message);
       dispatch(authActions.loginFailure(err));
     });
 };
@@ -42,27 +30,13 @@ const loginUser = credentials => dispatch => {
 const getCurrentUser = () => (dispatch, getState) => {
   const { token } = getState().auth;
   if (!token) return;
-
   setToken(token);
-
   dispatch(authActions.getCurrentStart());
-
-  axios
-    .get('users/current')
+  getUser()
     .then(response => {
       dispatch(authActions.getCurrentSuccess(response.data.user));
     })
     .catch(err => dispatch(authActions.getCurrentFailure(err)));
 };
 
-const logoutUser = () => dispatch => {
-  axios
-    .post('logout')
-    .then(() => {
-      unsetToken();
-      dispatch(authActions.logOutSuccess());
-    })
-    .catch(error => dispatch(authActions.logOutFailure(error)));
-};
-
-export default { registerUser, logoutUser, loginUser, getCurrentUser };
+export default { registerUser, loginUser, getCurrentUser };

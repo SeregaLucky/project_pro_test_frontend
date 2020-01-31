@@ -6,11 +6,11 @@ import authOperations from '../../redux/auth/authOperations';
 import styles from './AuthPage.module.css';
 
 const AuthPage = props => {
-  const { location, setToken } = props;
+  const { location, setGoogleToken } = props;
   if (location.search) {
     const token = new URLSearchParams(location.search).get('token');
     if (token) {
-      setToken(token);
+      setGoogleToken(token);
       props.getCurrentUser(token);
     }
   }
@@ -36,7 +36,7 @@ const AuthPage = props => {
 };
 
 const mapDispatchToProp = dispatch => ({
-  setToken: token => dispatch(authActions.googleToken(token)),
+  setGoogleToken: token => dispatch(authActions.googleToken(token)),
   getCurrentUser: token => dispatch(authOperations.getCurrentUser(token)),
 });
 
