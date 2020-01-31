@@ -1,9 +1,9 @@
 export const getResults = state => {
-  return state.result;
+  return console.log(state.result);
 };
 
-export const getResultsById = (state, id) => {
+export const getResultsById = (state, examId) => {
   const results = getResults(state);
 
-  return results.map(result => result.id === id);
+  return results.map(result => result.id === examId);
 };
