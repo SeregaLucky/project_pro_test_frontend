@@ -24,7 +24,9 @@ const tokenReducer = (state = null, { type, payload }) => {
   switch (type) {
     case actionTypes.REGISTER_SUCCESS:
     case actionTypes.LOGIN_SUCCESS:
+    case actionTypes.SET_TOKEN_IN_STORE:
       return payload.token;
+
     case actionTypes.LOGOUT_SUCCESS:
       return null;
 
@@ -38,6 +40,7 @@ const isAuthReducer = (state = false, { type, payload }) => {
     case actionTypes.REGISTER_SUCCESS:
     case actionTypes.LOGIN_SUCCESS:
     case actionTypes.GET_CURRENT_SUCCESS:
+    case actionTypes.SET_TOKEN_IN_STORE:
       return true;
     default:
       return state;

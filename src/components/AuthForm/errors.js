@@ -1,7 +1,4 @@
 export default {
-  EXISTING_USER: 'Такой пользователь уже существует.',
-  WRONG_PASSWORD: 'Вы ввели неправельный пароль.',
-  CLOSED_GOOGLE_POPOUT: 'Попробуйте еще раз.',
-  ACCESS_DENIED:
-    'Мы не можем получить ваши данные. Проверьте ваши настройки конфиденциальности.',
+  CONFLICT: 'ConflictError: User already exists!',
+  Unauthorized: 'Request failed with status code 401',
 };

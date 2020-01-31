@@ -14,45 +14,9 @@ const registerFailure = error => ({
   payload: { error },
 });
 
-const googleToken = userToken => ({
-  type: authActionTypes.SET_TOKEN_IN_STORE,
-  payload: { token: userToken },
-});
-const setName = name => ({
-  type: authActionTypes.SET_USER_NAME_TO_STORE,
-  payload: { name },
-});
-
-// const googleLoginStart = () => ({
-//   type: authActionTypes.REGISTER_START,
-// });
-
-// const googleLoginSuccess = ({ user, token }) => ({
-//   type: authActionTypes.REGISTER_SUCCESS,
-//   payload: { user, token },
-// });
-
-// const googleLoginFailure = error => ({
-//   type: authActionTypes.REGISTER_FAILURE,
-//   payload: { error },
-// });
-
-const logOutStart = () => ({
-  type: authActionTypes.LOGOUT_START,
-});
-
-const logOutSuccess = () => ({
-  type: authActionTypes.LOGOUT_SUCCESS,
-});
-
-const logOutFailure = error => ({
-  type: authActionTypes.LOGOUT_FAILURE,
-  payload: { error },
-});
-
 const loginStart = () => ({
   type: authActionTypes.LOGIN_START,
-}); // При такой записи произойдет return обьекта в круглых скобках
+});
 
 const loginSuccess = ({ user, token }) => ({
   type: authActionTypes.LOGIN_SUCCESS,
@@ -62,6 +26,11 @@ const loginSuccess = ({ user, token }) => ({
 const loginFailure = error => ({
   type: authActionTypes.LOGIN_FAILURE,
   payload: { error },
+});
+
+const googleToken = userToken => ({
+  type: authActionTypes.SET_TOKEN_IN_STORE,
+  payload: { token: userToken },
 });
 
 const getCurrentStart = () => ({
@@ -78,19 +47,31 @@ const getCurrentFailure = error => ({
   payload: { error },
 });
 
+const logOutStart = () => ({
+  type: authActionTypes.LOGOUT_START,
+});
+
+const logOutSuccess = () => ({
+  type: authActionTypes.LOGOUT_SUCCESS,
+});
+
+const logOutFailure = error => ({
+  type: authActionTypes.LOGOUT_FAILURE,
+  payload: { error },
+});
+
 export default {
   registerStart,
   registerSuccess,
   registerFailure,
-  logOutStart,
-  logOutSuccess,
-  logOutFailure,
   loginStart,
   loginSuccess,
   loginFailure,
+  googleToken,
   getCurrentStart,
   getCurrentSuccess,
   getCurrentFailure,
-  googleToken,
-  setName,
+  logOutStart,
+  logOutSuccess,
+  logOutFailure,
 };

@@ -1,9 +1,11 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import authActions from './authActions';
+import errors from '../../components/AuthForm/errors';
+import userErrMessages from '../../components/AuthForm/userErrMessages';
 
 axios.defaults.baseURL =
   'http://ec2-3-133-102-159.us-east-2.compute.amazonaws.com/api/';
-// const BASE_URL = 'https://lpj-tasker.herokuapp.com/users/';
 
 const setToken = token => {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -20,7 +22,9 @@ const registerUser = (credentials, path, dispatch) => {
       setToken(response.data.token);
       dispatch(authActions.registerSuccess(response.data));
     })
-    .catch(error => dispatch(authActions.registerFailure(error)));
+    .catch(error => {
+      dispatch(authActions.registerFailure(error));
+    });
 };
 
 const loginUser = credentials => dispatch => {
@@ -32,13 +36,14 @@ const loginUser = credentials => dispatch => {
       setToken(res.data.token);
       dispatch(authActions.loginSuccess(res.data));
     })
-    .catch(err => dispatch(authActions.loginFailure(err)));
+    .catch(err => {
+      // console.log(err.message);
+      dispatch(authActions.loginFailure(err));
+    });
 };
 
-//----------------
 const getCurrentUser = () => (dispatch, getState) => {
   const { token } = getState().auth;
-
   if (!token) return;
 
   setToken(token);
@@ -48,12 +53,12 @@ const getCurrentUser = () => (dispatch, getState) => {
   axios
     .get('users/current')
     .then(response => {
-      dispatch(authActions.getCurrentSuccess(response.data));
+      dispatch(authActions.getCurrentSuccess(response.data.user));
     })
     .catch(err => dispatch(authActions.getCurrentFailure(err)));
 };
 
-const logout = () => (dispatch, getState) => {
+const logoutUser = () => dispatch => {
   axios
     .post('logout')
     .then(() => {
@@ -63,4 +68,4 @@ const logout = () => (dispatch, getState) => {
     .catch(error => dispatch(authActions.logOutFailure(error)));
 };
 
-export default { registerUser, logout, loginUser, getCurrentUser };
+export default { registerUser, logoutUser, loginUser, getCurrentUser };

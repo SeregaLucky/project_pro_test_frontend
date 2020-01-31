@@ -1,6 +1,6 @@
 import React from 'react';
-import AuthForm from '../../components/AuthForm';
 import { connect } from 'react-redux';
+import AuthForm from '../../components/AuthForm';
 import authActions from '../../redux/auth/authActions';
 import authOperations from '../../redux/auth/authOperations';
 import styles from './AuthPage.module.css';
@@ -11,6 +11,7 @@ const AuthPage = props => {
     const token = new URLSearchParams(location.search).get('token');
     if (token) {
       setToken(token);
+      props.getCurrentUser(token);
     }
   }
 

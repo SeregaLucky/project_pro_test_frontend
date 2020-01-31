@@ -1,12 +1,12 @@
 import React from 'react';
-import googleIcon from '../../assets/icons/google-auth.png';
-import styles from './authForm.module.css';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { ErrorMessage, Form, Field } from 'formik';
 import formikEnhancer from './formic-yup/formikEnhancer';
 import authOperations from '../../redux/auth/authOperations';
-import { ErrorMessage, Form, Field } from 'formik';
 import withAuthRedirect from './redirect';
-import { compose } from 'redux';
+import googleIcon from '../../assets/icons/google-auth.png';
+import styles from './authForm.module.css';
 
 const AuthForm = ({ onLogin, values }) => {
   return (
@@ -14,8 +14,6 @@ const AuthForm = ({ onLogin, values }) => {
       <p className={styles.formText}>
         Для авторизации можете использовать Google Account:
       </p>
-
-      {/*  eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       <a
         href="http://ec2-3-133-102-159.us-east-2.compute.amazonaws.com/api/auth/google"
         className={styles.googleSignUpButton}
@@ -25,7 +23,6 @@ const AuthForm = ({ onLogin, values }) => {
           <span>Google</span>
         </div>
       </a>
-      {/* <button onClick={onGoogleLogin}>Google</button> */}
       <p className={styles.formText}>
         Или войдите в приложение используя e-mail и пароль:
       </p>
@@ -69,11 +66,9 @@ const mdtp = dispatch => ({
   onRegister: values => dispatch(authOperations.registerUser(values)),
   onLogin: values => dispatch(authOperations.loginUser(values)),
 });
-//Works
+
 export default compose(
   withAuthRedirect,
   connect(null, mdtp),
   formikEnhancer,
 )(AuthForm);
-
-// export default connect(null, mdtp)(formikEnhancer(AuthForm));
