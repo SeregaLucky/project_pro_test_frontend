@@ -1,8 +1,5 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
 import authActions from './authActions';
-import errors from '../../components/AuthForm/errors';
-import userErrMessages from '../../components/AuthForm/userErrMessages';
 
 axios.defaults.baseURL =
   'http://ec2-3-133-102-159.us-east-2.compute.amazonaws.com/api/';

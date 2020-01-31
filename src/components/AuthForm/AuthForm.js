@@ -6,8 +6,12 @@ import formikEnhancer from './formic-yup/formikEnhancer';
 import authOperations from '../../redux/auth/authOperations';
 import withAuthRedirect from './redirect';
 import googleIcon from '../../assets/icons/google-auth.png';
+import 'react-toastify/dist/ReactToastify.minimal.css';
 import styles from './authForm.module.css';
 
+//Подключить tostify:
+//1) Отрендерить тост компонент из библиотеки, подписать на редакс стейт. Если приходит ошибка в стейт рендерить тост
+//2)Попытаться вызвать tostify config  в форме, подписать ее на стейт через sdtp. Если приходит ошибка в стейт рендерить тост
 const AuthForm = ({ onLogin, values }) => {
   return (
     <div className={styles.formWrapper}>
