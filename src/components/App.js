@@ -7,7 +7,7 @@ import Footer from './Footer/Footer';
 import AuthPage from '../pages/AuthPage/AuthPage';
 import MainPage from '../pages/MainPage/MainPage';
 import DashboardPage from '../pages/DashboardPage/DashboardPage';
-import ResultPage from '../pages/ResultPage/ResultPage';
+import ResultPage from '../pages/ResultPage';
 import MaterialsPage from '../pages/MaterialsPage/MaterialsPage';
 import ContactsPage from '../pages/ContactsPage/ContactsPage';
 import Loader from './Loader/Loader';
@@ -28,6 +28,7 @@ const App = () => {
 
         <Redirect to={routes.MAIN_PAGE} />
       </Switch>
+
       <Footer />
     </BrowserRouter>
   );

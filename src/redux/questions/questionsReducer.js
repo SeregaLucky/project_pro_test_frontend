@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import resultsTypes from './questionsTypes';
 import questionsTypes from './questionsTypes';
 
 const questionsReduсer = (state = null, { type, payload }) => {
@@ -13,15 +14,22 @@ const questionsReduсer = (state = null, { type, payload }) => {
   }
 };
 
-const passedQuestionsReduсer = (state = [], { type, payload }) => {
+const resultsReducer = (state = null, { type, payload }) => {
   switch (type) {
+    case resultsTypes.RESULTS_SUCCESS:
+      return {
+        answeredRight: payload.answeredRight,
+        answeredWrong: payload.answeredWrong,
+      }
     default:
       return state;
   }
 };
 
-const resultReduсer = (state = null, { type, payload }) => {
+const error = (state = null, { type, payload }) => {
   switch (type) {
+    case resultsTypes.RESULTS_FAILURE:
+      return payload.error;
     default:
       return state;
   }
@@ -29,6 +37,6 @@ const resultReduсer = (state = null, { type, payload }) => {
 
 export default combineReducers({
   questions: questionsReduсer,
-  passedQuestions: passedQuestionsReduсer,
-  result: resultReduсer,
+  result: resultsReducer,
+  error: error,
 });
