@@ -1,8 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import AuthForm from '../../components/AuthForm';
+import authActions from '../../redux/auth/authActions';
+import authOperations from '../../redux/auth/authOperations';
 import styles from './AuthPage.module.css';
 
-const AuthPage = () => {
+const AuthPage = props => {
+  const { location, setGoogleToken } = props;
+  if (location.search) {
+    const token = new URLSearchParams(location.search).get('token');
+    if (token) {
+      setGoogleToken(token);
+      props.getCurrentUser(token);
+    }
+  }
+
   return (
     <section className={styles.authPage}>
       <div className={`${styles.container} ${styles.addFlex}`}>
@@ -23,4 +35,9 @@ const AuthPage = () => {
   );
 };
 
-export default AuthPage;
+const mapDispatchToProp = dispatch => ({
+  setGoogleToken: token => dispatch(authActions.googleToken(token)),
+  getCurrentUser: token => dispatch(authOperations.getCurrentUser(token)),
+});
+
+export default connect(null, mapDispatchToProp)(AuthPage);
