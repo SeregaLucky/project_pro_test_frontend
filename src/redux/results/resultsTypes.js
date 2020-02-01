@@ -1,5 +1,0 @@
-export default {
-  RESULTS_START: 'result/RESULTS_START',
-  RESULTS_SUCCESS: 'result/RESULTS_SUCCESS',
-  RESULTS_FAILURE: 'result/RESULTS_FAILURE',
-};

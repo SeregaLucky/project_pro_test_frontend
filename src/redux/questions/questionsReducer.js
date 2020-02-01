@@ -1,28 +1,28 @@
 import { combineReducers } from 'redux';
+import resultsTypes from './questionsTypes';
 
-const questionsReduсer = (state = null, { type, payload }) => {
+const resultsReducer = (state = null, { type, payload }) => {
   switch (type) {
+    case resultsTypes.RESULTS_SUCCESS:
+      return {
+        answeredRight: payload.answeredRight,
+        answeredWrong: payload.answeredWrong,
+      };
     default:
       return state;
   }
 };
 
-const passedQuestionsReduсer = (state = [], { type, payload }) => {
+const error = (state = null, { type, payload }) => {
   switch (type) {
-    default:
-      return state;
-  }
-};
-
-const resultReduсer = (state = null, { type, payload }) => {
-  switch (type) {
+    case resultsTypes.RESULTS_FAILURE:
+      return payload.error;
     default:
       return state;
   }
 };
 
 export default combineReducers({
-  questions: questionsReduсer,
-  passedQuestions: passedQuestionsReduсer,
-  result: resultReduсer,
+  result: resultsReducer,
+  error: error,
 });

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ResultPage from './ResultPage.js';
-import * as selects from '../../redux/results/resultsSelectors.js';
-import resultsOperations from '../../redux/results/resultsOperations.js';
+import * as selects from '../../redux/questions/questionsSelectors';
+import resultsOperations from '../../redux/questions/questionsOperations.js';
 
 class ResultPageContainer extends Component {
   componentDidMount() {
