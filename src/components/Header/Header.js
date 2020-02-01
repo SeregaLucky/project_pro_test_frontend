@@ -150,19 +150,6 @@ class Header extends Component {
                 <p className={styles.mainNavListItemLink__text}>Контакты</p>
               </NavLink>
             </li>
-            <li className={styles.mainNavListItem}>
-              <NavLink
-                to={routes.RESULT_PAGE}
-                className={
-                  this.state.isAuth
-                    ? styles.mainNavListItemLink
-                    : `${styles.mainNavListItemLinkNoUser} ${styles.mainNavListItemLink}`
-                }
-                activeClassName={styles.activeLink}
-              >
-                <p className={styles.mainNavListItemLink__text}>RESULT</p>
-              </NavLink>
-            </li>
           </ul>
         </nav>
 
