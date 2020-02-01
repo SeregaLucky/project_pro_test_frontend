@@ -1,6 +1,14 @@
 import React from 'react';
+// import T from 'prop-types';
 import MainTestButton from '../../components/MainTestButton/MainTestButton';
 import styles from './MainPage.module.css';
+
+const ID_NEED_TEST = {
+  id1: '5e29edc351e2cd3a659a8e4e',
+  id2: '5e2de905933b4f3b74d81d59',
+};
+
+const TEXT_BUTTON = ['Теория тестирования', 'Техническая подготовка QA'];
 
 const MainPage = () => {
   return (
@@ -16,8 +24,8 @@ const MainPage = () => {
         </p>
         <div className={styles.mainPage_buttons}>
           <ul className={styles.mainPage_buttonItems}>
-            <MainTestButton />
-            <MainTestButton />
+            <MainTestButton idTest={ID_NEED_TEST.id1} text={TEXT_BUTTON[0]} />
+            <MainTestButton idTest={ID_NEED_TEST.id2} text={TEXT_BUTTON[1]} />
           </ul>
         </div>
       </div>

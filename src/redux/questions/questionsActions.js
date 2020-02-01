@@ -1,4 +1,5 @@
 import resultsTypes from './questionsTypes';
+import questionsTypes from './questionsTypes';
 
 const resultsStart = () => ({
   type: resultsTypes.RESULTS_START,
@@ -19,8 +20,25 @@ const resultsFailure = error => ({
   payload: { error },
 });
 
+const postTestStart = () => ({
+  type: questionsTypes.POST_TEST_START,
+});
+
+const postTestSuccess = data => ({
+  type: questionsTypes.POST_TEST_SUCCESS,
+  payload: { data },
+});
+
+const postTestFailure = error => ({
+  type: questionsTypes.POST_TEST_FAILURE,
+  payload: { error },
+});
+
 export default {
   resultsStart,
   resultsSuccess,
   resultsFailure,
+  postTestStart,
+  postTestSuccess,
+  postTestFailure,
 };

@@ -1,5 +1,7 @@
 import resultsActions from './questionsActions';
 import api from '../../servises/api.js';
+import questionslActions from './questionsActions';
+import { postAllTests } from '../../servises/api';
 
 const getResultsStatus = () => dispatch => {
   dispatch(resultsActions.resultsStart());
@@ -17,7 +19,14 @@ const getResultsById = examId => dispatch => {
     .catch(error => dispatch(resultsActions.resultsFailure(error)));
 };
 
+const startTest = idTest => dispatch => {
+  postAllTests(idTest)
+    .then(dataTest => dispatch(questionslActions.postTestSuccess(dataTest)))
+    .catch(error => dispatch(questionslActions.postTestFailure(error)));
+};
+
 export default {
   getResultsStatus,
   getResultsById,
+  startTest,
 };

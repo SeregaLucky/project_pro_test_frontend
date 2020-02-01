@@ -28,6 +28,7 @@ const App = () => {
 
         <Redirect to={routes.MAIN_PAGE} />
       </Switch>
+
       <Footer />
     </BrowserRouter>
   );

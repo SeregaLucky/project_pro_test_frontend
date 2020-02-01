@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
 import routes from '../../routes';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Arrow } from '../../assets/icons/svg/arrow.svg';
+import questionsOperations from '../../redux/questions/questionsOperations';
 import styles from './MainTestButton.module.css';
 
 class MainTestButton extends Component {
+  handleClick = () => {
+    const { giveTest, idTest } = this.props;
+    // console.log(idTest);
+    giveTest(idTest);
+  };
+
   render() {
+    const { text } = this.props;
     return (
       <li>
-        <Link to={routes.DASHBOARD_PAGE} className={styles.button}>
-          Теория тестирования
+        <Link
+          onClick={this.handleClick}
+          to={routes.DASHBOARD_PAGE}
+          className={styles.button}
+        >
+          {text}
           <Arrow className={styles.arrow} width="25px" alt="arrow" />
         </Link>
       </li>
@@ -17,4 +30,7 @@ class MainTestButton extends Component {
   }
 }
 
-export default MainTestButton;
+const mapDispatchToProps = dispatch => ({
+  giveTest: idTest => dispatch(questionsOperations.startTest(idTest)),
+});
+export default connect(null, mapDispatchToProps)(MainTestButton);

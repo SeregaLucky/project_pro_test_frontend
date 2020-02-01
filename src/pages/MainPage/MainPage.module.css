@@ -15,7 +15,7 @@
 .mainPage_descr {
   font-size: 12px;
   letter-spacing: 0.03em;
-  line-height: 1.583;
+  line-height: 22px;
   text-align: center;
 }
 
@@ -59,7 +59,7 @@
   .mainPage_quote,
   .mainPage_author {
     font-size: 19px;
-    line-height: 1.211;
+    line-height: 1.2;
   }
 
   .mainPage_quote::after {
