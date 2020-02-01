@@ -17,7 +17,7 @@ const App = () => {
     <BrowserRouter>
       <Loader />
       <Header />
-      <MainPage />
+
       <Switch>
         <Route path={routes.AUTH_PAGE} component={AuthPage} />
         <Route path={routes.MAIN_PAGE} component={MainPage} />
@@ -28,6 +28,7 @@ const App = () => {
 
         <Redirect to={routes.MAIN_PAGE} />
       </Switch>
+
       <Footer />
     </BrowserRouter>
   );
