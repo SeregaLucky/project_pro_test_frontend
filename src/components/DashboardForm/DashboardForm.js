@@ -21,7 +21,7 @@ const DashboardForm = () => {
       </p>
       <h2 className={styles.dashboardform__question}>{question}</h2>
       <ul className={styles.dashboardform__answers}>
-        <DashboardFormInput answers={questionAnswers} />
+        <DashboardFormInput answers={questionAnswers} key={questionAnswers} />
       </ul>
     </div>
   );
