@@ -8,11 +8,13 @@
   font-family: 'MontserratMedium', sans-serif;
   font-size: 14px;
   letter-spacing: 0.02rem;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
 }
 
 .userAndBtnContainer {
   display: flex;
-  width: 120px;
   justify-content: flex-end;
 }
 
@@ -61,7 +63,11 @@
 }
 
 .logoLink {
-  padding: 20px;
+  padding: 21px;
+}
+
+.logoLink svg {
+  display: block;
 }
 
 .headerBtn {

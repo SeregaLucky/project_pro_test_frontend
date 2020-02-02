@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Media from 'react-media';
 import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
@@ -10,12 +11,14 @@ import { ReactComponent as SignOutLogo } from '../../assets/icons/svg/sign-out.s
 import Modal from '../Modal';
 
 import styles from './Header.module.css';
+import authSelectors from '../../redux/auth/authSelectors';
+import globalSelectors from '../../redux/global/globalSelectors';
+import globalActions from '../../redux/global/globalActions';
 
 class Header extends Component {
   state = {
     isOpen: false,
     isMobile: false,
-    isAuth: false,
   };
 
   handleClick = () => {
@@ -31,23 +34,10 @@ class Header extends Component {
   };
 
   renderMobile = () => {
-    return !this.state.isOpen ? (
-      <div className={styles.userAndBtnContainer}>
-        {this.state.isAuth && <HeaderUserInfo isMobile={this.state.isMobile} />}
-        <button
-          type="click"
-          className={styles.headerBtnMobile}
-          onClick={this.handleClick}
-        >
-          <MenuLogo />
-        </button>
-      </div>
-    ) : (
+    return this.state.isOpen ? (
       <>
         <div className={styles.userAndBtnContainer}>
-          {this.state.isAuth && (
-            <HeaderUserInfo isMobile={this.state.isMobile} />
-          )}
+          {this.props.auth && <HeaderUserInfo isMobile={this.state.isMobile} />}
           <button
             type="click"
             className={styles.headerBtnMobile}
@@ -58,7 +48,7 @@ class Header extends Component {
         </div>
         <nav className={styles.mainNav}>
           <ul className={styles.mainNavList}>
-            {this.state.isAuth && (
+            {this.props.auth && (
               <>
                 <li className={styles.mainNavListItemMobile}>
                   <NavLink
@@ -70,6 +60,7 @@ class Header extends Component {
                     <p className={styles.mainNavListItemLink__text}>Главная</p>
                   </NavLink>
                 </li>
+
                 <li className={styles.mainNavListItemMobile}>
                   <NavLink
                     to={routes.MATERIALS_PAGE}
@@ -95,9 +86,17 @@ class Header extends Component {
                 <p className={styles.mainNavListItemLink__text}>Контакты</p>
               </NavLink>
             </li>
-            {this.state.isAuth && (
+
+            {this.props.auth && (
               <li className={styles.mainNavListItemMobile}>
-                <button type="click" className={styles.headerBtnLogOut}>
+                <button
+                  type="click"
+                  className={styles.headerBtnLogOut}
+                  onClick={() => {
+                    this.setState({ isOpen: false });
+                    this.props.onOpen();
+                  }}
+                >
                   <SignOutLogo className={styles.SignOutLogo} />
                 </button>
               </li>
@@ -105,6 +104,17 @@ class Header extends Component {
           </ul>
         </nav>
       </>
+    ) : (
+      <div className={styles.userAndBtnContainer}>
+        {this.props.auth && <HeaderUserInfo isMobile={this.state.isMobile} />}
+        <button
+          type="click"
+          className={styles.headerBtnMobile}
+          onClick={this.handleClick}
+        >
+          <MenuLogo />
+        </button>
+      </div>
     );
   };
 
@@ -113,7 +123,7 @@ class Header extends Component {
       <div className={styles.NavAndUserContainer}>
         <nav className={styles.mainNav}>
           <ul className={styles.mainNavList}>
-            {this.state.isAuth && (
+            {this.props.auth && (
               <li className={styles.mainNavListItem}>
                 <NavLink
                   to={routes.MAIN_PAGE}
@@ -124,7 +134,7 @@ class Header extends Component {
                 </NavLink>
               </li>
             )}
-            {this.state.isAuth && (
+            {this.props.auth && (
               <li className={styles.mainNavListItem}>
                 <NavLink
                   to={routes.MATERIALS_PAGE}
@@ -141,7 +151,7 @@ class Header extends Component {
               <NavLink
                 to={routes.CONTACTS_PAGE}
                 className={
-                  this.state.isAuth
+                  this.props.auth
                     ? styles.mainNavListItemLink
                     : `${styles.mainNavListItemLinkNoUser} ${styles.mainNavListItemLink}`
                 }
@@ -153,10 +163,14 @@ class Header extends Component {
           </ul>
         </nav>
 
-        {this.state.isAuth && (
+        {this.props.auth && (
           <div className={styles.userInfoAndLogout}>
             <HeaderUserInfo isMobile={this.state.isMobile} />
-            <button type="click" className={styles.headerBtn}>
+            <button
+              type="click"
+              className={styles.headerBtn}
+              onClick={this.props.onOpen}
+            >
               <SignOutLogo className={styles.SignOutLogo} />
             </button>
           </div>
@@ -168,6 +182,7 @@ class Header extends Component {
   render() {
     return (
       <header className={styles.header}>
+        {this.props.modalOpen && <Modal />}
         <NavLink
           to={routes.MAIN_PAGE}
           className={styles.logoLink}
@@ -192,4 +207,16 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    auth: authSelectors.isAuthenticated(state),
+
+    modalOpen: globalSelectors.isModalOpen(state),
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  onOpen: () => dispatch(globalActions.openModal()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

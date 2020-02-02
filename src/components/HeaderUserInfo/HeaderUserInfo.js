@@ -1,10 +1,13 @@
 import React from 'react';
 import T from 'prop-types';
 import styles from './HeaderUserInfo.module.css';
+import { connect } from 'react-redux';
+import globalSelectors from '../../redux/global/globalSelectors';
 
-const HeaderUserInfo = ({ isMobile, name = 'Дмитрий' }) => {
-  const letter = name.slice(0, 1);
-  const shortName = name.slice(0, 10);
+const HeaderUserInfo = ({ isMobile, name }) => {
+  const letter = name.slice(0, 1).toUpperCase();
+
+  const shortName = `${letter}${name.slice(1, 10)}`;
 
   return isMobile === true ? (
     <div className={styles.HeaderUserContainer}>
@@ -23,4 +26,10 @@ HeaderUserInfo.propTypes = {
   name: T.string,
 };
 
-export default HeaderUserInfo;
+const mapStateToProps = state => {
+  return {
+    name: globalSelectors.userName(state),
+  };
+};
+
+export default connect(mapStateToProps)(HeaderUserInfo);
