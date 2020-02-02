@@ -52,6 +52,10 @@
   background-color: #e96105;
 }
 
+.button_exit {
+  border: 0;
+}
+
 /* icon */
 .icon {
   width: 40px;
@@ -62,6 +66,7 @@
   right: 0;
   cursor: pointer;
 }
+
 .icon:before {
   content: '+';
   color: var(--dark-blue);
@@ -74,6 +79,7 @@
   left: 6px;
   transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
 }
+
 .icon:after {
   content: '';
   position: absolute;
@@ -86,9 +92,11 @@
   transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
   transform: scale(0.01);
 }
+
 .icon:hover:after {
   transform: scale(1);
 }
+
 .icon:hover:before {
   transform: scale(0.8) rotate(45deg);
   color: #e96105;
@@ -106,5 +114,11 @@
 
   .button {
     padding: 10px 25px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .modal {
+    max-width: 500px;
   }
 }

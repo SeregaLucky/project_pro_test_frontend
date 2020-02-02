@@ -8,12 +8,13 @@ const ID_NEED_TEST = {
   id2: '5e2de905933b4f3b74d81d59',
 };
 
-const MainPage = ({ quote }) => {
+const TEXT_BUTTON = ['Теория тестирования', 'Техническая подготовка QA'];
+
+const MainPage = () => {
   return (
     <section className={styles.mainPage}>
       <div className={styles.container}>
         <h2 className={styles.mainPage_quote}>
-          {quote}
           "Регресионное тестирование. Что это? Если система комплириется, то это
           хорошо, если загружается, то это просто здорово!"
         </h2>
@@ -23,17 +24,13 @@ const MainPage = ({ quote }) => {
         </p>
         <div className={styles.mainPage_buttons}>
           <ul className={styles.mainPage_buttonItems}>
-            <MainTestButton idTest={ID_NEED_TEST.id1} />
-            <MainTestButton idTest={ID_NEED_TEST.id2} />
+            <MainTestButton idTest={ID_NEED_TEST.id1} text={TEXT_BUTTON[0]} />
+            <MainTestButton idTest={ID_NEED_TEST.id2} text={TEXT_BUTTON[1]} />
           </ul>
         </div>
       </div>
     </section>
   );
 };
-
-// MainPage.propTypes = {
-//   quote: T.string.isRequired,
-// };
 
 export default MainPage;
