@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import T from 'prop-types';
 import authOperations from '../../redux/auth/authOperations';
+import globalActions from '../../redux/global/globalActions';
 
 import styles from './Modal.module.css';
 
@@ -11,6 +12,7 @@ const MODAL_ROOT = document.querySelector('#modal-root');
 class Modal extends Component {
   static propTypes = {
     onClose: T.func.isRequired,
+    onLogOut: T.func.isRequired,
   };
 
   backdropRef = createRef();
@@ -72,6 +74,7 @@ class Modal extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
+  onClose: () => dispatch(globalActions.closeModal()),
   onLogOut: () => dispatch(authOperations.logoutUser()),
 });
 
