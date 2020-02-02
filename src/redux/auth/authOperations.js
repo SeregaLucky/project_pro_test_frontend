@@ -1,4 +1,11 @@
-import { setToken, login, getUser, register } from '../../servises/api';
+import {
+  setToken,
+  login,
+  getUser,
+  register,
+  logOut,
+  unsetToken,
+} from '../../servises/api';
 import authActions from './authActions';
 
 const registerUser = (credentials, path, dispatch) => {
@@ -39,4 +46,15 @@ const getCurrentUser = () => (dispatch, getState) => {
     .catch(err => dispatch(authActions.getCurrentFailure(err)));
 };
 
-export default { registerUser, loginUser, getCurrentUser };
+const logoutUser = () => dispatch => {
+  dispatch(authActions.logoutStart());
+
+  logOut()
+    .then(() => {
+      unsetToken();
+      dispatch(authActions.logoutSuccess());
+    })
+    .catch(error => dispatch(authActions.logoutFailure(error.message)));
+};
+
+export default { registerUser, loginUser, getCurrentUser, logoutUser };
