@@ -10,9 +10,10 @@ const loadingReducer = (state = false, { type, payload }) => {
 
 const modalLogoutOpenReducer = (state = false, { type, payload }) => {
   switch (type) {
+    case globalTypes.SET_MODAL_OPEN_TRUE:
+      return true;
     case globalTypes.CLOSE_MODAL:
       return false;
-
     default:
       return state;
   }
