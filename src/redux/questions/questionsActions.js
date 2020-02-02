@@ -24,10 +24,13 @@ const postTestStart = () => ({
   type: questionsTypes.POST_TEST_START,
 });
 
-const postTestSuccess = data => ({
-  type: questionsTypes.POST_TEST_SUCCESS,
-  payload: { data },
-});
+const postTestSuccess = data => {
+  console.log(data);
+  return {
+    type: questionsTypes.POST_TEST_SUCCESS,
+    payload: { data },
+  };
+};
 
 const postTestFailure = error => ({
   type: questionsTypes.POST_TEST_FAILURE,
