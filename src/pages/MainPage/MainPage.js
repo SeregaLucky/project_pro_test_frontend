@@ -1,8 +1,13 @@
 import React from 'react';
-// import T from 'prop-types';
 import MainTestButton from '../../components/MainTestButton/MainTestButton';
 import listQuotes from './listQuotes';
+import styled from 'styled-components';
 import styles from './MainPage.module.css';
+
+// const StyledButton = styled.li`
+// // background-color: #121d2e;
+// // ${props => props.customStyle}
+// // `;
 
 const ID_NEED_TEST = {
   id1: '5e29edc351e2cd3a659a8e4e',

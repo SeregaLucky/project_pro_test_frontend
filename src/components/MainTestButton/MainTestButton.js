@@ -15,7 +15,7 @@ class MainTestButton extends Component {
   render() {
     const { text } = this.props;
     return (
-      <li>
+      <li className={styles.listButton}>
         <Link
           onClick={this.handleClick}
           to={routes.DASHBOARD_PAGE}

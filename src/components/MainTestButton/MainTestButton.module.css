@@ -1,15 +1,13 @@
 .button {
-  /* width: 280px; */
   font-size: 24px;
   font-family: 'MontserratExtraBold', sans-serif;
   color: var(--background-color);
   background-color: var(--orange);
-  padding: 55px 45px 35px 45px;
+  padding: 55px 35px 35px 35px;
   display: block;
   line-height: 1.2;
   text-align: center;
   letter-spacing: 0.03em;
-  margin-bottom: 20px;
 }
 
 .arrow {
@@ -17,15 +15,24 @@
   padding-top: 10px;
 }
 
+.listButton:not(:last-child) {
+  margin-bottom: 20px;
+}
+
 @media screen and (min-width: 768px) {
   .button {
-    width: 396px;
-    padding: 65px 0 45px 0;
+    width: 395px;
+    padding: 65px 50px;
     font-size: 30px;
-    margin-bottom: 30px;
   }
 
   .arrow {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .listButton:not(:last-child) {
+    margin-bottom: 30px;
   }
 }
 
