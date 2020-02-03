@@ -45,6 +45,9 @@ const isAuthReducer = (state = false, { type, payload }) => {
     case actionTypes.SET_TOKEN_IN_STORE:
       return true;
 
+    case actionTypes.LOGOUT_SUCCESS:
+      return false;
+
     default:
       return state;
   }
