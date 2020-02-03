@@ -7,6 +7,7 @@ import {
   unsetToken,
 } from '../../servises/api';
 import authActions from './authActions';
+import globalActions from '../global/globalActions';
 
 const registerUser = (credentials, path, dispatch) => {
   dispatch(authActions.registerStart());
@@ -53,6 +54,7 @@ const logoutUser = () => dispatch => {
     .then(() => {
       unsetToken();
       dispatch(authActions.logOutSuccess());
+      dispatch(globalActions.closeModal());
     })
     .catch(err => dispatch(authActions.loginFailure(err.message)));
 };
