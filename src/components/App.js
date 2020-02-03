@@ -11,6 +11,7 @@ import ResultPage from '../pages/ResultPage/ResultPage';
 import MaterialsPage from '../pages/MaterialsPage/MaterialsPage';
 import ContactsPage from '../pages/ContactsPage/ContactsPage';
 import Loader from './Loader/Loader';
+import PrivateRoute from '../servises/PrivateRoute';
 
 const App = () => {
   return (
@@ -19,10 +20,14 @@ const App = () => {
       <Header />
       <Switch>
         <Route path={routes.AUTH_PAGE} component={AuthPage} />
-        <Route path={routes.MAIN_PAGE} component={MainPage} />
-        <Route exact path={routes.DASHBOARD_PAGE} component={DashboardPage} />
-        <Route path={routes.RESULT_PAGE} component={ResultPage} />
-        <Route path={routes.MATERIALS_PAGE} component={MaterialsPage} />
+        <PrivateRoute
+          exact
+          path={routes.DASHBOARD_PAGE}
+          component={DashboardPage}
+        />
+        <PrivateRoute path={routes.RESULT_PAGE} component={ResultPage} />
+        <PrivateRoute path={routes.MATERIALS_PAGE} component={MaterialsPage} />
+        <PrivateRoute path={routes.MAIN_PAGE} component={MainPage} />
         <Route path={routes.CONTACTS_PAGE} component={ContactsPage} />
 
         <Redirect to={routes.MAIN_PAGE} />
