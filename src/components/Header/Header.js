@@ -30,10 +30,8 @@ class Header extends Component {
   };
 
   handleSignOut = () => {
-    {
-      this.setState({ isOpen: false });
-      this.props.onOpen();
-    }
+    this.setState({ isOpen: false });
+    this.props.onOpen();
   };
 
   render() {
