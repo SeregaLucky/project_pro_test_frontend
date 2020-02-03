@@ -2,71 +2,74 @@ import { combineReducers } from 'redux';
 import resultsTypes from './questionsTypes';
 import questionsTypes from './questionsTypes';
 
-// const initialStateQuestions = [
-//   {
-//     id: '5e300719a564ad646943b61f',
-//     examId: '5e300719a564ad646943b61e',
-//     question: 'Who is the best?',
-//     choices: [
-//       {
-//         id: 1,
-//         title: "I'm the best",
-//       },
-//       {
-//         id: 2,
-//         title: "They're the best",
-//       },
-//     ],
-//     optionChoosed: null,
-//   },
-//   {
-//     id: '5e300719a564ad646943b622',
-//     examId: '5e300719a564ad646943b61e',
-//     question: 'Where do you live?',
-//     choices: [
-//       {
-//         id: 1,
-//         title: 'Kiev',
-//       },
-//       {
-//         id: 2,
-//         title: 'Odessa',
-//       },
-//     ],
-//     optionChoosed: null,
-//   },
-//   {
-//     id: '5e300719a564ad646943b625',
-//     examId: '5e300719a564ad646943b61e',
-//     question: "What's your name?",
-//     choices: [
-//       {
-//         id: 1,
-//         title: 'Mykola',
-//       },
-//       {
-//         id: 2,
-//         title: 'Valera',
-//       },
-//     ],
-//     optionChoosed: null,
-//   },
-// ];
+// const initialStateQuestions = {
+//   questions: [
+//     {
+//       id: '5e300719a564ad646943b61f',
+//       examId: '5e300719a564ad646943b61e',
+//       question: 'Who is the best?',
+//       choices: [
+//         {
+//           id: 1,
+//           title: "I'm the best",
+//         },
+//         {
+//           id: 2,
+//           title: "They're the best",
+//         },
+//       ],
+//       optionChoosed: null,
+//     },
+//     {
+//       id: '5e300719a564ad646943b622',
+//       examId: '5e300719a564ad646943b61e',
+//       question: 'Where do you live?',
+//       choices: [
+//         {
+//           id: 1,
+//           title: 'Kiev',
+//         },
+//         {
+//           id: 2,
+//           title: 'Odessa',
+//         },
+//       ],
+//       optionChoosed: null,
+//     },
+//     {
+//       id: '5e300719a564ad646943b625',
+//       examId: '5e300719a564ad646943b61e',
+//       question: "What's your name?",
+//       choices: [
+//         {
+//           id: 1,
+//           title: 'Mykola',
+//         },
+//         {
+//           id: 2,
+//           title: 'Valera',
+//         },
+//       ],
+//       optionChoosed: null,
+//     },
+//   ],
+// };
 
 const questionsReduсer = (state = null, { type, payload }) => {
   switch (type) {
-    case questionsTypes.CHECK_ANSWER:
-      return state.questions.map(question => {
-        if (payload.examQuestionId === question.id) {
-          return { ...question, ...{ optionChoosed: payload.choiceId } };
-        }
-        return question;
-      });
     case questionsTypes.POST_TEST_SUCCESS:
       return {
         idTestBlock: payload.data.exam.id,
         questions: payload.data.questions,
       };
+    case questionsTypes.CHECK_ANSWER:
+      const questions = state.questions.map(question => {
+        if (payload.examQuestionId === question.id) {
+          return { ...question, ...{ optionChoosed: payload.choiceId } };
+        }
+        return question;
+      });
+      return { ...state, questions };
     default:
       return state;
   }

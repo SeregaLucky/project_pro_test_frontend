@@ -1,5 +1,5 @@
 const getQuestionNumber = state => state.questions.questionNumber;
-const getQuestions = state => state.questions.questions;
+const getQuestions = state => state.questions.questions.questions;
 const getResult = state => state.questions.resultTest;
 const getErr = state => state.questions.err;
 
