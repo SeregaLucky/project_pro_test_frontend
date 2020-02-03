@@ -47,14 +47,14 @@ const getCurrentUser = () => (dispatch, getState) => {
 };
 
 const logoutUser = () => dispatch => {
-  dispatch(authActions.logoutStart());
+  dispatch(authActions.logOutStart());
 
   logOut()
     .then(() => {
       unsetToken();
-      dispatch(authActions.logoutSuccess());
+      dispatch(authActions.logOutSuccess());
     })
-    .catch(error => dispatch(authActions.logoutFailure(error.message)));
+    .catch(err => dispatch(authActions.loginFailure(err.message)));
 };
 
 export default { registerUser, loginUser, getCurrentUser, logoutUser };
