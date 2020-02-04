@@ -1,4 +1,6 @@
 import { setToken, login, getUser, register } from '../../servises/api';
+import { toast } from 'react-toastify';
+import userErrMessages from '../../components/AuthForm/errors/userErrMessages';
 import authActions from './authActions';
 
 const registerUser = (credentials, path, dispatch) => {
@@ -11,6 +13,9 @@ const registerUser = (credentials, path, dispatch) => {
     })
     .catch(error => {
       dispatch(authActions.registerFailure(error));
+      toast.error(userErrMessages.EXISTING_USER, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     });
 };
 
@@ -24,6 +29,9 @@ const loginUser = credentials => dispatch => {
     })
     .catch(err => {
       dispatch(authActions.loginFailure(err));
+      toast.error(userErrMessages.WRONG_PASSWORD, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     });
 };
 
