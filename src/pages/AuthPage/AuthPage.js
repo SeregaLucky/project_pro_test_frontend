@@ -1,9 +1,11 @@
 import React from 'react';
+// import { compose } from 'redux';
 import { connect } from 'react-redux';
 import AuthForm from '../../components/AuthForm';
 import authActions from '../../redux/auth/authActions';
 import authOperations from '../../redux/auth/authOperations';
 import styles from './AuthPage.module.css';
+// import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 const AuthPage = ({ location, setGoogleToken, getCurrentUser }) => {
   if (location.search) {
@@ -40,3 +42,8 @@ const mapDispatchToProp = dispatch => ({
 });
 
 export default connect(null, mapDispatchToProp)(AuthPage);
+
+// export default compose(
+//   withAuthRedirect,
+//   connect(null, mapDispatchToProp),
+// )(AuthPage);

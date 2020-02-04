@@ -12,14 +12,19 @@ import authActions from './authActions';
 import globalActions from '../global/globalActions';
 
 const registerUser = (credentials, path, dispatch) => {
+  console.log(path);
+  console.log(credentials);
+
   dispatch(authActions.registerStart());
 
   register(path, credentials)
     .then(response => {
+      console.log('response', response);
       setToken(response.data.token);
       dispatch(authActions.registerSuccess(response.data));
     })
     .catch(error => {
+      console.log('error', error);
       dispatch(authActions.registerFailure(error));
       toast.error(userErrMessages.EXISTING_USER, {
         position: toast.POSITION.BOTTOM_RIGHT,
