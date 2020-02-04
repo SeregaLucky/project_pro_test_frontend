@@ -15,6 +15,7 @@ const DashboardForm = ({ question, questionNumber, questionQuantity }) => {
           choiceId={choice.id}
           questionNumber={questionNumber}
           questionQuantity={questionQuantity}
+          choosed={question.optionChoosed}
         />
       );
     }
@@ -27,6 +28,7 @@ const DashboardForm = ({ question, questionNumber, questionQuantity }) => {
         choiceId={choice.id}
         questionNumber={questionNumber}
         questionQuantity={questionQuantity}
+        choosed={question.optionChoosed}
       />
     );
   });

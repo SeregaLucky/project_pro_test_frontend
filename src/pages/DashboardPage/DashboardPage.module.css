@@ -52,6 +52,7 @@
   justify-content: center;
   align-items: center;
   border: 0;
+  color: #fff;
 }
 
 .btnContainer__forwardText,
@@ -60,24 +61,35 @@
 }
 
 .btnContainer__forward {
-  background-color: #fff;
+  background-color: var(--orange);
 }
-
 .btnContainer__back {
   background-color: var(--orange);
 }
 
-.btnContainer__arrow_forward {
-  width: 18px;
-  height: 18px;
-  fill: #000;
-}
-
+.btnContainer__arrow_forward,
 .btnContainer__arrow_back {
   width: 18px;
   height: 18px;
   fill: #fff;
+}
+
+.btnContainer__arrow_back {
   transform: rotate(180deg);
+}
+
+.btnContainer__forward[disabled],
+.btnContainer__back[disabled] {
+  background-color: #fff;
+  cursor: default;
+}
+
+.btnContainer__forward[disabled] .btnContainer__arrow_forward {
+  fill: #000;
+}
+
+.btnContainer__back[disabled] .btnContainer__arrow_back {
+  fill: #000;
 }
 
 @media screen and (min-width: 768px) {
@@ -108,16 +120,23 @@
     font-size: 12px;
     font-family: 'MontserratMedium', sans-serif;
     letter-spacing: 0.03em;
+    color: #fff;
   }
 
   .btnContainer__backText {
-    color: #fff;
     margin-left: 10px;
   }
 
   .btnContainer__forwardText {
-    color: #000;
     margin-right: 10px;
+  }
+
+  .btnContainer__forward[disabled] .btnContainer__forwardText {
+    color: #000;
+  }
+
+  .btnContainer__back[disabled] .btnContainer__backText {
+    color: #000;
   }
 }
 

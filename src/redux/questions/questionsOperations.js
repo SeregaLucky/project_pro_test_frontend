@@ -7,9 +7,15 @@ const checkAnswer = (
   choiceId,
   questionNumber,
   questionQuantity,
+  choosed,
 ) => dispatch => {
   //если это последний элемент НЕ используем increaseQuestionNumber чтобы не было ошибки
   if (questionNumber === questionQuantity) {
+    dispatch(questionActions.checkAnswer(examQuestionId, choiceId));
+    return;
+  }
+
+  if (choosed) {
     dispatch(questionActions.checkAnswer(examQuestionId, choiceId));
     return;
   }

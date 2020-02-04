@@ -11,6 +11,7 @@ const DashboardFormInput = ({
   choiceId,
   questionNumber,
   questionQuantity,
+  choosed,
 }) => {
   return (
     <label>
@@ -20,7 +21,13 @@ const DashboardFormInput = ({
         name="answer"
         checked={checked}
         onChange={() =>
-          checkAnswer(questionId, choiceId, questionNumber, questionQuantity)
+          checkAnswer(
+            questionId,
+            choiceId,
+            questionNumber,
+            questionQuantity,
+            choosed,
+          )
         }
       />
       <p className={styles.answer_item__text}>{choiceText}</p>
@@ -30,13 +37,20 @@ const DashboardFormInput = ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkAnswer: (examQuestionId, choiceId, questionNumber, questions) =>
+    checkAnswer: (
+      examQuestionId,
+      choiceId,
+      questionNumber,
+      questionQuantity,
+      choosed,
+    ) =>
       dispatch(
         questionsOperations.checkAnswer(
           examQuestionId,
           choiceId,
           questionNumber,
-          questions,
+          questionQuantity,
+          choosed,
         ),
       ),
   };
