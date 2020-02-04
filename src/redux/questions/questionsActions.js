@@ -38,11 +38,11 @@ const resultsSuccess = ({ answeredRight, answeredWrong }) => {
   };
 };
 
-const addToResult = result => {
+const addToResult = results => {
   return {
     type: types.ADD_TO_RESULT,
     payload: {
-      result,
+      answers: results,
     },
   };
 };
