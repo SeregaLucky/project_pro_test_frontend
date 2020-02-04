@@ -51,6 +51,10 @@ class App extends Component {
   }
 }
 
+// const mapStateToProps=state=>({
+// token
+// })
+
 const mapDispatchToProps = dispatch => ({
   getCurrentUser: () => dispatch(authOperations.getCurrentUser()),
 });
