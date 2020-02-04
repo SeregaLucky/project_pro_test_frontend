@@ -1,5 +1,28 @@
+import types from './questionsTypes';
 import resultsTypes from './questionsTypes';
 import questionsTypes from './questionsTypes';
+
+const increaseQuestionNumber = () => {
+  return {
+    type: types.INCREASE_QUESTION_NUMBER,
+  };
+};
+
+const decreaseQuestionNumber = () => {
+  return {
+    type: types.DECREASE_QUESTION_NUMBER,
+  };
+};
+
+const checkAnswer = (examQuestionId, choiceId) => {
+  return {
+    type: types.CHECK_ANSWER,
+    payload: {
+      examQuestionId,
+      choiceId,
+    },
+  };
+};
 
 const resultsStart = () => ({
   type: resultsTypes.RESULTS_START,
@@ -11,6 +34,36 @@ const resultsSuccess = ({ answeredRight, answeredWrong }) => {
     payload: {
       answeredRight,
       answeredWrong,
+    },
+  };
+};
+
+const addToResult = result => {
+  return {
+    type: types.ADD_TO_RESULT,
+    payload: {
+      result,
+    },
+  };
+};
+
+const sendResultStart = () => {
+  return {
+    type: types.SEND_RESULT_START,
+  };
+};
+
+const sendResultSuccess = () => {
+  return {
+    type: types.SEND_RESULT_SUCCESS,
+  };
+};
+
+const sendResultFailure = err => {
+  return {
+    type: types.SEND_RESULT_FAILURE,
+    payload: {
+      err,
     },
   };
 };
@@ -44,4 +97,11 @@ export default {
   postTestStart,
   postTestSuccess,
   postTestFailure,
+  increaseQuestionNumber,
+  decreaseQuestionNumber,
+  checkAnswer,
+  addToResult,
+  sendResultStart,
+  sendResultSuccess,
+  sendResultFailure,
 };

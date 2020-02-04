@@ -9,6 +9,7 @@ import styles from './MainTestButton.module.css';
 class MainTestButton extends Component {
   handleClick = () => {
     const { giveTest, idTest } = this.props;
+    // console.log(idTest);
     giveTest(idTest);
   };
 
