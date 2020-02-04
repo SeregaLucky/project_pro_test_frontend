@@ -9,11 +9,11 @@ import styles from './MainTestButton.module.css';
 class MainTestButton extends Component {
   handleClick = () => {
     const { giveTest, idTest } = this.props;
-    // console.log(idTest);
     giveTest(idTest);
   };
 
   render() {
+    const { text } = this.props;
     return (
       <li>
         <Link
@@ -21,7 +21,7 @@ class MainTestButton extends Component {
           to={routes.DASHBOARD_PAGE}
           className={styles.button}
         >
-          Теория тестирования
+          {text}
           <Arrow className={styles.arrow} width="25px" alt="arrow" />
         </Link>
       </li>

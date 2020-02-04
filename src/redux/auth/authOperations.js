@@ -1,7 +1,15 @@
-import { setToken, login, getUser, register } from '../../servises/api';
 import { toast } from 'react-toastify';
 import userErrMessages from '../../components/AuthForm/errors/userErrMessages';
+import {
+  setToken,
+  login,
+  getUser,
+  register,
+  logOut,
+  unsetToken,
+} from '../../servises/api';
 import authActions from './authActions';
+import globalActions from '../global/globalActions';
 
 const registerUser = (credentials, path, dispatch) => {
   dispatch(authActions.registerStart());
@@ -47,4 +55,16 @@ const getCurrentUser = () => (dispatch, getState) => {
     .catch(err => dispatch(authActions.getCurrentFailure(err)));
 };
 
-export default { registerUser, loginUser, getCurrentUser };
+const logoutUser = () => dispatch => {
+  dispatch(authActions.logOutStart());
+
+  logOut()
+    .then(() => {
+      unsetToken();
+      dispatch(authActions.logOutSuccess());
+      dispatch(globalActions.closeModal());
+    })
+    .catch(err => dispatch(authActions.loginFailure(err.message)));
+};
+
+export default { registerUser, loginUser, getCurrentUser, logoutUser };
