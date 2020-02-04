@@ -1,23 +1,59 @@
 import React from 'react';
+import questionsOperations from '../../redux/questions/questionsOperations';
+import { connect } from 'react-redux';
 import styles from './DashboardFormInput.module.css';
 
-const DashboardFormInput = ({ answers }) => {
+const DashboardFormInput = ({
+  checked,
+  choiceText,
+  checkAnswer,
+  questionId,
+  choiceId,
+  questionNumber,
+  questionQuantity,
+  choosed,
+}) => {
   return (
-    <>
-      {answers.map(answer => (
-        <li className={styles.answer_item}>
-          <label>
-            <input
-              className={styles.answer_item__input}
-              type="radio"
-              name="answer"
-            />
-            <p className={styles.answer_item__text}>{answer}</p>
-          </label>
-        </li>
-      ))}
-    </>
+    <label>
+      <input
+        className={styles.answer_item__input}
+        type="radio"
+        name="answer"
+        checked={checked}
+        onChange={() =>
+          checkAnswer(
+            questionId,
+            choiceId,
+            questionNumber,
+            questionQuantity,
+            choosed,
+          )
+        }
+      />
+      <p className={styles.answer_item__text}>{choiceText}</p>
+    </label>
   );
 };
 
-export default DashboardFormInput;
+const mapDispatchToProps = dispatch => {
+  return {
+    checkAnswer: (
+      examQuestionId,
+      choiceId,
+      questionNumber,
+      questionQuantity,
+      choosed,
+    ) =>
+      dispatch(
+        questionsOperations.checkAnswer(
+          examQuestionId,
+          choiceId,
+          questionNumber,
+          questionQuantity,
+          choosed,
+        ),
+      ),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(DashboardFormInput);
