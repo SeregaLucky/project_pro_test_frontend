@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import AuthForm from '../../components/AuthForm';
+import withAuthRedirect from '../../components/AuthForm/redirect';
 import authActions from '../../redux/auth/authActions';
 import authOperations from '../../redux/auth/authOperations';
 import styles from './AuthPage.module.css';
 
-const AuthPage = props => {
-  const { location, setToken } = props;
+const AuthPage = (location, setToken, getCurrentUser) => {
   if (location.search) {
     const token = new URLSearchParams(location.search).get('token');
     if (token) {
       setToken(token);
-      props.getCurrentUser(token);
+      getCurrentUser(token);
     }
   }
 
@@ -40,4 +41,7 @@ const mapDispatchToProp = dispatch => ({
   getCurrentUser: token => dispatch(authOperations.getCurrentUser(token)),
 });
 
-export default connect(null, mapDispatchToProp)(AuthPage);
+export default compose(
+  withAuthRedirect,
+  connect(null, mapDispatchToProp),
+)(AuthPage);

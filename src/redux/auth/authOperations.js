@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import userErrMessages from '../../components/AuthForm/errors/userErrMessages';
 import authActions from './authActions';
 
 axios.defaults.baseURL =
@@ -19,8 +21,11 @@ const registerUser = (credentials, path, dispatch) => {
       setToken(response.data.token);
       dispatch(authActions.registerSuccess(response.data));
     })
-    .catch(error => {
-      dispatch(authActions.registerFailure(error));
+    .catch(err => {
+      dispatch(authActions.registerFailure(err));
+      toast.error(userErrMessages.EXISTING_USER, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     });
 };
 
@@ -34,8 +39,10 @@ const loginUser = credentials => dispatch => {
       dispatch(authActions.loginSuccess(res.data));
     })
     .catch(err => {
-      // console.log(err.message);
       dispatch(authActions.loginFailure(err));
+      toast.error(userErrMessages.WRONG_PASSWORD, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     });
 };
 
