@@ -62,7 +62,8 @@ const AuthForm = ({ onLogin, values }) => {
           </button>
         </div>
       </Form>
-      {<Notifications />}
+
+      <Notifications />
     </div>
   );
 };
