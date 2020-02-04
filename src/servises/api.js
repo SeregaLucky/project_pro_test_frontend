@@ -7,7 +7,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
 
 const sendResultRequest = (result, examId) => {
-  return axios.put(`${examId}`, result);
+  return axios.put(`/exams/${examId}/questions`, result);
 };
 
 export const setToken = token => {

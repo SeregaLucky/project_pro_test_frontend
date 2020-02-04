@@ -99,10 +99,10 @@ const resultsReducer = (state = null, { type, payload }) => {
   }
 };
 
-const resultTestReduсer = (state = [], { type, payload }) => {
+const resultTestReduсer = (state = null, { type, payload }) => {
   switch (type) {
     case questionsTypes.ADD_TO_RESULT:
-      return [...state, payload];
+      return payload;
     default:
       return state;
   }
