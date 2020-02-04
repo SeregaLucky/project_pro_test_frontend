@@ -76,4 +76,4 @@ export default compose(
   withAuthRedirect,
   connect(null, mapDispatchToProps),
   formikEnhancer,
-)(formikEnhancer(AuthForm));
+)(AuthForm);
