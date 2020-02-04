@@ -11,7 +11,6 @@ const formikEnhancer = withFormik({
   }),
 
   handleSubmit: (values, { setSubmitting, props }) => {
-    console.log(values);
     const name = values.email.split('@')[0];
 
     authOperations.registerUser(
@@ -20,7 +19,7 @@ const formikEnhancer = withFormik({
       props.dispatch,
     );
 
-    setSubmitting(false);
+    // setSubmitting(false);
   },
 
   displayName: 'BasicForm',

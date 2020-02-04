@@ -68,7 +68,6 @@ const AuthForm = ({ onLogin, values }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  // onRegister: values => dispatch(authOperations.registerUser(values)),
   onLogin: values => dispatch(authOperations.loginUser(values)),
 });
 
@@ -76,4 +75,4 @@ export default compose(
   withAuthRedirect,
   connect(null, mapDispatchToProps),
   formikEnhancer,
-)(AuthForm);
+)(formikEnhancer(AuthForm));
