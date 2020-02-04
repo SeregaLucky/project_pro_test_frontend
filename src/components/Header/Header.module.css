@@ -95,7 +95,7 @@
   .header {
     align-items: stretch;
     font-size: 12px;
-    display: flex;
+    position: static;
   }
 
   .NavAndUserContainer {

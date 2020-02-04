@@ -4,19 +4,25 @@ import authOperations from '../../../redux/auth/authOperations';
 
 const formikEnhancer = withFormik({
   validationSchema: schema,
+
   mapPropsToValues: ({ email, password }) => ({
     email: email || '',
     password: password || '',
   }),
-  handleSubmit: async (values, { setSubmitting, props }) => {
+
+  handleSubmit: (values, { setSubmitting, props }) => {
     const name = values.email.split('@')[0];
+
     authOperations.registerUser(
       { name, ...values },
       '/auth/sign-up',
       props.dispatch,
     );
-    setSubmitting(false);
+
+    // setSubmitting(false);
   },
+
   displayName: 'BasicForm',
 });
+
 export default formikEnhancer;

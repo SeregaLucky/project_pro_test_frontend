@@ -5,6 +5,7 @@ import routes from '../routes';
 import authSelectors from '../redux/auth/authSelectors';
 
 const PrivateRoute = ({ component: Component, auth, ...restProps }) => {
+  console.log(auth);
   return (
     <Route
       {...restProps}
@@ -19,8 +20,8 @@ const PrivateRoute = ({ component: Component, auth, ...restProps }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return { auth: authSelectors.isAuthenticated(state) };
-};
+const mapStateToProps = state => ({
+  auth: authSelectors.isAuthenticated(state),
+});
 
 export default connect(mapStateToProps)(PrivateRoute);

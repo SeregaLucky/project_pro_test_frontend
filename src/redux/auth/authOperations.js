@@ -44,9 +44,11 @@ const loginUser = credentials => dispatch => {
 
 const getCurrentUser = () => (dispatch, getState) => {
   const { token } = getState().auth;
+
   if (!token) return;
   setToken(token);
   dispatch(authActions.getCurrentStart());
+
   getUser()
     .then(response => {
       dispatch(authActions.getCurrentSuccess(response.data.user));
