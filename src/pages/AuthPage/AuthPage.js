@@ -5,13 +5,12 @@ import authActions from '../../redux/auth/authActions';
 import authOperations from '../../redux/auth/authOperations';
 import styles from './AuthPage.module.css';
 
-const AuthPage = props => {
-  const { location, setGoogleToken } = props;
+const AuthPage = ({ location, setGoogleToken, getCurrentUser }) => {
   if (location.search) {
     const token = new URLSearchParams(location.search).get('token');
     if (token) {
       setGoogleToken(token);
-      props.getCurrentUser(token);
+      getCurrentUser(token);
     }
   }
 

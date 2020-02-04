@@ -14,19 +14,20 @@
   line-height: 1.7;
 }
 
-.googleSignUpButton > div {
-  text-align: center;
+.googleBtnContentWraper {
   letter-spacing: 0.03em;
+  display: flex;
+  justify-content: center;
 }
 
-.googleSignUpButton > div > span {
+.googleBtnContentWraper > span {
   font-family: 'MontserratBold', sans-serif;
   letter-spacing: 0.03em;
   vertical-align: 4px;
   font-size: 14px;
 }
 
-.googleSignUpButton > div > img {
+.googleBtnContentWraper > img {
   width: 18px;
   margin: 0 12px 0 0;
   height: auto;
@@ -125,6 +126,7 @@
 @media (min-width: 1280px) {
   .formWrapper {
     width: 506px;
-    padding: 50px 40px 50px 40px;
+    padding: 50px 43px 50px 43px;
+    margin: 0;
   }
 }

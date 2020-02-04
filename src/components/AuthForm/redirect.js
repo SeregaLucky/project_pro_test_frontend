@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import authSelectors from '../../redux/auth/authSelectors';
 
-const withAuthRedirect = Component => {
+const withRedirect = Component => {
   function withAuthRedirects({ isAuthenticated, ...restProps }) {
     return isAuthenticated ? <Redirect to="/" /> : <Component {...restProps} />;
   }
@@ -14,4 +14,4 @@ const withAuthRedirect = Component => {
   return connect(mstp)(withAuthRedirects);
 };
 
-export default withAuthRedirect;
+export default withRedirect;
