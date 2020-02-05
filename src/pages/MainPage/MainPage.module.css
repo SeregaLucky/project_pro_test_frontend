@@ -1,7 +1,7 @@
 .mainPage {
   background-color: #f4f6fb;
   padding-top: 95px;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
 }
 
 .container {
@@ -42,9 +42,8 @@
   font-family: 'MontserratLight', sans-serif;
 }
 
-.mainPage_buttonItems {
-  display: flex;
-  flex-direction: column;
+.buttonBlue {
+  background-color: var(--dark-blue);
 }
 
 @media screen and (min-width: 768px) {
@@ -53,7 +52,7 @@
   }
 
   .mainPage {
-    padding: 95px 30px 100px 30px;
+    padding: 100px 0;
   }
 
   .mainPage_quote,
@@ -95,11 +94,10 @@
 
   .mainPage_buttons {
     width: 820px;
-    height: 225px;
   }
 
   .mainPage_buttonItems {
-    flex-direction: row;
+    display: flex;
     align-content: space-between;
   }
 }

@@ -1,15 +1,27 @@
 .button {
-  /* width: 280px; */
   font-size: 24px;
   font-family: 'MontserratExtraBold', sans-serif;
   color: var(--background-color);
-  background-color: var(--orange);
-  padding: 55px 45px 35px 45px;
+  padding: 55px 35px 35px 35px;
   display: block;
   line-height: 1.2;
   text-align: center;
   letter-spacing: 0.03em;
-  margin-bottom: 20px;
+}
+
+.buttonOrange {
+  composes: button;
+  background-color: var(--orange);
+}
+
+.buttonBlue {
+  composes: button;
+  background-color: var(--dark-blue);
+}
+
+.button:hover {
+  transition: 0.2s;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25), 0 10px 20px rgba(0, 0, 0, 0.22);
 }
 
 .arrow {
@@ -17,11 +29,23 @@
   padding-top: 10px;
 }
 
+.listButton:not(:last-child) {
+  margin-bottom: 20px;
+}
+
 @media screen and (min-width: 768px) {
   .button {
-    width: 396px;
-    padding: 65px 0 45px 0;
+    width: 400px;
+    padding: 65px 50px;
     font-size: 30px;
+  }
+
+  .arrow {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .listButton:not(:last-child) {
     margin-bottom: 30px;
   }
 }
@@ -29,6 +53,10 @@
 @media screen and (min-width: 1280px) {
   .button {
     width: 400px;
+  }
+
+  .listButton:not(:last-child) {
+    margin-bottom: 0;
     margin-right: 30px;
   }
 }

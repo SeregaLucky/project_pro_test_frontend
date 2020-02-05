@@ -1,99 +1,77 @@
 .dashboardform {
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   align-items: center;
   width: 280px;
-  /* height: auto; */
-  background-color: var(--background-color);
   box-shadow: 0 8px 24px 0 rgba(29, 29, 27, 0.1);
-  visibility: 36px;
-  padding: 20px;
+  padding: 36px 14px;
+  background-color: #fff;
 }
 
 .dashboardform__counter {
-  display: block;
   font-size: 10px;
   font-family: 'MontserratLight', sans-serif;
   color: #555;
   text-transform: uppercase;
   text-align: center;
-  width: auto;
   letter-spacing: 0.03em;
   margin-bottom: 20px;
 }
 
 .dashboardform__counter span {
-  font-size: 10px;
-  font-family: 'MontserratLight', sans-serif;
+  font-family: 'MontserratBold', sans-serif;
   color: var(--orange);
-  margin-left: 6px;
 }
 
 .dashboardform__question {
-  display: block;
-  font-size: 18px;
-  font-family: 'MontserratExtraBold', sans-serif;
+  font-size: 12px;
+  font-family: 'MontserratBold', sans-serif;
   color: var(--dark-blue);
   text-align: center;
-  margin: 0 0 22px 0;
+  margin: 0 0 54px 0;
   letter-spacing: 0.03em;
-  line-height: 1.5;
+  line-height: 18px;
   overflow-wrap: break-word;
+
+  position: relative;
 }
 
-.dashboardform__hr {
-  display: block;
-  background-color: var(--background-color);
-  width: 145px;
+.dashboardform__question::before {
+  content: '';
+  position: absolute;
+  width: 146px;
   height: 1px;
-  opacity: 0.502;
-  margin: 0 auto;
+  background-color: #ced2d1;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 @media (min-width: 768px) {
   .dashboardform {
     width: 560px;
+    padding: 48px 38px 46px 56px;
   }
 
   .dashboardform__counter {
     font-size: 13px;
-    /* height: 13px; */
+    line-height: 23px;
     letter-spacing: 0.03em;
-  }
-
-  .dashboardform__counter span {
-    font-size: 13px;
-    margin-left: 8px;
   }
 
   .dashboardform__question {
     font-size: 22px;
-    margin: 21px 0;
+    line-height: 33px;
+    margin: 0 0 60px 0;
   }
 
-  .dashboardform__hr {
-    width: 322px;
-    margin: 0 auto;
-  }
-
-  .dashboardform__answers {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 562px;
-    height: auto;
+  .dashboardform__question::before {
+    width: 320px;
   }
 }
 
 @media (min-width: 1280px) {
   .dashboardform {
     width: 820px;
-  }
-
-  .dashboardform__answers {
-    /* margin: 33px 170px 46px 92px; */
-  }
-
-  .answer_item {
-    /* padding-bottom: 22px; */
+    padding: 48px 46px 46px 92px;
   }
 }

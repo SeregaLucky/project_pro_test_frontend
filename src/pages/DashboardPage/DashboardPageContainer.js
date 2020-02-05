@@ -10,6 +10,7 @@ const mapStateToProps = state => {
     questions: questionsSelectors.getQuestions(state),
     result: questionsSelectors.getResult(state),
     err: questionsSelectors.getErr(state),
+    isResultSended: questionsSelectors.getIsResultSended(state),
   };
 };
 

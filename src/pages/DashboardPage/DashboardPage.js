@@ -20,11 +20,9 @@ class DashboardPage extends Component {
       sendResult,
     } = this.props;
     const { isDisabledBackBtn, isDisabledForwardBtn } = this.state;
-    console.log(result && result.answers);
-    console.log(questions);
-    // если последний элемент выбран => со стейта забираем значения=>записываем в result
 
-    if (questions[questions.length - 1].optionChoosed) {
+    // если последний элемент выбран => со стейта забираем значения=>записываем в result
+    if (questions[questions.length - 1].optionChoosed && !result) {
       addToResult(questions);
     }
 
@@ -35,7 +33,7 @@ class DashboardPage extends Component {
       result.answers.length === questions.length
     ) {
       sendResult(result, questions[0].examId);
-      console.log(result);
+      // console.log(result);
     }
 
     // Disable по кнопкам двойная проверка чтобы не было зацикливания
@@ -71,17 +69,16 @@ class DashboardPage extends Component {
       questions,
       questionNumber,
       result,
+      isResultSended,
     } = this.props;
     const { isDisabledBackBtn, isDisabledForwardBtn } = this.state;
 
     return (
-      // если массив записался в result перенаправляем на страницу результата
+      // если приходит ответ со статусом 204 ==>redirect
 
       questions && (
         <>
-          {result &&
-          result.answers &&
-          result.answers.length === questions.length ? (
+          {isResultSended && isResultSended.status === 204 ? (
             <Redirect to="/result" />
           ) : null}
           <div className={styles.dashboardPage}>
@@ -92,6 +89,7 @@ class DashboardPage extends Component {
                 </h2>
                 <Button lable={'Завершить тест'} />
               </div>
+
               {/* <div className={styles.dashboardForm}> */}
               <DashboardForm
                 question={questions[questionNumber - 1]}
@@ -99,6 +97,7 @@ class DashboardPage extends Component {
                 questionQuantity={questions.length}
                 result={result}
               />
+
               {/* </div> */}
               <div className={styles.btnContainer}>
                 <button
@@ -112,6 +111,7 @@ class DashboardPage extends Component {
                     Предыдущий вопрос
                   </span>
                 </button>
+
                 <button
                   className={styles.btnContainer__forward}
                   type="button"
