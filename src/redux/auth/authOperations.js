@@ -9,6 +9,7 @@ import {
   unsetToken,
 } from '../../servises/api';
 import authActions from './authActions';
+import globalActions from '../global/globalActions';
 
 const registerUser = (credentials, path, dispatch) => {
   dispatch(authActions.registerStart());
@@ -57,14 +58,15 @@ const getCurrentUser = () => (dispatch, getState) => {
 };
 
 const logoutUser = () => dispatch => {
-  dispatch(authActions.logoutStart());
+  dispatch(authActions.logOutStart());
 
   logOut()
     .then(() => {
       unsetToken();
-      dispatch(authActions.logoutSuccess());
+      dispatch(authActions.logOutSuccess());
+      dispatch(globalActions.closeModal());
     })
-    .catch(error => dispatch(authActions.logoutFailure(error.message)));
+    .catch(error => dispatch(authActions.logOutFailure(error.message)));
 };
 
 export default { registerUser, loginUser, getCurrentUser, logoutUser };

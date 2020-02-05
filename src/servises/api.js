@@ -37,7 +37,7 @@ const getResultsById = examId => {
 export const register = (path, credentials) => axios.post(path, credentials);
 export const login = credentials => axios.post('/auth/sign-in', credentials);
 export const getUser = () => axios.get('/users/current');
-export const logOut = () => axios.delete('/users/current');
+export const logOut = () => axios.delete('/auth/sign-out');
 
 export const postAllTests = idTest => {
   return axios
