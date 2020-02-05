@@ -6,9 +6,8 @@ import resultsOperations from '../../redux/questions/questionsOperations.js';
 
 class ResultPageContainer extends Component {
   componentDidMount() {
-    const examId = '5e2ee3be933b4f3b74d81d92';
     const { getResults } = this.props;
-    getResults(examId);
+    getResults();
   }
   render() {
     const { result } = this.props;
@@ -29,7 +28,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getResults: examId => dispatch(resultsOperations.getResultsById(examId)),
+  getResults: () => dispatch(resultsOperations.getResultsById()),
 });
 
 export default connect(

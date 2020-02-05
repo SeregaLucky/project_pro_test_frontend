@@ -35,7 +35,6 @@ export const login = credentials => axios.post('/auth/sign-in', credentials);
 export const getUser = () => axios.get('/users/current');
 
 export const postAllTests = idTest => {
-  console.log(idTest);
   return axios
     .post(`/exams/start?testId=${idTest}`)
     .then(response => response.data)

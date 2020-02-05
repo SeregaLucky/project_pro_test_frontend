@@ -11,7 +11,9 @@ const getResultsStatus = () => dispatch => {
     .catch(error => dispatch(resultsActions.resultsFailure(error)));
 };
 
-const getResultsById = examId => dispatch => {
+const getResultsById = () => (dispatch, getState) => {
+  const examId = getState().questions.questions.idTestBlock;
+  console.log(getState());
   dispatch(resultsActions.resultsStart());
   api
     .getResultsById(examId)
