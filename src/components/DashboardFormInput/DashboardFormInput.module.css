@@ -1,9 +1,17 @@
-.answer_item {
+/* .answer_item {
   margin-bottom: 20px;
 }
 
 .answer_item:last-child {
   margin-bottom: 0;
+} */
+
+.labelAnswer {
+  display: block;
+}
+
+.labelAnswer:not(:last-child) {
+  margin-bottom: 20px;
 }
 
 .answer_item__input {
@@ -30,7 +38,7 @@
   height: 16px;
   border: 1px #000107 solid;
   border-radius: 100%;
-  background: var(--background-color);
+  background: #fff;
 }
 
 .answer_item__text:after {

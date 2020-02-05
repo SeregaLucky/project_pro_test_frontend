@@ -14,7 +14,7 @@ const DashboardFormInput = ({
   choosed,
 }) => {
   return (
-    <label>
+    <label className={styles.labelAnswer}>
       <input
         className={styles.answer_item__input}
         type="radio"
