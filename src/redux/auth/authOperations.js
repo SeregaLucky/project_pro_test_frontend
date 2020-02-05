@@ -1,4 +1,13 @@
-import { setToken, login, getUser, register } from '../../servises/api';
+import { toast } from 'react-toastify';
+import userErrMessages from '../../components/AuthForm/errors/userErrMessages';
+import {
+  setToken,
+  login,
+  getUser,
+  register,
+  logOut,
+  unsetToken,
+} from '../../servises/api';
 import authActions from './authActions';
 
 const registerUser = (credentials, path, dispatch) => {
@@ -11,6 +20,9 @@ const registerUser = (credentials, path, dispatch) => {
     })
     .catch(error => {
       dispatch(authActions.registerFailure(error));
+      toast.error(userErrMessages.EXISTING_USER, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     });
 };
 
@@ -24,14 +36,19 @@ const loginUser = credentials => dispatch => {
     })
     .catch(err => {
       dispatch(authActions.loginFailure(err));
+      toast.error(userErrMessages.WRONG_PASSWORD, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     });
 };
 
 const getCurrentUser = () => (dispatch, getState) => {
   const { token } = getState().auth;
+
   if (!token) return;
   setToken(token);
   dispatch(authActions.getCurrentStart());
+
   getUser()
     .then(response => {
       dispatch(authActions.getCurrentSuccess(response.data.user));
@@ -39,4 +56,15 @@ const getCurrentUser = () => (dispatch, getState) => {
     .catch(err => dispatch(authActions.getCurrentFailure(err)));
 };
 
-export default { registerUser, loginUser, getCurrentUser };
+const logoutUser = () => dispatch => {
+  dispatch(authActions.logoutStart());
+
+  logOut()
+    .then(() => {
+      unsetToken();
+      dispatch(authActions.logoutSuccess());
+    })
+    .catch(error => dispatch(authActions.logoutFailure(error.message)));
+};
+
+export default { registerUser, loginUser, getCurrentUser, logoutUser };

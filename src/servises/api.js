@@ -6,6 +6,10 @@ axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
 
+const sendResultRequest = (result, examId) => {
+  return axios.put(`/exams/${examId}/questions`, result);
+};
+
 export const setToken = token => {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
@@ -33,6 +37,7 @@ const getResultsById = examId => {
 export const register = (path, credentials) => axios.post(path, credentials);
 export const login = credentials => axios.post('/auth/sign-in', credentials);
 export const getUser = () => axios.get('/users/current');
+export const logOut = () => axios.delete('/users/current');
 
 export const postAllTests = idTest => {
   return axios
@@ -41,4 +46,4 @@ export const postAllTests = idTest => {
     .catch(error => error);
 };
 
-export default { getResultsStatus, getResultsById };
+export default { sendResultRequest, getResultsStatus, getResultsById };

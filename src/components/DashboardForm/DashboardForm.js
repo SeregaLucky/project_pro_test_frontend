@@ -1,38 +1,45 @@
 import React from 'react';
 import styles from './DashboardForm.module.css';
+import DashboardFormInput from '../DashboardFormInput/DashboardFormInput';
 
-const answerQuestions = [
-  'Это тестирование основного функционала приложения',
-  'Тестирование отдельной функции',
-  'Тестирование требований',
-  'Тесты на уже протестированных участках приложения',
-  'Один из видов тестирования, направленного на проверку соответствий функциональных требовний ПО к его реальным характеристикам',
-  'Не знаю',
-];
-
-const question = ['Что такое регрессионное тестирование?'];
-const DashboardForm = () => {
-  const itemsAnswersQuestions = answerQuestions.map(answer => {
+const DashboardForm = ({ question, questionNumber, questionQuantity }) => {
+  const itemsAnswersQuestions = question.choices.map(choice => {
+    // ставим условия для того чтобы когда user вернется назад опции которые были выбраны стояли выбраными
+    if (question.optionChoosed && choice.id === question.optionChoosed) {
+      return (
+        <DashboardFormInput
+          key={choice.id}
+          checked={true}
+          choiceText={choice.title}
+          questionId={question.id}
+          choiceId={choice.id}
+          questionNumber={questionNumber}
+          questionQuantity={questionQuantity}
+          choosed={question.optionChoosed}
+        />
+      );
+    }
     return (
-      <li className={styles.answer_item}>
-        <label>
-          <input
-            className={styles.answer_item__input}
-            type="radio"
-            name="answer"
-          />
-          <p className={styles.answer_item__text}>{answer}</p>
-        </label>
-      </li>
+      <DashboardFormInput
+        key={choice.id}
+        checked={false}
+        choiceText={choice.title}
+        questionId={question.id}
+        choiceId={choice.id}
+        questionNumber={questionNumber}
+        questionQuantity={questionQuantity}
+        choosed={question.optionChoosed}
+      />
     );
   });
-
   return (
     <div className={styles.dashboardform}>
+      {/* <h2>DashboardForm</h2> */}
       <p className={styles.dashboardform__counter}>
-        вопрос <span>{3}</span> / 12 {}
+        {' '}
+        вопрос <span>{questionNumber}</span> / {questionQuantity} {}{' '}
       </p>
-      <h2 className={styles.dashboardform__question}>{question}</h2>
+      <h2 className={styles.dashboardform__question}>{question.question}</h2>
       <i className={styles.dashboardform__hr}></i>
       <ul className={styles.dashboardform__answers}>{itemsAnswersQuestions}</ul>
     </div>

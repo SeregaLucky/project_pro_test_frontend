@@ -10,8 +10,10 @@ const userReducer = (
     case actionTypes.LOGIN_SUCCESS:
     case actionTypes.GET_CURRENT_SUCCESS:
       return payload.user;
+
     case actionTypes.SET_USER_NAME_TO_STORE:
       return { ...state, name: payload.name };
+
     case actionTypes.LOGOUT_SUCCESS:
       return { name: null, email: null, id: '', createdAt: '' };
 
@@ -35,13 +37,17 @@ const tokenReducer = (state = null, { type, payload }) => {
   }
 };
 
-const isAuthReducer = (state = false, { type, payload }) => {
+const isAuthReducer = (state = false, { type }) => {
   switch (type) {
     case actionTypes.REGISTER_SUCCESS:
     case actionTypes.LOGIN_SUCCESS:
-    case actionTypes.GET_CURRENT_SUCCESS:
     case actionTypes.SET_TOKEN_IN_STORE:
+    case actionTypes.GET_CURRENT_SUCCESS:
       return true;
+
+    case actionTypes.LOGOUT_SUCCESS:
+      return false;
+
     default:
       return state;
   }
@@ -54,6 +60,7 @@ const errorReducer = (state = null, { type, payload }) => {
     case actionTypes.LOGIN_FAILURE:
     case actionTypes.GET_CURRENT_FAILURE:
       return payload.error;
+
     default:
       return state;
   }

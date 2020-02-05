@@ -2,9 +2,10 @@ import React from 'react';
 import T from 'prop-types';
 import styles from './HeaderUserInfo.module.css';
 
-const HeaderUserInfo = ({ isMobile, name = 'Дмитрий' }) => {
-  const letter = name.slice(0, 1);
-  const shortName = name.slice(0, 10);
+const HeaderUserInfo = ({ isMobile, name }) => {
+  const letter = name.slice(0, 1).toUpperCase();
+
+  const shortName = `${letter}${name.split(' ')[0].slice(1, 10)}`;
 
   return isMobile === true ? (
     <div className={styles.HeaderUserContainer}>
