@@ -1,13 +1,7 @@
 import React from 'react';
 import MainTestButton from '../../components/MainTestButton/MainTestButton';
 import listQuotes from './listQuotes';
-import styled from 'styled-components';
 import styles from './MainPage.module.css';
-
-// const StyledButton = styled.li`
-// // background-color: #121d2e;
-// // ${props => props.customStyle}
-// // `;
 
 const ID_NEED_TEST = {
   id1: '5e29edc351e2cd3a659a8e4e',
@@ -15,10 +9,12 @@ const ID_NEED_TEST = {
 };
 
 const TEXT_BUTTON = ['Техническая подготовка QA', 'Теория тестирования'];
+const BUTTON_COLOR = ['buttonOrange', 'buttonBlue'];
 
 const MainPage = () => {
   const randomNumber = Math.floor(Math.random() * listQuotes.length);
   const { quote, author, description } = listQuotes[randomNumber];
+
   return (
     <section className={styles.mainPage}>
       <div className={styles.container}>
@@ -28,8 +24,16 @@ const MainPage = () => {
 
         <div className={styles.mainPage_buttons}>
           <ul className={styles.mainPage_buttonItems}>
-            <MainTestButton idTest={ID_NEED_TEST.id1} text={TEXT_BUTTON[0]} />
-            <MainTestButton idTest={ID_NEED_TEST.id2} text={TEXT_BUTTON[1]} />
+            <MainTestButton
+              idTest={ID_NEED_TEST.id1}
+              text={TEXT_BUTTON[0]}
+              bg={BUTTON_COLOR[1]}
+            />
+            <MainTestButton
+              idTest={ID_NEED_TEST.id2}
+              text={TEXT_BUTTON[1]}
+              bg={BUTTON_COLOR[0]}
+            />
           </ul>
         </div>
       </div>

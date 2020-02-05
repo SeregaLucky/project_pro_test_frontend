@@ -13,13 +13,15 @@ class MainTestButton extends Component {
   };
 
   render() {
-    const { text } = this.props;
+    const { text, bg } = this.props;
     return (
       <li className={styles.listButton}>
         <Link
           onClick={this.handleClick}
           to={routes.DASHBOARD_PAGE}
-          className={styles.button}
+          className={
+            bg === 'buttonOrange' ? styles.buttonOrange : styles.buttonBlue
+          }
         >
           {text}
           <Arrow className={styles.arrow} width="25px" alt="arrow" />
