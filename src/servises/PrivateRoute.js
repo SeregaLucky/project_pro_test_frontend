@@ -5,7 +5,6 @@ import routes from '../routes';
 import authSelectors from '../redux/auth/authSelectors';
 
 const PrivateRoute = ({ component: Component, auth, ...restProps }) => {
-  console.log(auth);
   return (
     <Route
       {...restProps}

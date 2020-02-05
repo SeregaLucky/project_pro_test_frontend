@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import routes from '../../routes';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import routes from '../../routes';
 import { ReactComponent as Arrow } from '../../assets/icons/svg/arrow.svg';
 import questionsOperations from '../../redux/questions/questionsOperations';
 import styles from './MainTestButton.module.css';
@@ -34,4 +34,5 @@ class MainTestButton extends Component {
 const mapDispatchToProps = dispatch => ({
   giveTest: idTest => dispatch(questionsOperations.startTest(idTest)),
 });
+
 export default connect(null, mapDispatchToProps)(MainTestButton);
