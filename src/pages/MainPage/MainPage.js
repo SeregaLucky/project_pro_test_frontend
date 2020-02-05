@@ -21,7 +21,6 @@ const MainPage = () => {
         <h2 className={styles.mainPage_quote}>{quote}</h2>
         <h3 className={styles.mainPage_author}>{author}</h3>
         <p className={styles.mainPage_descr}>{description}</p>
-
         <div className={styles.mainPage_buttons}>
           <ul className={styles.mainPage_buttonItems}>
             <MainTestButton

@@ -7,4 +7,4 @@ const closeModal = ({ isModalLogoutOpen }) => ({
   payload: { isModalLogoutOpen },
 });
 
-export default {openModal, closeModal };
+export default { openModal, closeModal };

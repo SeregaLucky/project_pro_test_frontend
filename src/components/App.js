@@ -1,37 +1,62 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import routes from '../routes';
+import authOperations from '../redux/auth/authOperations';
 /* import - components and pages */
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import AuthPage from '../pages/AuthPage/AuthPage';
 import MainPage from '../pages/MainPage/MainPage';
-import DashboardPage from '../pages/DashboardPage/DashboardPage';
-import ResultPage from '../pages/ResultPage';
+import DashboardPage from '../pages/DashboardPage/DashboardPageContainer';
+import ResultPage from '../pages/ResultPage/ResultPage';
 import MaterialsPage from '../pages/MaterialsPage/MaterialsPage';
 import ContactsPage from '../pages/ContactsPage/ContactsPage';
 import Loader from './Loader/Loader';
+import PrivateRoute from '../servises/PrivateRoute';
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Loader />
-      <Header />
+class App extends Component {
+  componentDidMount() {
+    const { getCurrentUser } = this.props;
+    getCurrentUser();
+  }
 
-      <Switch>
-        <Route path={routes.AUTH_PAGE} component={AuthPage} />
-        <Route path={routes.MAIN_PAGE} component={MainPage} />
-        <Route exact path={routes.DASHBOARD_PAGE} component={DashboardPage} />
-        <Route path={routes.RESULT_PAGE} component={ResultPage} />
-        <Route path={routes.MATERIALS_PAGE} component={MaterialsPage} />
-        <Route path={routes.CONTACTS_PAGE} component={ContactsPage} />
+  render() {
+    return (
+      <BrowserRouter>
+        <Loader />
+        <Header />
 
-        <Redirect to={routes.MAIN_PAGE} />
-      </Switch>
+        <Switch>
+          <Route path={routes.AUTH_PAGE} component={AuthPage} />
+          <PrivateRoute
+            exact
+            path={routes.DASHBOARD_PAGE}
+            component={DashboardPage}
+          />
+          <PrivateRoute path={routes.RESULT_PAGE} component={ResultPage} />
+          <PrivateRoute
+            path={routes.MATERIALS_PAGE}
+            component={MaterialsPage}
+          />
+          <PrivateRoute path={routes.MAIN_PAGE} component={MainPage} />
+          <Route path={routes.CONTACTS_PAGE} component={ContactsPage} />
 
-      <Footer />
-    </BrowserRouter>
-  );
-};
+          <Redirect to={routes.MAIN_PAGE} />
+        </Switch>
 
-export default App;
+        <Footer />
+      </BrowserRouter>
+    );
+  }
+}
+
+// const mapStateToProps=state=>({
+// token
+// })
+
+const mapDispatchToProps = dispatch => ({
+  getCurrentUser: () => dispatch(authOperations.getCurrentUser()),
+});
+
+export default connect(null, mapDispatchToProps)(App);

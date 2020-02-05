@@ -1,2 +1,3 @@
 const isAuthenticated = state => state.auth.isAuth;
-export default { isAuthenticated };
+const userName = state => state.auth.user.name;
+export default { isAuthenticated, userName };
