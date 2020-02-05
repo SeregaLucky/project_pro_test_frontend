@@ -86,6 +86,17 @@ const questionNumberReducer = (state = 1, { type }) => {
   }
 };
 
+const finishedReducer = (state = false, { type, payload }) => {
+  switch (type) {
+    case resultsTypes.RESULTS_FINISHED:
+      return {
+        state: true,
+      };
+    default:
+      return state;
+  }
+};
+
 const resultsReducer = (state = null, { type, payload }) => {
   switch (type) {
     case resultsTypes.RESULTS_SUCCESS:
@@ -141,6 +152,7 @@ export default combineReducers({
   resultTest: resultTestReduсer,
   isResultSended: isResultSendedReducer,
   err: errorReducer,
+  finished: finishedReducer,
   result: resultsReducer,
   error: error,
 });

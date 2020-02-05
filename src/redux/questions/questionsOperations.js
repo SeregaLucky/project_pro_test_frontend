@@ -45,6 +45,14 @@ const sendResult = (result, examId) => dispatch => {
     .catch(err => dispatch(questionActions.sendResultFailure(err)));
 };
 
+const getResultsFinished = dispatch => {
+  dispatch(questionActions.resultsFinished());
+  api
+    .getResultsStatus()
+    .then(data => dispatch(questionActions.resultsSuccess(data)))
+    .catch(error => dispatch(questionActions.resultsFailure(error)));
+};
+
 const getResultsStatus = () => dispatch => {
   dispatch(questionActions.resultsStart());
   api
@@ -72,6 +80,7 @@ export default {
   checkAnswer,
   addToResult,
   sendResult,
+  getResultsFinished,
   getResultsStatus,
   getResultsById,
   startTest,

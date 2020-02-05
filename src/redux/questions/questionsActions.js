@@ -24,11 +24,17 @@ const checkAnswer = (examQuestionId, choiceId) => {
   };
 };
 
+const resultsFinished = () => ({
+  type: resultsTypes.RESULTS_FINISHED,
+});
+
 const resultsStart = () => ({
   type: resultsTypes.RESULTS_START,
 });
 
 const resultsSuccess = ({ answeredRight, answeredWrong }) => {
+  console.log(answeredRight);
+  console.log(answeredWrong);
   return {
     type: resultsTypes.RESULTS_SUCCESS,
     payload: {
@@ -95,6 +101,7 @@ const postTestFailure = error => ({
 });
 
 export default {
+  resultsFinished,
   resultsStart,
   resultsSuccess,
   resultsFailure,

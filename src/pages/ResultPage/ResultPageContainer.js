@@ -8,7 +8,13 @@ class ResultPageContainer extends Component {
   componentDidMount() {
     const { getResults } = this.props;
     getResults();
+    // getFinishedresults
   }
+
+  componentDidUpdate() {
+    // getResults(); по условию что есть finished = true
+  }
+
   render() {
     const { result } = this.props;
 
