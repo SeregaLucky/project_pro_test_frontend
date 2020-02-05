@@ -6,16 +6,16 @@ axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
 
-const sendResultRequest = (result, examId) => {
-  return axios.put(`/exams/${examId}/questions`, result);
-};
-
 export const setToken = token => {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
 export const unsetToken = () => {
   axios.defaults.headers.common['Authorization'] = '';
+};
+
+const sendResultRequest = (result, examId) => {
+  return axios.put(`/exams/${examId}/questions`, result);
 };
 
 const getResultsStatus = examId => {
