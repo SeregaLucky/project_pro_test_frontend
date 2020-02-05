@@ -1,5 +1,6 @@
 import authActionTypes from './authTypes';
 
+/* REGISTER */
 const registerStart = () => ({
   type: authActionTypes.REGISTER_START,
 });
@@ -14,6 +15,7 @@ const registerFailure = error => ({
   payload: { error },
 });
 
+/* LOGIN */
 const loginStart = () => ({
   type: authActionTypes.LOGIN_START,
 });
@@ -28,11 +30,13 @@ const loginFailure = error => ({
   payload: { error },
 });
 
+/* GOOGLE TOKEN */
 const googleToken = userToken => ({
   type: authActionTypes.SET_TOKEN_IN_STORE,
   payload: { token: userToken },
 });
 
+/* GET CURRENT */
 const getCurrentStart = () => ({
   type: authActionTypes.GET_CURRENT_START,
 });
@@ -47,6 +51,7 @@ const getCurrentFailure = error => ({
   payload: { error },
 });
 
+/* LOG OUT */
 const logOutStart = () => ({
   type: authActionTypes.LOGOUT_START,
 });
