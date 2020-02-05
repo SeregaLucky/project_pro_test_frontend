@@ -93,7 +93,6 @@ const resultsReducer = (state = null, { type, payload }) => {
         answeredRight: payload.answeredRight,
         answeredWrong: payload.answeredWrong,
       };
-
     default:
       return state;
   }
@@ -103,6 +102,15 @@ const resultTestReduсer = (state = null, { type, payload }) => {
   switch (type) {
     case questionsTypes.ADD_TO_RESULT:
       return payload;
+    default:
+      return state;
+  }
+};
+
+const isResultSendedReducer = (state = false, { type, payload }) => {
+  switch (type) {
+    case questionsTypes.SEND_RESULT_SUCCESS:
+      return payload.res;
     default:
       return state;
   }
@@ -131,6 +139,7 @@ export default combineReducers({
   questions: questionsReduсer,
   questionNumber: questionNumberReducer,
   resultTest: resultTestReduсer,
+  isResultSended: isResultSendedReducer,
   err: errorReducer,
   result: resultsReducer,
   error: error,

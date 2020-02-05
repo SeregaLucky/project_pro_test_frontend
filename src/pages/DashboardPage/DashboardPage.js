@@ -20,11 +20,9 @@ class DashboardPage extends Component {
       sendResult,
     } = this.props;
     const { isDisabledBackBtn, isDisabledForwardBtn } = this.state;
-    // console.log(result && result.answers);
-    // console.log(questions);
 
     // если последний элемент выбран => со стейта забираем значения=>записываем в result
-    if (questions[questions.length - 1].optionChoosed) {
+    if (questions[questions.length - 1].optionChoosed && !result) {
       addToResult(questions);
     }
 
@@ -71,17 +69,16 @@ class DashboardPage extends Component {
       questions,
       questionNumber,
       result,
+      isResultSended,
     } = this.props;
     const { isDisabledBackBtn, isDisabledForwardBtn } = this.state;
 
     return (
-      // если массив записался в result перенаправляем на страницу результата
+      // если приходит ответ со статусом 204 ==>redirect
 
       questions && (
         <>
-          {result &&
-          result.answers &&
-          result.answers.length === questions.length ? (
+          {isResultSended && isResultSended.status === 204 ? (
             <Redirect to="/result" />
           ) : null}
           <div className={styles.dashboardPage}>

@@ -53,9 +53,13 @@ const sendResultStart = () => {
   };
 };
 
-const sendResultSuccess = () => {
+const sendResultSuccess = res => {
+  console.log(res);
   return {
     type: types.SEND_RESULT_SUCCESS,
+    payload: {
+      res,
+    },
   };
 };
 
