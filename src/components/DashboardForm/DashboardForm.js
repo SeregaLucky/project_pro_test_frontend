@@ -39,7 +39,10 @@ const DashboardForm = ({ question, questionNumber, questionQuantity }) => {
         Вопрос <span> {questionNumber}</span> / {questionQuantity}
       </p>
       <h2 className={styles.dashboardform__question}>{question.question}</h2>
-      <ul className={styles.dashboardform__answers}>{itemsAnswersQuestions}</ul>
+
+      <form className={styles.dashboardform__answers}>
+        {itemsAnswersQuestions}
+      </form>
     </div>
   );
 };

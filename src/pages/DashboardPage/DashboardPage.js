@@ -92,6 +92,7 @@ class DashboardPage extends Component {
                 </h2>
                 <Button lable={'Завершить тест'} />
               </div>
+
               {/* <div className={styles.dashboardForm}> */}
               <DashboardForm
                 question={questions[questionNumber - 1]}
@@ -99,6 +100,7 @@ class DashboardPage extends Component {
                 questionQuantity={questions.length}
                 result={result}
               />
+
               {/* </div> */}
               <div className={styles.btnContainer}>
                 <button
@@ -112,6 +114,7 @@ class DashboardPage extends Component {
                     Предыдущий вопрос
                   </span>
                 </button>
+
                 <button
                   className={styles.btnContainer__forward}
                   type="button"
