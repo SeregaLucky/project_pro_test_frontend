@@ -93,7 +93,6 @@ const resultsReducer = (state = null, { type, payload }) => {
         answeredRight: payload.answeredRight,
         answeredWrong: payload.answeredWrong,
       };
-
     default:
       return state;
   }

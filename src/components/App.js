@@ -9,7 +9,7 @@ import Footer from './Footer/Footer';
 import AuthPage from '../pages/AuthPage/AuthPage';
 import MainPage from '../pages/MainPage/MainPage';
 import DashboardPage from '../pages/DashboardPage/DashboardPageContainer';
-import ResultPage from '../pages/ResultPage/ResultPage';
+import ResultPage from '../pages/ResultPage/ResultPageContainer';
 import MaterialsPage from '../pages/MaterialsPage/MaterialsPage';
 import ContactsPage from '../pages/ContactsPage/ContactsPage';
 import Loader from './Loader/Loader';
