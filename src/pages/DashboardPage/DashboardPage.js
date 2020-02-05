@@ -20,10 +20,10 @@ class DashboardPage extends Component {
       sendResult,
     } = this.props;
     const { isDisabledBackBtn, isDisabledForwardBtn } = this.state;
-    console.log(result && result.answers);
-    console.log(questions);
-    // если последний элемент выбран => со стейта забираем значения=>записываем в result
+    // console.log(result && result.answers);
+    // console.log(questions);
 
+    // если последний элемент выбран => со стейта забираем значения=>записываем в result
     if (questions[questions.length - 1].optionChoosed) {
       addToResult(questions);
     }
@@ -35,7 +35,7 @@ class DashboardPage extends Component {
       result.answers.length === questions.length
     ) {
       sendResult(result, questions[0].examId);
-      console.log(result);
+      // console.log(result);
     }
 
     // Disable по кнопкам двойная проверка чтобы не было зацикливания
