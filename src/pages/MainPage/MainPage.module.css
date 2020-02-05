@@ -42,11 +42,6 @@
   font-family: 'MontserratLight', sans-serif;
 }
 
-/* .mainPage_buttonItems {
-  display: flex;
-  flex-direction: column;
-} */
-
 .buttonBlue {
   background-color: var(--dark-blue);
 }
