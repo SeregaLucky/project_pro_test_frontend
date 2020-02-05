@@ -42,10 +42,10 @@
   font-family: 'MontserratLight', sans-serif;
 }
 
-.mainPage_buttonItems {
+/* .mainPage_buttonItems {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .buttonBlue {
   background-color: var(--dark-blue);
@@ -57,7 +57,7 @@
   }
 
   .mainPage {
-    padding: 95px 0 100px 0;
+    padding: 100px 0;
   }
 
   .mainPage_quote,
@@ -99,11 +99,10 @@
 
   .mainPage_buttons {
     width: 820px;
-    /* height: 225px; */
   }
 
   .mainPage_buttonItems {
-    flex-direction: row;
+    display: flex;
     align-content: space-between;
   }
 }
