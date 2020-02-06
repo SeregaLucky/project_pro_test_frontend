@@ -25,19 +25,9 @@ const checkAnswer = (
   return;
 };
 
-const addToResult = questions => dispatch => {
-  // достаем значения со стейта и записываем в result
-  const result = questions.map(question => {
-    return {
-      examQuestionId: question.id,
-      choiceId: question.optionChoosed,
-    };
-  });
-  dispatch(questionActions.addToResult(result));
-};
-
 const sendResult = (result, examId) => dispatch => {
-  //делаем put запрос на основе данных result
+  //делаем put запрос на основе данных questions
+  
   dispatch(questionActions.sendResultStart());
   api
     .sendResultRequest(result, examId)
@@ -70,7 +60,6 @@ const startTest = idTest => dispatch => {
 
 export default {
   checkAnswer,
-  addToResult,
   sendResult,
   getResultsStatus,
   getResultsById,
