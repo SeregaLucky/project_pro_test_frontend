@@ -98,6 +98,10 @@ const postTestFailure = error => ({
   payload: { error },
 });
 
+const resetQuestions = () => ({
+  type: questionsTypes.RESET_QUESTIONS,
+});
+
 export default {
   resultsFinishedStart,
   resultsFinishedSuccess,
@@ -114,4 +118,5 @@ export default {
   sendResultStart,
   sendResultSuccess,
   sendResultFailure,
+  resetQuestions,
 };
