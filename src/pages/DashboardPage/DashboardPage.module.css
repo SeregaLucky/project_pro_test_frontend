@@ -2,8 +2,8 @@
 @import '../../stylesheet/fonts.css';
 
 .dashboardPage {
-  background-color: #f4f6fb;
-  padding: 20px 0;
+  background-color: var(--background-color);
+  padding: 90px 0 20px 0;
 }
 
 .dashboardPageContainer {

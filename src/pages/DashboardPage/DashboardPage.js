@@ -13,8 +13,8 @@ const DashboardPage = ({
   decreaseQuestionNumber,
 }) => {
   return (
-    <div className={styles.dashboardPage}>
-      <section className={styles.dashboardPageContainer}>
+    <section className={styles.dashboardPage}>
+      <div className={styles.dashboardPageContainer}>
         <div className={styles.titleContainer}>
           <h2 className={styles.titleContainer__title}>
             [ Теория тестирования_ ]
@@ -50,8 +50,8 @@ const DashboardPage = ({
             <Arrow className={styles.btnContainer__arrow_forward} />
           </button>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
