@@ -15,7 +15,10 @@ const ResultPage = ({ answeredRight = 8, answeredWrong = 4 }) => {
         <h2 className={styles.main_header}>Результаты</h2>
         <p className={styles.test_title}>[ теория тестирования_ ]</p>
         <div className={styles.result_bar}>
-          <ResultProgressBar />
+          <ResultProgressBar
+            correctAnswers={answeredRight}
+            allAnswers={allAnswers}
+          />
         </div>
         <div className={styles.img_container}>
           <img
