@@ -17,11 +17,13 @@ const ResultPage = ({ answeredRight = 8, answeredWrong = 4 }) => {
         <div className={styles.result_bar}>
           <ResultProgressBar />
         </div>
-        <img
-          className={styles.img}
-          src={objCommentImage[answerNumber]}
-          alt="cat"
-        />
+        <div className={styles.img_container}>
+          <img
+            className={styles.img}
+            src={objCommentImage[answerNumber]}
+            alt="cat"
+          />
+        </div>
         <h3 className={styles.test_info}>{objCommentInfo[answerNumber]}</h3>
         <div className={styles.result_button}>
           <Button lable={'Пройти еще раз'} />
