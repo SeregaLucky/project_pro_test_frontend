@@ -6,13 +6,13 @@ import authOperations from '../redux/auth/authOperations';
 /* import - components and pages */
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
-/* import AuthPage from '../pages/AuthPage/AuthPage';
-import MainPage from '../pages/MainPage/MainPage';
-import DashboardPage from '../pages/DashboardPage/DashboardPageContainer';
-import ResultPage from '../pages/ResultPage/ResultPageContainer';
-import MaterialsPage from '../pages/MaterialsPage/MaterialsPage';
-import ContactsPage from '../pages/ContactsPage/ContactsPage';
- */
+// import AuthPage from '../pages/AuthPage/AuthPage';
+// import MainPage from '../pages/MainPage/MainPage';
+// import DashboardPage from '../pages/DashboardPage/DashboardPageContainer';
+// import ResultPage from '../pages/ResultPage/ResultPageContainer';
+// import MaterialsPage from '../pages/MaterialsPage/MaterialsPage';
+// import ContactsPage from '../pages/ContactsPage/ContactsPage';
+
 import Loader from './Loader/Loader';
 import PrivateRoute from '../servises/PrivateRoute';
 
@@ -31,7 +31,7 @@ const DashboardPage = lazy(() =>
 );
 
 const ResultPage = lazy(() =>
-  import('../pages/ResultPage/ResultPage' /*webpackChunkName: "ResultPage"*/),
+  import('../pages/ResultPage' /*webpackChunkName: "ResultPage"*/),
 );
 
 const MaterialsPage = lazy(() =>
@@ -60,6 +60,7 @@ class App extends Component {
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route path={routes.AUTH_PAGE} component={AuthPage} />
+            <PrivateRoute path={routes.MAIN_PAGE} component={MainPage} />
             <PrivateRoute
               exact
               path={routes.DASHBOARD_PAGE}
@@ -70,7 +71,6 @@ class App extends Component {
               path={routes.MATERIALS_PAGE}
               component={MaterialsPage}
             />
-            <PrivateRoute path={routes.MAIN_PAGE} component={MainPage} />
 
             <Route path={routes.CONTACTS_PAGE} component={ContactsPage} />
 
