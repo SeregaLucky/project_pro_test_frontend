@@ -60,6 +60,15 @@
     width: 400px;
     height: 300px;
   }
+
+  .img {
+    width: 250px;
+    height: 280px;
+  }
+
+  .test_info {
+    font-size: 16px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
