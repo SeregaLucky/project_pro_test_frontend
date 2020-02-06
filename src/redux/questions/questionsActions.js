@@ -46,15 +46,6 @@ const resultsSuccess = ({ answeredRight, answeredWrong }) => {
   };
 };
 
-const addToResult = results => {
-  return {
-    type: types.ADD_TO_RESULT,
-    payload: {
-      answers: results,
-    },
-  };
-};
-
 const sendResultStart = () => {
   return {
     type: types.SEND_RESULT_START,
@@ -120,7 +111,6 @@ export default {
   increaseQuestionNumber,
   decreaseQuestionNumber,
   checkAnswer,
-  addToResult,
   sendResultStart,
   sendResultSuccess,
   sendResultFailure,
