@@ -30,12 +30,7 @@ const sendResultRequest = (result, examId) => {
   return axios.put(`/exams/${examId}/questions`, result);
 };
 
-const getResultsFinished = examId => {
-  return axios
-    .put(`/exams/${examId}/finish`)
-    .then(response => response.data)
-    .catch(error => error);
-};
+const putResultsFinished = examId => axios.put(`/exams/${examId}/finish`);
 
 const getResultsStatus = examId => {
   return axios
@@ -55,7 +50,7 @@ const getResultsById = examId => {
 
 export default {
   sendResultRequest,
-  getResultsFinished,
+  putResultsFinished,
   getResultsStatus,
   getResultsById,
 };

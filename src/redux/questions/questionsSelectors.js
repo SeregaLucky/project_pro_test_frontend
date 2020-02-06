@@ -5,9 +5,7 @@ const getResult = state => state.questions.resultTest;
 const getErr = state => state.questions.err;
 const getIsResultSended = state => state.questions.isResultSended;
 
-export const getFinishedresults = state => {
-  return state.questions.finished;
-};
+export const getFinishedResults = state => state.questions.finished;
 
 export const getResults = state => {
   return state.questions.result;

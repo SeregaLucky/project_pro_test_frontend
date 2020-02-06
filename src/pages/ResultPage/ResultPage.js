@@ -8,7 +8,7 @@ import styles from './ResultPage.module.css';
 const ResultPage = ({ answeredRight = 8, answeredWrong = 4 }) => {
   const allAnswers = answeredRight + answeredWrong;
   const answerParsentResult = (answeredRight * 100) / allAnswers;
-  const answerNumber = Math.round(13 * (answerParsentResult / 100));
+  const answerNumber = Math.round(allAnswers * (answerParsentResult / 100));
   return (
     <section className={styles.section}>
       <div className={styles.container}>

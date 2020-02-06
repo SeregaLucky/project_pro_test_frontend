@@ -24,8 +24,12 @@ const checkAnswer = (examQuestionId, choiceId) => {
   };
 };
 
-const resultsFinished = () => ({
-  type: resultsTypes.RESULTS_FINISHED,
+const resultsFinishedStart = () => ({
+  type: resultsTypes.RESULTS_FINISHED_START,
+});
+
+const resultsFinishedSuccess = () => ({
+  type: resultsTypes.RESULTS_FINISHED_SUCCESS,
 });
 
 const resultsStart = () => ({
@@ -33,8 +37,6 @@ const resultsStart = () => ({
 });
 
 const resultsSuccess = ({ answeredRight, answeredWrong }) => {
-  console.log(answeredRight);
-  console.log(answeredWrong);
   return {
     type: resultsTypes.RESULTS_SUCCESS,
     payload: {
@@ -78,6 +80,11 @@ const sendResultFailure = err => {
   };
 };
 
+const resultsFinishedFailure = error => ({
+  type: resultsTypes.RESULTS_FINISHED_FAILURE,
+  payload: { error },
+});
+
 const resultsFailure = error => ({
   type: resultsTypes.RESULTS_FAILURE,
   payload: { error },
@@ -101,9 +108,11 @@ const postTestFailure = error => ({
 });
 
 export default {
-  resultsFinished,
+  resultsFinishedStart,
+  resultsFinishedSuccess,
   resultsStart,
   resultsSuccess,
+  resultsFinishedFailure,
   resultsFailure,
   postTestStart,
   postTestSuccess,
