@@ -16,10 +16,7 @@ const Footer = () => {
       </div>
       <p className={styles.author}>
         by{' '}
-        <NavLink
-          to={routes.CONTACTS_PAGE}
-          style={{ color: '#ffffff61', textDecoration: 'underline' }}
-        >
+        <NavLink to={routes.CONTACTS_PAGE} className={styles.navLink}>
           GoIT Students
         </NavLink>
       </p>
