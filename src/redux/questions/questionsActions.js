@@ -24,6 +24,14 @@ const checkAnswer = (examQuestionId, choiceId) => {
   };
 };
 
+const resultsFinishedStart = () => ({
+  type: resultsTypes.RESULTS_FINISHED_START,
+});
+
+const resultsFinishedSuccess = () => ({
+  type: resultsTypes.RESULTS_FINISHED_SUCCESS,
+});
+
 const resultsStart = () => ({
   type: resultsTypes.RESULTS_START,
 });
@@ -72,6 +80,11 @@ const sendResultFailure = err => {
   };
 };
 
+const resultsFinishedFailure = error => ({
+  type: resultsTypes.RESULTS_FINISHED_FAILURE,
+  payload: { error },
+});
+
 const resultsFailure = error => ({
   type: resultsTypes.RESULTS_FAILURE,
   payload: { error },
@@ -95,8 +108,11 @@ const postTestFailure = error => ({
 });
 
 export default {
+  resultsFinishedStart,
+  resultsFinishedSuccess,
   resultsStart,
   resultsSuccess,
+  resultsFinishedFailure,
   resultsFailure,
   postTestStart,
   postTestSuccess,

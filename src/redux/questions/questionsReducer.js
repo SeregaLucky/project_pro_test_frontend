@@ -86,6 +86,15 @@ const questionNumberReducer = (state = 1, { type }) => {
   }
 };
 
+const finishedReducer = (state = false, { type }) => {
+  switch (type) {
+    case resultsTypes.RESULTS_FINISHED_SUCCESS:
+      return true;
+    default:
+      return state;
+  }
+};
+
 const resultsReducer = (state = null, { type, payload }) => {
   switch (type) {
     case resultsTypes.RESULTS_SUCCESS:
@@ -125,11 +134,19 @@ const errorReducer = (state = null, { type, payload }) => {
   }
 };
 
-const error = (state = null, { type, payload }) => {
+const errorFinished = (state = null, { type, payload }) => {
+  switch (type) {
+    case resultsTypes.RESULTS_FINISHED_FAILURE:
+      return payload.error;
+    default:
+      return state;
+  }
+};
+
+const errorResult = (state = null, { type, payload }) => {
   switch (type) {
     case resultsTypes.RESULTS_FAILURE:
       return payload.error;
-
     default:
       return state;
   }
@@ -141,6 +158,8 @@ export default combineReducers({
   resultTest: resultTestReduсer,
   isResultSended: isResultSendedReducer,
   err: errorReducer,
+  finished: finishedReducer,
   result: resultsReducer,
-  error: error,
+  errorFinished: errorFinished,
+  errorResult: errorResult,
 });
