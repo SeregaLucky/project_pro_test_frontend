@@ -10,7 +10,7 @@
 const routes = {
   AUTH_PAGE: '/auth',
   MAIN_PAGE: '/',
-  DASHBOARD_PAGE: '/dishboard',
+  DASHBOARD_PAGE: '/dashboard',
   RESULT_PAGE: '/result',
   MATERIALS_PAGE: '/materials',
   CONTACTS_PAGE: '/contacts',
