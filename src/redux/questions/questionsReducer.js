@@ -102,6 +102,9 @@ const errorFinished = (state = null, { type, payload }) => {
     case questionsTypes.RESULTS_FINISHED_FAILURE:
       return payload.error;
 
+    case questionsTypes.RESULTS_FINISHED_START:
+      return null;
+
     default:
       return state;
   }
@@ -111,6 +114,9 @@ const errorResult = (state = null, { type, payload }) => {
   switch (type) {
     case questionsTypes.RESULTS_FAILURE:
       return payload.error;
+
+    case questionsTypes.RESULTS_START:
+      return null;
 
     default:
       return state;
