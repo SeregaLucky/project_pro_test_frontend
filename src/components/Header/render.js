@@ -26,6 +26,7 @@ const mobile = (isOpen, isMobile, name, handleClick, auth, handleSignOut) => {
             <>
               <li className={styles.mainNavListItemMobile}>
                 <NavLink
+                  exact
                   to={routes.MAIN_PAGE}
                   onClick={handleClick}
                   className={styles.mainNavListItemLink}
@@ -97,6 +98,7 @@ const tablet = (auth, isMobile, handleLogOut, name) => {
           {auth && (
             <li className={styles.mainNavListItem}>
               <NavLink
+                exact
                 to={routes.MAIN_PAGE}
                 className={styles.mainNavListItemLink}
                 activeClassName={styles.activeLink}
