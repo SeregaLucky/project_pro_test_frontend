@@ -5,9 +5,12 @@ import questionsTypes from '../questions/questionsTypes';
 const loadingReducer = (state = false, { type, payload }) => {
   switch (type) {
     case questionsTypes.RESULTS_START:
+    case questionsTypes.RESULTS_FINISHED_START:
       return true;
     case questionsTypes.RESULTS_SUCCESS:
+    case questionsTypes.RESULTS_FINISHED_SUCCESS:
     case questionsTypes.RESULTS_FAILURE:
+    case questionsTypes.RESULTS_FINISHED_FAILURE:
       return false;
     default:
       return state;
