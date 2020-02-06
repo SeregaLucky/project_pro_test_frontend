@@ -57,6 +57,7 @@ class App extends Component {
       <BrowserRouter>
         <Loader />
         <Header />
+
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route path={routes.AUTH_PAGE} component={AuthPage} />
@@ -70,12 +71,12 @@ class App extends Component {
               path={routes.MATERIALS_PAGE}
               component={MaterialsPage}
             />
-
             <Route path={routes.CONTACTS_PAGE} component={ContactsPage} />
 
             <Redirect to={routes.MAIN_PAGE} />
           </Switch>
         </Suspense>
+
         <Footer />
       </BrowserRouter>
     );
