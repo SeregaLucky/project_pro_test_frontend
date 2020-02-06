@@ -57,15 +57,19 @@ class App extends Component {
       <BrowserRouter>
         <Loader />
         <Header />
+
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route path={routes.AUTH_PAGE} component={AuthPage} />
             <PrivateRoute exact path={routes.MAIN_PAGE} component={MainPage} />
+
             <PrivateRoute
               path={routes.DASHBOARD_PAGE}
               component={DashboardPage}
             />
+
             <PrivateRoute path={routes.RESULT_PAGE} component={ResultPage} />
+
             <PrivateRoute
               path={routes.MATERIALS_PAGE}
               component={MaterialsPage}
