@@ -60,9 +60,8 @@ class App extends Component {
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route path={routes.AUTH_PAGE} component={AuthPage} />
-            <PrivateRoute path={routes.MAIN_PAGE} component={MainPage} />
+            <PrivateRoute exact path={routes.MAIN_PAGE} component={MainPage} />
             <PrivateRoute
-              exact
               path={routes.DASHBOARD_PAGE}
               component={DashboardPage}
             />
