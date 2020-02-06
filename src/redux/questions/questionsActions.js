@@ -10,10 +10,7 @@ const decreaseQuestionNumber = () => ({
 
 const checkAnswer = (examQuestionId, choiceId) => ({
   type: questionsTypes.CHECK_ANSWER,
-  payload: {
-    examQuestionId,
-    choiceId,
-  },
+  payload: { examQuestionId, choiceId },
 });
 
 const resultsFinishedStart = () => ({
@@ -30,10 +27,7 @@ const resultsStart = () => ({
 
 const resultsSuccess = ({ answeredRight, answeredWrong }) => ({
   type: questionsTypes.RESULTS_SUCCESS,
-  payload: {
-    answeredRight,
-    answeredWrong,
-  },
+  payload: { answeredRight, answeredWrong },
 });
 
 const sendResultStart = () => ({
@@ -45,9 +39,9 @@ const sendResultSuccess = res => ({
   payload: { res },
 });
 
-const sendResultFailure = err => ({
+const sendResultFailure = error => ({
   type: questionsTypes.SEND_RESULT_FAILURE,
-  payload: { err },
+  payload: { error },
 });
 
 const resultsFinishedFailure = error => ({

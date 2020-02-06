@@ -42,6 +42,19 @@ const questionNumberReducer = (state = 1, { type }) => {
   }
 };
 
+const isResultSendedReducer = (state = false, { type, payload }) => {
+  switch (type) {
+    case questionsTypes.SEND_RESULT_SUCCESS:
+      return payload.res;
+
+    case questionsTypes.RESET_QUESTIONS:
+      return false;
+
+    default:
+      return state;
+  }
+};
+
 const finishedReducer = (state = false, { type }) => {
   switch (type) {
     case questionsTypes.RESULTS_FINISHED_SUCCESS:
@@ -71,50 +84,56 @@ const resultsReducer = (state = null, { type, payload }) => {
   }
 };
 
-const isResultSendedReducer = (state = false, { type, payload }) => {
-  switch (type) {
-    case questionsTypes.SEND_RESULT_SUCCESS:
-      return payload.res;
+// const errorReducer = (state = null, { type, payload }) => {
+//   switch (type) {
+//     case questionsTypes.SEND_RESULT_FAILURE:
+//       return payload.error;
 
-    case questionsTypes.RESET_QUESTIONS:
-      return false;
+//     case questionsTypes.RESET_QUESTIONS:
+//       return null;
 
-    default:
-      return state;
-  }
-};
+//     default:
+//       return state;
+//   }
+// };
+
+// const errorFinished = (state = null, { type, payload }) => {
+//   switch (type) {
+//     case questionsTypes.RESULTS_FINISHED_FAILURE:
+//       return payload.error;
+
+//     case questionsTypes.RESULTS_FINISHED_START:
+//       return null;
+
+//     default:
+//       return state;
+//   }
+// };
+
+// const errorResult = (state = null, { type, payload }) => {
+//   switch (type) {
+//     case questionsTypes.RESULTS_FAILURE:
+//       return payload.error;
+
+//     case questionsTypes.RESULTS_START:
+//       return null;
+
+//     default:
+//       return state;
+//   }
+// };
 
 const errorReducer = (state = null, { type, payload }) => {
   switch (type) {
+    case questionsTypes.POST_TEST_FAILURE:
     case questionsTypes.SEND_RESULT_FAILURE:
-      return payload.err;
-
-    case questionsTypes.RESET_QUESTIONS:
-      return null;
-
-    default:
-      return state;
-  }
-};
-
-const errorFinished = (state = null, { type, payload }) => {
-  switch (type) {
     case questionsTypes.RESULTS_FINISHED_FAILURE:
-      return payload.error;
-
-    case questionsTypes.RESULTS_FINISHED_START:
-      return null;
-
-    default:
-      return state;
-  }
-};
-
-const errorResult = (state = null, { type, payload }) => {
-  switch (type) {
     case questionsTypes.RESULTS_FAILURE:
       return payload.error;
 
+    case questionsTypes.POST_TEST_START:
+    case questionsTypes.SEND_RESULT_START:
+    case questionsTypes.RESULTS_FINISHED_START:
     case questionsTypes.RESULTS_START:
       return null;
 
@@ -127,9 +146,10 @@ export default combineReducers({
   questions: questionsReduсer,
   questionNumber: questionNumberReducer,
   isResultSended: isResultSendedReducer,
-  err: errorReducer,
   finished: finishedReducer,
   result: resultsReducer,
-  errorFinished: errorFinished,
-  errorResult: errorResult,
+  // err: errorReducer,
+  // errorFinished: errorFinished,
+  // errorResult: errorResult,
+  error: errorReducer,
 });

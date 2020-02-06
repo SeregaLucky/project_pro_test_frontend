@@ -108,7 +108,7 @@ const mapStateToProps = state => {
   return {
     questionNumber: questionsSelectors.getQuestionNumber(state),
     questions: questionsSelectors.getQuestions(state),
-    err: questionsSelectors.getErr(state),
+    err: questionsSelectors.getError(state),
     isResultSended: questionsSelectors.getIsResultSended(state),
   };
 };
