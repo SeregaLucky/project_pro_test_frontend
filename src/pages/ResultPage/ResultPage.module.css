@@ -17,6 +17,11 @@
   color: var(--dark-blue);
 }
 
+.img_container {
+  display: flex;
+  align-items: center;
+}
+
 .img {
   width: 200px;
   height: 230px;
