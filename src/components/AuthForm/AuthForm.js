@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { ErrorMessage, Form, Field } from 'formik';
 import Notifications from './pushNotifications';
-import withAuthRedirect from '../../hoc/withAuthRedirect';
+// import withAuthRedirect from '../../hoc/withAuthRedirect';
 import formikEnhancer from './formic-yup/formikEnhancer';
 import authOperations from '../../redux/auth/authOperations';
 import googleIcon from '../../assets/icons/google-auth.png';
@@ -73,7 +73,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default compose(
-  withAuthRedirect,
+  // withAuthRedirect,
   connect(null, mapDispatchToProps),
   formikEnhancer,
 )(AuthForm);
