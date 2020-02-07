@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import T from 'prop-types';
 import AuthForm from '../../components/AuthForm';
 import authActions from '../../redux/auth/authActions';
 import authOperations from '../../redux/auth/authOperations';
@@ -34,6 +35,13 @@ const AuthPage = ({ location, setGoogleToken, getCurrentUser, dispatch }) => {
       </div>
     </section>
   );
+};
+
+AuthPage.propTypes = {
+  location: T.shape().isRequired,
+  setGoogleToken: T.func.isRequired,
+  getCurrentUser: T.func.isRequired,
+  dispatch: T.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
