@@ -1,6 +1,5 @@
 import questionActions from './questionsActions';
 import api from '../../servises/api.js';
-import { postAllTests } from '../../servises/api';
 
 const checkAnswer = (
   examQuestionId,
@@ -62,7 +61,8 @@ const getResultsById = () => (dispatch, getState) => {
 };
 
 const startTest = idTest => dispatch => {
-  postAllTests(idTest)
+  api
+    .postAllTests(idTest)
     .then(dataTest => dispatch(questionActions.postTestSuccess(dataTest)))
     .catch(error => dispatch(questionActions.postTestFailure(error)));
 };
