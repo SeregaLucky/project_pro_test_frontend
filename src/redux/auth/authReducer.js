@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import actionTypes from './authTypes';
+import authTypes from './authTypes';
 
 const userReducer = (
   state = { name: null, email: null, id: '', createdAt: '' },
@@ -60,6 +61,11 @@ const errorReducer = (state = null, { type, payload }) => {
     case actionTypes.LOGIN_FAILURE:
     case actionTypes.GET_CURRENT_FAILURE:
       return payload.error;
+    case authTypes.REGISTER_START:
+    case authTypes.LOGIN_START:
+    case authTypes.GET_CURRENT_START:
+    case authTypes.LOGOUT_START:
+      return null;
 
     default:
       return state;
