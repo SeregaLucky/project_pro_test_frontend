@@ -8,7 +8,6 @@
   font-family: 'MontserratBold', sans-serif;
   color: #fff;
   background-color: var(--orange);
-
   transition: background-color 250ms ease-in-out;
 }
 
