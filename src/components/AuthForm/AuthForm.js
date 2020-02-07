@@ -2,6 +2,7 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { ErrorMessage, Form, Field } from 'formik';
+import T from 'prop-types';
 import Notifications from './pushNotifications';
 // import withAuthRedirect from '../../hoc/withAuthRedirect';
 import formikEnhancer from './formic-yup/formikEnhancer';
@@ -71,6 +72,14 @@ const AuthForm = ({ onLogin, values }) => {
 const mapDispatchToProps = dispatch => ({
   onLogin: values => dispatch(authOperations.loginUser(values)),
 });
+
+AuthForm.propTypes = {
+  onLogin: T.func.isRequired,
+  values: T.shape({
+    email: T.string.isRequired,
+    password: T.string.isRequired,
+  }),
+};
 
 export default compose(
   // withAuthRedirect,
