@@ -6,7 +6,7 @@
   height: 48px;
   font-size: 10px;
   font-family: 'MontserratBold', sans-serif;
-  color: var(--background-color);
+  color: #fff;
   background-color: var(--orange);
 
   transition: background-color 250ms ease-in-out;

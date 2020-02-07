@@ -1,7 +1,6 @@
 .dashboardform {
   margin: 0 auto 20px auto;
   align-items: center;
-  width: 280px;
   box-shadow: 0 8px 24px 0 rgba(29, 29, 27, 0.1);
   padding: 36px 14px;
   background-color: #fff;
@@ -48,7 +47,6 @@
 
 @media (min-width: 768px) {
   .dashboardform {
-    width: 560px;
     padding: 48px 38px 46px 56px;
   }
 
@@ -71,7 +69,6 @@
 
 @media (min-width: 1280px) {
   .dashboardform {
-    width: 820px;
     padding: 48px 46px 46px 92px;
   }
 }

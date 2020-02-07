@@ -9,6 +9,7 @@
 .dashboardPageContainer {
   width: 320px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .titleContainer {
@@ -32,22 +33,15 @@
   display: block;
 }
 
-.dashboardForm {
-  height: 450px;
-  margin: 0 auto 20px;
-  background: #fff;
-}
-
 .btnContainer {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 20px;
 }
 
 .btnContainer__forward,
 .btnContainer__back {
   width: 50px;
-  height: 20px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,6 +87,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .dashboardPage {
+    padding: 50px 0 268px 0;
+  }
   .dashboardPageContainer {
     width: 655px;
   }
@@ -102,15 +99,10 @@
     width: 180px;
   }
 
-  .btnContainer {
-    margin-bottom: 240px;
-  }
-
   .btnContainer__forward,
   .btnContainer__back {
     width: 210px;
     height: 33px;
-    line-height: 33px;
     border: 0;
   }
 
@@ -142,15 +134,11 @@
 
 @media screen and (min-width: 1280px) {
   .dashboardPageContainer {
-    width: 820px;
+    width: 860px;
   }
 
   .titleContainer__title {
     font-size: 22px;
     width: 200px;
-  }
-
-  .btnContainer {
-    margin-bottom: 240px;
   }
 }
