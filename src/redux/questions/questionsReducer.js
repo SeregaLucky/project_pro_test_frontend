@@ -84,45 +84,6 @@ const resultsReducer = (state = null, { type, payload }) => {
   }
 };
 
-// const errorReducer = (state = null, { type, payload }) => {
-//   switch (type) {
-//     case questionsTypes.SEND_RESULT_FAILURE:
-//       return payload.error;
-
-//     case questionsTypes.RESET_QUESTIONS:
-//       return null;
-
-//     default:
-//       return state;
-//   }
-// };
-
-// const errorFinished = (state = null, { type, payload }) => {
-//   switch (type) {
-//     case questionsTypes.RESULTS_FINISHED_FAILURE:
-//       return payload.error;
-
-//     case questionsTypes.RESULTS_FINISHED_START:
-//       return null;
-
-//     default:
-//       return state;
-//   }
-// };
-
-// const errorResult = (state = null, { type, payload }) => {
-//   switch (type) {
-//     case questionsTypes.RESULTS_FAILURE:
-//       return payload.error;
-
-//     case questionsTypes.RESULTS_START:
-//       return null;
-
-//     default:
-//       return state;
-//   }
-// };
-
 const errorReducer = (state = null, { type, payload }) => {
   switch (type) {
     case questionsTypes.POST_TEST_FAILURE:
@@ -148,8 +109,5 @@ export default combineReducers({
   isResultSended: isResultSendedReducer,
   finished: finishedReducer,
   result: resultsReducer,
-  // err: errorReducer,
-  // errorFinished: errorFinished,
-  // errorResult: errorResult,
   error: errorReducer,
 });
