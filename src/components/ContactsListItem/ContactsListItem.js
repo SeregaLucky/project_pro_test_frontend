@@ -2,13 +2,14 @@ import React from 'react';
 import styles from './ContactsListItem.module.css';
 import cardImage from '../../assets/images/cardimage.jpg';
 
-const ContactsListItem = ({ image, name, position, description }) => {
+const ContactsListItem = ({ image, name, nameRu, position, description }) => {
   return (
     <li className={styles.card}>
       <figure>
         <img src={image} className={styles.image} alt={name} />
         <figcaption>
           <p className={styles.name}>{name}</p>
+          <p className={styles.nameRu}>{nameRu}</p>
           <p className={styles.position}>{position}</p>
           <p className={styles.description}>{description}</p>
         </figcaption>
