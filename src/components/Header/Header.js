@@ -7,14 +7,23 @@ import authSelectors from '../../redux/auth/authSelectors';
 import globalSelectors from '../../redux/global/globalSelectors';
 import globalActions from '../../redux/global/globalActions';
 import { ReactComponent as MainLogo } from '../../assets/images/logo.svg';
-import render from './render';
+import Mobile from './Mobile/Mobile';
+import Tablet from './Tablet/Tablet';
 import Modal from '../Modal';
+import T from 'prop-types';
 import styles from './Header.module.css';
 
 class Header extends Component {
   state = {
     isOpen: false,
     isMobile: false,
+  };
+
+  static propTypes = {
+    onOpen: T.func.isRequired,
+    modalOpen: T.bool.isRequired,
+    auth: T.bool,
+    name: T.string,
   };
 
   handleClick = () => {
@@ -54,21 +63,23 @@ class Header extends Component {
           }
         >
           {matches =>
-            matches.small
-              ? render.mobile(
-                  this.state.isOpen,
-                  this.state.isMobile,
-                  this.props.name,
-                  this.handleClick,
-                  this.props.auth,
-                  this.handleSignOut,
-                )
-              : render.tablet(
-                  this.props.auth,
-                  this.state.isMobile,
-                  this.handleSignOut,
-                  this.props.name,
-                )
+            matches.small ? (
+              <Mobile
+                isOpen={this.state.isOpen}
+                name={this.props.name}
+                auth={this.props.auth}
+                handleClick={this.handleClick}
+                handleSignOut={this.handleSignOut}
+                isMobile={this.state.isMobile}
+              />
+            ) : (
+              <Tablet
+                name={this.props.name}
+                auth={this.props.auth}
+                handleSignOut={this.handleSignOut}
+                isMobile={this.state.isMobile}
+              />
+            )
           }
         </Media>
       </header>
