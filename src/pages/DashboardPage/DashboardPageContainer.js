@@ -8,13 +8,6 @@ import questionsOperations from '../../redux/questions/questionsOperations';
 import DashboardPage from './DashboardPage';
 
 class DashboardPageContainer extends Component {
-  state = {
-    isDisabledBackBtn: true,
-    isDisabledForwardBtn: true,
-    result: null,
-    questionNumber: 1,
-  };
-
   static defaultProps = {
     err: null,
     isResultSended: {},
@@ -38,6 +31,13 @@ class DashboardPageContainer extends Component {
 
     check: T.func.isRequired,
     sendResult: T.func.isRequired,
+  };
+
+  state = {
+    isDisabledBackBtn: true,
+    isDisabledForwardBtn: true,
+    result: null,
+    questionNumber: 1,
   };
 
   timerId = null;
