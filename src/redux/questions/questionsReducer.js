@@ -26,22 +26,6 @@ const questionsReduсer = (state = null, { type, payload }) => {
   }
 };
 
-const questionNumberReducer = (state = 1, { type }) => {
-  switch (type) {
-    case questionsTypes.INCREASE_QUESTION_NUMBER:
-      return state + 1;
-
-    case questionsTypes.DECREASE_QUESTION_NUMBER:
-      return state - 1;
-
-    case questionsTypes.RESET_QUESTIONS:
-      return 1;
-
-    default:
-      return state;
-  }
-};
-
 const isResultSendedReducer = (state = false, { type, payload }) => {
   switch (type) {
     case questionsTypes.SEND_RESULT_SUCCESS:
@@ -105,7 +89,6 @@ const errorReducer = (state = null, { type, payload }) => {
 
 export default combineReducers({
   questions: questionsReduсer,
-  questionNumber: questionNumberReducer,
   isResultSended: isResultSendedReducer,
   finished: finishedReducer,
   result: resultsReducer,

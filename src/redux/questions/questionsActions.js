@@ -1,13 +1,5 @@
 import questionsTypes from './questionsTypes';
 
-const increaseQuestionNumber = () => ({
-  type: questionsTypes.INCREASE_QUESTION_NUMBER,
-});
-
-const decreaseQuestionNumber = () => ({
-  type: questionsTypes.DECREASE_QUESTION_NUMBER,
-});
-
 const checkAnswer = (examQuestionId, choiceId) => ({
   type: questionsTypes.CHECK_ANSWER,
   payload: { examQuestionId, choiceId },
@@ -82,8 +74,6 @@ export default {
   postTestStart,
   postTestSuccess,
   postTestFailure,
-  increaseQuestionNumber,
-  decreaseQuestionNumber,
   checkAnswer,
   sendResultStart,
   sendResultSuccess,
