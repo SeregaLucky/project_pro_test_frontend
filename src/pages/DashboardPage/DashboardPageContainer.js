@@ -50,11 +50,6 @@ class DashboardPageContainer extends Component {
       result,
       questionNumber,
     } = this.state;
-    //снимаем setTimeout
-    if (this.timerId) {
-      clearTimeout(this.timerId);
-    }
-
     // если последний элемент выбран => со стейта забираем значения
     if (questions[questions.length - 1].optionChoosed && !result) {
       this.getResultFromState(questions);
@@ -145,9 +140,9 @@ class DashboardPageContainer extends Component {
       return;
     }
 
-    check(examQuestionId, choiceId);
     // делаем задержку на 200 мс, чтобы пользователь видел куда нажал
     this.timerId = setTimeout(() => this.increasePageNumber(), 200);
+    check(examQuestionId, choiceId);
     return;
   };
 
