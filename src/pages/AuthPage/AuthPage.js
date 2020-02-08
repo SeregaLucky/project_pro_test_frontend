@@ -49,8 +49,6 @@ const mapDispatchToProps = dispatch => ({
   getCurrentUser: token => dispatch(authOperations.getCurrentUser(token)),
 });
 
-// export default connect(null, mapDispatchToProps)(AuthPage);
-
 export default compose(
   withAuthRedirect,
   connect(null, mapDispatchToProps),

@@ -4,16 +4,13 @@ import { connect } from 'react-redux';
 import T from 'prop-types';
 import routes from '../../routes';
 import questionsActions from '../../redux/questions/questionsActions';
-
 import styles from './Button.module.css';
 
-const Button = ({ lable, onReset }) => {
-  return (
-    <Link to={routes.MAIN_PAGE} className={styles.link} onClick={onReset}>
-      {lable}
-    </Link>
-  );
-};
+const Button = ({ lable, onReset }) => (
+  <Link to={routes.MAIN_PAGE} className={styles.link} onClick={onReset}>
+    {lable}
+  </Link>
+);
 
 Button.propTypes = {
   lable: T.string.isRequired,

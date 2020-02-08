@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { ErrorMessage, Form, Field } from 'formik';
 import T from 'prop-types';
 import Notifications from './pushNotifications';
-// import withAuthRedirect from '../../hoc/withAuthRedirect';
 import formikEnhancer from './formic-yup/formikEnhancer';
 import authOperations from '../../redux/auth/authOperations';
 import googleIcon from '../../assets/icons/google-auth.png';
@@ -82,7 +81,6 @@ AuthForm.propTypes = {
 };
 
 export default compose(
-  // withAuthRedirect,
   connect(null, mapDispatchToProps),
   formikEnhancer,
 )(AuthForm);

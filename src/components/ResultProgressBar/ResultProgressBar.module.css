@@ -1,7 +1,7 @@
 .result_wrapper {
   background-color: var(--background-color);
-  /* margin-bottom: 20px; */
 }
+
 .chart {
   max-width: 160px;
   margin: 0 auto 24px;
@@ -28,18 +28,7 @@
 
 .legend__text:first-child {
   border-right: 1px solid #ced2d1;
-  /* position: relative; */
 }
-
-/* .legend__text:first-child::after {
-  content: ' ';
-  position: absolute;
-  background-color: #ced2d1;
-  width: 1px;
-  height: 22px;
-  bottom: 0;
-  right: -1px;
-} */
 
 @media screen and (min-width: 768px) {
   .chart {
