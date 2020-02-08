@@ -1,23 +1,33 @@
 import React from 'react';
+import { objCommentImage } from './commentaryImages.js';
+import { objCommentInfo } from './commentaryInfo.js';
 import ResultProgressBar from '../../components/ResultProgressBar/ResultProgressBar.js';
 import Button from '../../components/Button';
-import img from '../../assets/images/cats/2.png';
 import styles from './ResultPage.module.css';
 
-const ResultPage = () => {
+const ResultPage = ({ answeredRight = 8, answeredWrong = 4 }) => {
+  const allAnswers = answeredRight + answeredWrong;
+  const answerParsentResult = (answeredRight * 100) / allAnswers;
+  const answerNumber = Math.round(allAnswers * (answerParsentResult / 100));
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.main_header}>Результаты</h2>
         <p className={styles.test_title}>[ теория тестирования_ ]</p>
         <div className={styles.result_bar}>
-          <ResultProgressBar />
+          <ResultProgressBar
+            correctAnswers={answeredRight}
+            allAnswers={allAnswers}
+          />
         </div>
-        <div className={styles.img}>
-          <img src={img} width="180" height="200" alt="cat" />
+        <div className={styles.img_container}>
+          <img
+            className={styles.img}
+            src={objCommentImage[answerNumber]}
+            alt="cat"
+          />
         </div>
-        <h2 className={styles.main_header}>Неплохой результат!</h2>
-        <p className={styles.test_info}>Но тебе нужно доучить материалы.</p>
+        <h3 className={styles.test_info}>{objCommentInfo[answerNumber]}</h3>
         <div className={styles.result_button}>
           <Button lable={'Пройти еще раз'} />
         </div>

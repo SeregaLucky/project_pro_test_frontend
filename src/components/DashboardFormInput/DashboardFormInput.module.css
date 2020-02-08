@@ -1,0 +1,56 @@
+.labelAnswer {
+  display: block;
+}
+
+.labelAnswer:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.answer_item__input {
+  display: none;
+}
+
+.answer_item__text {
+  position: relative;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: 'MontserratMedium', sans-serif;
+  color: var(--dark-blue);
+  overflow-wrap: break-word;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.answer_item__text:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px #000107 solid;
+  border-radius: 100%;
+  background: #fff;
+}
+
+.answer_item__text:after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 3px;
+  left: 3px;
+  border-radius: 100%;
+
+  transition: all 0.2s ease;
+}
+
+.answer_item__input:checked + .answer_item__text:after {
+  background: var(--orange);
+}
+
+@media (min-width: 768px) {
+  .answer_item__text {
+    font-size: 15px;
+  }
+}
