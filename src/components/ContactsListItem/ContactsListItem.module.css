@@ -1,70 +1,55 @@
 .card {
-  max-width: 280px;
   background-color: #ffffff;
-  margin-bottom: 20px;
   padding-bottom: 20px;
 }
 .image {
+  height: 246px;
+  object-fit: cover;
   margin-bottom: 20px;
   width: 100%;
 }
+.figcaption {
+  padding: 0 22px;
+}
 .name,
 .nameRu {
-  padding: 0 24px 0 24px;
   text-transform: uppercase;
-  font-size: 11px;
-  letter-spacing: 0.001em;
+  letter-spacing: 0.08em;
   line-height: 18px;
   color: #000000;
+}
+.name {
   font-family: 'MontserratBold', sans-serif;
+  font-size: 11px;
 }
 .nameRu {
-  font-family: 'MontserratNormal', sans-serif;
+  font-family: 'MontserratLight', sans-serif;
+  font-size: 10px;
 }
 .position {
-  padding: 0 24px 0 24px;
   font-size: 11px;
-  letter-spacing: 0.001em;
+  letter-spacing: 0.08em;
   line-height: 21px;
   color: #555555;
-  font-family: 'MontserratMedium', sans-serif;
-  margin-bottom: 12px;
+  font-family: 'MontserratRegular', sans-serif;
+  text-transform: capitalize;
 }
 
-.description {
-  padding: 0 24px 0 24px;
-  font-size: 12px;
-  letter-spacing: 0.001em;
+.eMail {
+  font-size: 11px;
+  letter-spacing: 0.08em;
   line-height: 16px;
   color: #000000;
   font-family: 'MontserratMedium', sans-serif;
-  font-weight: 400;
 }
 
 @media screen and (min-width: 768px) {
-  .card {
-    max-width: 354px;
-  }
-  .image {
-    height: 245px;
-    object-fit: cover;
-  }
-  .name .position .description {
-    padding: 28px;
+  .figcaption {
+    padding: 0 30px;
   }
 }
 @media screen and (min-width: 1280px) {
-  .card {
-    max-width: 295px;
-  }
-  .image {
-    height: 245px;
-    object-fit: cover;
-  }
   .name {
     font-size: 12px;
-  }
-  .name .position .description {
-    padding: 28px;
   }
 }
