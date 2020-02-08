@@ -4,6 +4,7 @@
 .dashboardPage {
   background-color: var(--background-color);
   padding: 90px 0 20px 0;
+  min-height: var(--height-section);
 }
 
 .dashboardPageContainer {
@@ -113,6 +114,7 @@
     font-family: 'MontserratMedium', sans-serif;
     letter-spacing: 0.03em;
     color: #fff;
+    min-height: var(--height-section);
   }
 
   .btnContainer__backText {

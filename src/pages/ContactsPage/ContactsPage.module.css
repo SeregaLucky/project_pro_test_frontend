@@ -2,6 +2,7 @@
   background-color: var(--background-color);
   padding-top: 120px;
   padding-bottom: 60px;
+  min-height: var(--height-section);
 }
 .container {
   width: 320px;
