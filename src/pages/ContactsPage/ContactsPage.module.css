@@ -14,7 +14,7 @@
   font-family: 'MontserratSemiBold', sans-serif;
   font-size: 18px;
 }
-img {
+.contactsListItem img {
   width: 100%;
   height: 100%;
   display: block;
