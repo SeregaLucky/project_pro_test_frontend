@@ -3,6 +3,7 @@
     top right 45%;
   background-size: cover;
   padding: 45px 0;
+  min-height: var(--height-section);
 }
 
 .container {

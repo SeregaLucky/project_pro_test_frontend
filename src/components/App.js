@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import routes from '../routes';
 import authOperations from '../redux/auth/authOperations';
+import globalSelectors from '../redux/global/globalSelectors';
 /* import - components and pages */
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
@@ -53,12 +54,13 @@ class App extends Component {
   }
 
   render() {
+    const { isLoading } = this.props;
     return (
       <BrowserRouter>
-        <Loader />
+        {isLoading && <Loader />}
         <Header />
 
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Switch>
             <Route path={routes.AUTH_PAGE} component={AuthPage} />
             <PrivateRoute exact path={routes.MAIN_PAGE} component={MainPage} />
@@ -86,8 +88,12 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isLoading: globalSelectors.getIsLoading(state),
+});
+
 const mapDispatchToProps = dispatch => ({
   getCurrentUser: () => dispatch(authOperations.getCurrentUser()),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

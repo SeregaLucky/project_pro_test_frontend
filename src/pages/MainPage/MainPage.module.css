@@ -2,6 +2,7 @@
   background-color: #f4f6fb;
   padding-top: 95px;
   padding-bottom: 40px;
+  min-height: var(--height-section);
 }
 
 .container {
