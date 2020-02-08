@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import T from 'prop-types';
 import questionsSelectors from '../../redux/questions/questionsSelectors';
 import questionsActions from '../../redux/questions/questionsActions';
 import questionsOperations from '../../redux/questions/questionsOperations';
@@ -11,32 +12,48 @@ class DashboardPageContainer extends Component {
     isDisabledBackBtn: true,
     isDisabledForwardBtn: true,
     result: null,
+    questionNumber: 1,
   };
 
-  getResultFromState = questions => {
-    const result = questions.map(question => {
-      return {
-        examQuestionId: question.id,
-        choiceId: question.optionChoosed,
-      };
-    });
-
-    this.setState({
-      result: {
-        answers: result,
-      },
-    });
-    console.log();
+  static defaultProps = {
+    err: null,
+    isResultSended: {},
   };
+
+  static propTypes = {
+    err: T.string,
+    questions: T.arrayOf(
+      T.shape({
+        id: T.string.isRequired,
+        examId: T.string.isRequired,
+        question: T.string.isRequired,
+        choices: T.arrayOf(
+          T.shape({
+            id: T.number.isRequired,
+            title: T.string.isRequired,
+          }).isRequired,
+        ),
+      }).isRequired,
+    ),
+
+    check: T.func.isRequired,
+    sendResult: T.func.isRequired,
+  };
+
+  timerId = null;
 
   componentDidUpdate() {
+    const { questions, sendResult, isResultSended } = this.props;
     const {
+      isDisabledBackBtn,
+      isDisabledForwardBtn,
+      result,
       questionNumber,
-      questions,
-      sendResult,
-      isResultSended,
-    } = this.props;
-    const { isDisabledBackBtn, isDisabledForwardBtn, result } = this.state;
+    } = this.state;
+    //снимаем setTimeout
+    if (this.timerId) {
+      clearTimeout(this.timerId);
+    }
 
     // если последний элемент выбран => со стейта забираем значения
     if (questions[questions.length - 1].optionChoosed && !result) {
@@ -73,15 +90,74 @@ class DashboardPageContainer extends Component {
     }
   }
 
+  //снимаем setTimeout
+  componentWillUnmount() {
+    clearTimeout(this.timerId);
+  }
+
+  getResultFromState = questions => {
+    const result = questions.map(question => {
+      return {
+        examQuestionId: question.id,
+        choiceId: question.optionChoosed,
+      };
+    });
+    this.setState({
+      result: {
+        answers: result,
+      },
+    });
+  };
+
+  increasePageNumber = () => {
+    this.setState(prevState => {
+      return {
+        questionNumber: prevState.questionNumber + 1,
+      };
+    });
+  };
+
+  decreasePageNumber = () => {
+    this.setState(prevState => {
+      return {
+        questionNumber: prevState.questionNumber - 1,
+      };
+    });
+  };
+
+  checkAnswer = (
+    examQuestionId,
+    choiceId,
+    questionNumber,
+    questionQuantity,
+    choosed,
+  ) => {
+    // получаем check с редакса
+    const { check } = this.props;
+    // когда последний вопрос, тогда не увеличиваем номер вопроса (increasePageNumber)
+    if (questionNumber === questionQuantity) {
+      check(examQuestionId, choiceId);
+      return;
+    }
+    // если юзер вернулся чтобы изменить ответ. При изменении не увеличиваем номер вопроса (increasePageNumber)
+    if (choosed) {
+      check(examQuestionId, choiceId);
+      return;
+    }
+
+    check(examQuestionId, choiceId);
+    // делаем задержку на 200 мс, чтобы пользователь видел куда нажал
+    this.timerId = setTimeout(() => this.increasePageNumber(), 200);
+    return;
+  };
+
   render() {
+    const { questions, isResultSended } = this.props;
     const {
-      increaseQuestionNumber,
-      decreaseQuestionNumber,
-      questions,
+      isDisabledBackBtn,
+      isDisabledForwardBtn,
       questionNumber,
-      isResultSended,
-    } = this.props;
-    const { isDisabledBackBtn, isDisabledForwardBtn } = this.state;
+    } = this.state;
 
     return (
       // если приходит ответ на put запрос со статусом 204 ==>redirect
@@ -91,8 +167,9 @@ class DashboardPageContainer extends Component {
             <Redirect to="/result" />
           )}
           <DashboardPage
-            increaseQuestionNumber={increaseQuestionNumber}
-            decreaseQuestionNumber={decreaseQuestionNumber}
+            increaseQuestionNumber={this.increasePageNumber}
+            decreaseQuestionNumber={this.decreasePageNumber}
+            checkAnswer={this.checkAnswer}
             questionNumber={questionNumber}
             questions={questions}
             isDisabledBackBtn={isDisabledBackBtn}
@@ -115,10 +192,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    increaseQuestionNumber: () =>
-      dispatch(questionsActions.increaseQuestionNumber()),
-    decreaseQuestionNumber: () =>
-      dispatch(questionsActions.decreaseQuestionNumber()),
+    check: (examQuestionId, choiceId) =>
+      dispatch(questionsActions.checkAnswer(examQuestionId, choiceId)),
     sendResult: (result, examId) =>
       dispatch(questionsOperations.sendResult(result, examId)),
   };

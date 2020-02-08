@@ -1,28 +1,27 @@
 import questionActions from './questionsActions';
 import api from '../../servises/api.js';
 
-const checkAnswer = (
-  examQuestionId,
-  choiceId,
-  questionNumber,
-  questionQuantity,
-  choosed,
-) => dispatch => {
-  //если это последний элемент НЕ используем increaseQuestionNumber чтобы не было ошибки
-  if (questionNumber === questionQuantity) {
-    dispatch(questionActions.checkAnswer(examQuestionId, choiceId));
-    return;
-  }
+// const checkAnswer = (
+//   examQuestionId,
+//   choiceId,
+//   questionNumber,
+//   questionQuantity,
+//   choosed,
+// ) => {
+//   if (questionNumber === questionQuantity) {
+//     questionActions.checkAnswer(examQuestionId, choiceId);
+//     return;
+//   }
 
-  if (choosed) {
-    dispatch(questionActions.checkAnswer(examQuestionId, choiceId));
-    return;
-  }
+//   if (choosed) {
+//     questionActions.checkAnswer(examQuestionId, choiceId);
+//     return;
+//   }
 
-  dispatch(questionActions.checkAnswer(examQuestionId, choiceId));
-  dispatch(questionActions.increaseQuestionNumber());
-  return;
-};
+//   questionActions.checkAnswer(examQuestionId, choiceId);
+//   questionActions.increaseQuestionNumber();
+//   return;
+// };
 
 const sendResult = (result, examId) => dispatch => {
   //делаем put запрос на основе данных questions
@@ -68,7 +67,6 @@ const startTest = idTest => dispatch => {
 };
 
 export default {
-  checkAnswer,
   sendResult,
   putResultsFinished,
   getResultsStatus,

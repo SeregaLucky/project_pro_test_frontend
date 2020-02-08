@@ -1,8 +1,14 @@
 import React from 'react';
+import T from 'prop-types';
 import styles from './DashboardForm.module.css';
 import DashboardFormInput from '../DashboardFormInput/DashboardFormInput';
 
-const DashboardForm = ({ question, questionNumber, questionQuantity }) => {
+const DashboardForm = ({
+  question,
+  questionNumber,
+  questionQuantity,
+  checkAnswer,
+}) => {
   const itemsAnswersQuestions = question.choices.map(choice => {
     // ставим условия для того чтобы когда user вернется назад опции которые были выбраны стояли выбраными
     if (question.optionChoosed && choice.id === question.optionChoosed) {
@@ -11,24 +17,31 @@ const DashboardForm = ({ question, questionNumber, questionQuantity }) => {
           key={choice.title}
           checked={true}
           choiceText={choice.title}
-          questionId={question.id}
-          choiceId={choice.id}
-          questionNumber={questionNumber}
-          questionQuantity={questionQuantity}
-          choosed={question.optionChoosed}
+          checkAnswer={() =>
+            checkAnswer(
+              question.id,
+              choice.id,
+              questionNumber,
+              questionQuantity,
+              question.optionChoosed,
+            )
+          }
         />
       );
     }
     return (
       <DashboardFormInput
         key={choice.title}
-        checked={false}
         choiceText={choice.title}
-        questionId={question.id}
-        choiceId={choice.id}
-        questionNumber={questionNumber}
-        questionQuantity={questionQuantity}
-        choosed={question.optionChoosed}
+        checkAnswer={() =>
+          checkAnswer(
+            question.id,
+            choice.id,
+            questionNumber,
+            questionQuantity,
+            question.optionChoosed,
+          )
+        }
       />
     );
   });
@@ -45,6 +58,23 @@ const DashboardForm = ({ question, questionNumber, questionQuantity }) => {
       </form>
     </div>
   );
+};
+
+DashboardForm.propTypes = {
+  question: T.shape({
+    id: T.string.isRequired,
+    examId: T.string.isRequired,
+    question: T.string.isRequired,
+    choices: T.arrayOf(
+      T.shape({
+        id: T.number.isRequired,
+        title: T.string.isRequired,
+      }).isRequired,
+    ),
+  }).isRequired,
+  questionNumber: T.number.isRequired,
+  questionQuantity: T.number.isRequired,
+  checkAnswer: T.func.isRequired,
 };
 
 export default DashboardForm;
