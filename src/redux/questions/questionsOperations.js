@@ -23,21 +23,13 @@ const sendResult = (result, examId) => dispatch => {
 
 const putResultsFinished = () => (dispatch, getState) => {
   const examIdFinished = getState().questions.examId;
+  if (!examIdFinished) return;
   dispatch(questionActions.resultsFinishedStart());
 
   api
     .putResultsFinished(examIdFinished)
     .then(() => dispatch(questionActions.resultsFinishedSuccess()))
     .catch(error => dispatch(questionActions.resultsFinishedFailure(error)));
-};
-
-const getResultsStatus = () => dispatch => {
-  dispatch(questionActions.resultsStart());
-
-  api
-    .getResultsStatus()
-    .then(data => dispatch(questionActions.resultsSuccess(data)))
-    .catch(error => dispatch(questionActions.resultsFailure(error)));
 };
 
 const getResultsById = () => (dispatch, getState) => {
@@ -54,6 +46,5 @@ export default {
   startTest,
   sendResult,
   putResultsFinished,
-  getResultsStatus,
   getResultsById,
 };
