@@ -21,12 +21,15 @@ class ResultPageContainer extends Component {
     const { result } = this.props;
 
     return (
-      result && (
-        <ResultPage
-          answeredRight={console.log(result.answeredRight)}
-          answeredWrong={result.answeredWrong}
-        />
-      )
+      <>
+        {result && (
+          <ResultPage
+            answeredRight={result.answeredRight}
+            answeredWrong={result.answeredWrong}
+          />
+        )}
+        {!result && <div>Not Results yet!</div>}
+      </>
     );
   }
 }
