@@ -9,9 +9,9 @@ const loadingReducer = (state = false, { type }) => {
     case authTypes.LOGIN_START:
     case authTypes.GET_CURRENT_START:
     case authTypes.LOGOUT_START:
+    case questionsTypes.POST_TEST_START:
     case questionsTypes.RESULTS_START:
     case questionsTypes.RESULTS_FINISHED_START:
-    case questionsTypes.POST_TEST_START:
       return true;
 
     case authTypes.REGISTER_SUCCESS:
@@ -22,12 +22,12 @@ const loadingReducer = (state = false, { type }) => {
     case authTypes.GET_CURRENT_FAILURE:
     case authTypes.LOGOUT_SUCCESS:
     case authTypes.LOGOUT_FAILURE:
+    case questionsTypes.POST_TEST_SUCCESS:
+    case questionsTypes.POST_TEST_FAILURE:
     case questionsTypes.RESULTS_SUCCESS:
     case questionsTypes.RESULTS_FAILURE:
     case questionsTypes.RESULTS_FINISHED_SUCCESS:
     case questionsTypes.RESULTS_FINISHED_FAILURE:
-    case questionsTypes.POST_TEST_SUCCESS:
-    case questionsTypes.POST_TEST_FAILURE:
       return false;
 
     default:
