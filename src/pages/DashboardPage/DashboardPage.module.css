@@ -1,0 +1,145 @@
+@import '../../stylesheet/vars.css';
+@import '../../stylesheet/fonts.css';
+
+.dashboardPage {
+  background-color: var(--background-color);
+  padding: 90px 0 20px 0;
+  min-height: var(--height-section);
+}
+
+.dashboardPageContainer {
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto 20px;
+}
+
+.titleContainer__title {
+  font-size: 14px;
+  width: 125px;
+  font-family: 'MontserratMedium', sans-serif;
+  letter-spacing: 0.03em;
+}
+
+.titleContainer__btnEnd {
+  width: 130px;
+  height: 48px;
+  border: 0;
+  display: block;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnContainer__forward,
+.btnContainer__back {
+  width: 50px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  color: #fff;
+}
+
+.btnContainer__forwardText,
+.btnContainer__backText {
+  display: none;
+}
+
+.btnContainer__forward {
+  background-color: var(--orange);
+}
+.btnContainer__back {
+  background-color: var(--orange);
+}
+
+.btnContainer__arrow_forward,
+.btnContainer__arrow_back {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
+
+.btnContainer__arrow_back {
+  transform: rotate(180deg);
+}
+
+.btnContainer__forward[disabled],
+.btnContainer__back[disabled] {
+  background-color: #fff;
+  cursor: default;
+}
+
+.btnContainer__forward[disabled] .btnContainer__arrow_forward {
+  fill: #000;
+}
+
+.btnContainer__back[disabled] .btnContainer__arrow_back {
+  fill: #000;
+}
+
+@media screen and (min-width: 768px) {
+  .dashboardPage {
+    padding: 50px 0 268px 0;
+  }
+  .dashboardPageContainer {
+    width: 655px;
+  }
+
+  .titleContainer__title {
+    font-size: 20px;
+    width: 180px;
+  }
+
+  .btnContainer__forward,
+  .btnContainer__back {
+    width: 210px;
+    height: 33px;
+    border: 0;
+  }
+
+  .btnContainer__forwardText,
+  .btnContainer__backText {
+    display: inline-block;
+    font-size: 12px;
+    font-family: 'MontserratMedium', sans-serif;
+    letter-spacing: 0.03em;
+    color: #fff;
+  }
+
+  .btnContainer__backText {
+    margin-left: 10px;
+  }
+
+  .btnContainer__forwardText {
+    margin-right: 10px;
+  }
+
+  .btnContainer__forward[disabled] .btnContainer__forwardText {
+    color: #000;
+  }
+
+  .btnContainer__back[disabled] .btnContainer__backText {
+    color: #000;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .dashboardPageContainer {
+    width: 860px;
+  }
+
+  .titleContainer__title {
+    font-size: 22px;
+    width: 200px;
+  }
+}

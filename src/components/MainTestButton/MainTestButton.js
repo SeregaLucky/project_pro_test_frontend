@@ -1,27 +1,37 @@
 import React, { Component } from 'react';
-import routes from '../../routes';
+import T from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import routes from '../../routes';
 import { ReactComponent as Arrow } from '../../assets/icons/svg/arrow.svg';
 import questionsOperations from '../../redux/questions/questionsOperations';
 import styles from './MainTestButton.module.css';
 
 class MainTestButton extends Component {
+  static propTypes = {
+    text: T.string.isRequired,
+    bg: T.string.isRequired,
+    idTest: T.string.isRequired,
+    giveTest: T.func.isRequired,
+  };
+
   handleClick = () => {
     const { giveTest, idTest } = this.props;
-    // console.log(idTest);
     giveTest(idTest);
   };
 
   render() {
+    const { text, bg } = this.props;
     return (
-      <li>
+      <li className={styles.listButton}>
         <Link
           onClick={this.handleClick}
           to={routes.DASHBOARD_PAGE}
-          className={styles.button}
+          className={
+            bg === 'buttonOrange' ? styles.buttonOrange : styles.buttonBlue
+          }
         >
-          Теория тестирования
+          {text}
           <Arrow className={styles.arrow} width="25px" alt="arrow" />
         </Link>
       </li>
@@ -32,4 +42,5 @@ class MainTestButton extends Component {
 const mapDispatchToProps = dispatch => ({
   giveTest: idTest => dispatch(questionsOperations.startTest(idTest)),
 });
+
 export default connect(null, mapDispatchToProps)(MainTestButton);

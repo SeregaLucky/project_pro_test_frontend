@@ -1,23 +1,30 @@
 import React from 'react';
+import T from 'prop-types';
 import styles from './DashboardFormInput.module.css';
 
-const answerQuestions = ['Тесты на уже протестированных участках приложения'];
+const DashboardFormInput = ({ checked, choiceText, checkAnswer }) => {
+  return (
+    <label className={styles.labelAnswer}>
+      <input
+        className={styles.answer_item__input}
+        type="radio"
+        name="answer"
+        checked={checked}
+        onChange={checkAnswer}
+      />
+      <p className={styles.answer_item__text}>{choiceText}</p>
+    </label>
+  );
+};
 
-const DashboardFormInput = props => {
-  const itemsAnswersQuestions = answerQuestions.map(answer => {
-    return (
-      <label>
-        <input
-          className={styles.answer_item__input}
-          type="radio"
-          name="answer"
-        />
-        <p className={styles.answer_item__text}>{answer}</p>
-      </label>
-    );
-  });
+DashboardFormInput.defaultProps = {
+  checked: false,
+};
 
-  return <li className={styles.answer_item}>{itemsAnswersQuestions}</li>;
+DashboardFormInput.propTypes = {
+  checked: T.bool,
+  choiceText: T.string.isRequired,
+  checkAnswer: T.func.isRequired,
 };
 
 export default DashboardFormInput;

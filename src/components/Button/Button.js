@@ -1,23 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import T from 'prop-types';
+import routes from '../../routes';
+import questionsActions from '../../redux/questions/questionsActions';
 import styles from './Button.module.css';
 
-const Button = ({ type = 'button', lable = '', onClick = () => null }) => (
-  <button className={styles.button} type={type} onClick={onClick}>
+const Button = ({ lable, onReset }) => (
+  <Link to={routes.MAIN_PAGE} className={styles.link} onClick={onReset}>
     {lable}
-  </button>
+  </Link>
 );
 
-Button.defaultProps = {
-  type: 'button',
-  lable: '',
-  onClick: () => null,
-};
-
 Button.propTypes = {
-  type: T.string,
-  lable: T.string,
-  onClick: T.func,
+  lable: T.string.isRequired,
+  onReset: T.func.isRequired,
 };
 
-export default Button;
+const mapDispatchToProps = dispatch => ({
+  onReset: () => dispatch(questionsActions.resetQuestions()),
+});
+
+export default connect(null, mapDispatchToProps)(Button);

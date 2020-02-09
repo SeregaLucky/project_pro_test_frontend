@@ -1,6 +1,7 @@
 .section {
   background-color: var(--background-color);
   padding: 15px 0;
+  min-height: var(--height-section);
 }
 
 .container {
@@ -12,15 +13,21 @@
 .main_header {
   text-align: center;
   font-family: 'MontserratBold', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 10px;
   color: var(--dark-blue);
 }
 
-.img {
+.img_container {
   display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
+  align-items: center;
+}
+
+.img {
+  width: 200px;
+  height: 230px;
+  margin: 0 auto;
+  margin-bottom: 30px;
 }
 
 .test_title {
@@ -39,8 +46,10 @@
 .test_info {
   text-align: center;
   font-family: 'MontserratMedium', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 0.03em;
+  white-space: pre-line;
+  line-height: 1.8;
   margin-bottom: 20px;
 }
 
@@ -56,6 +65,15 @@
   .result_bar {
     width: 400px;
     height: 300px;
+  }
+
+  .img {
+    width: 250px;
+    height: 280px;
+  }
+
+  .test_info {
+    font-size: 16px;
   }
 }
 

@@ -1,0 +1,55 @@
+.card {
+  background-color: #ffffff;
+  padding-bottom: 20px;
+}
+.image {
+  height: 246px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.figcaption {
+  padding: 0 22px;
+}
+.name,
+.nameRu {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 18px;
+  color: #000000;
+}
+.name {
+  font-family: 'MontserratBold', sans-serif;
+  font-size: 11px;
+}
+.nameRu {
+  font-family: 'MontserratLight', sans-serif;
+  font-size: 10px;
+}
+.position {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 21px;
+  color: #555555;
+  font-family: 'MontserratRegular', sans-serif;
+  text-transform: capitalize;
+}
+
+.eMail {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 16px;
+  color: #000000;
+  font-family: 'MontserratMedium', sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+  .figcaption {
+    padding: 0 30px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .name {
+    font-size: 12px;
+  }
+}

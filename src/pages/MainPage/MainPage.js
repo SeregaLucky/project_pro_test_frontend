@@ -1,6 +1,6 @@
 import React from 'react';
-// import T from 'prop-types';
 import MainTestButton from '../../components/MainTestButton/MainTestButton';
+import listQuotes from './listQuotes';
 import styles from './MainPage.module.css';
 
 const ID_NEED_TEST = {
@@ -8,32 +8,36 @@ const ID_NEED_TEST = {
   id2: '5e2de905933b4f3b74d81d59',
 };
 
-const MainPage = ({ quote }) => {
+const TEXT_BUTTON = ['Техническая подготовка QA', 'Теория тестирования'];
+const BUTTON_COLOR = ['buttonOrange', 'buttonBlue'];
+
+const MainPage = () => {
+  const randomNumber = Math.floor(Math.random() * listQuotes.length);
+  const { quote, author, description } = listQuotes[randomNumber];
+
   return (
     <section className={styles.mainPage}>
       <div className={styles.container}>
-        <h2 className={styles.mainPage_quote}>
-          {quote}
-          "Регресионное тестирование. Что это? Если система комплириется, то это
-          хорошо, если загружается, то это просто здорово!"
-        </h2>
-        <h3 className={styles.mainPage_author}>Линус Торвальдс</h3>
-        <p className={styles.mainPage_descr}>
-          Финский программист, хакер, 1969 г.
-        </p>
+        <h2 className={styles.mainPage_quote}>{quote}</h2>
+        <h3 className={styles.mainPage_author}>{author}</h3>
+        <p className={styles.mainPage_descr}>{description}</p>
         <div className={styles.mainPage_buttons}>
           <ul className={styles.mainPage_buttonItems}>
-            <MainTestButton idTest={ID_NEED_TEST.id1} />
-            <MainTestButton idTest={ID_NEED_TEST.id2} />
+            <MainTestButton
+              idTest={ID_NEED_TEST.id1}
+              text={TEXT_BUTTON[0]}
+              bg={BUTTON_COLOR[1]}
+            />
+            <MainTestButton
+              idTest={ID_NEED_TEST.id2}
+              text={TEXT_BUTTON[1]}
+              bg={BUTTON_COLOR[0]}
+            />
           </ul>
         </div>
       </div>
     </section>
   );
 };
-
-// MainPage.propTypes = {
-//   quote: T.string.isRequired,
-// };
 
 export default MainPage;

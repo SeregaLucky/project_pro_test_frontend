@@ -1,42 +1,80 @@
 import React from 'react';
+import T from 'prop-types';
 import styles from './DashboardForm.module.css';
+import DashboardFormInput from '../DashboardFormInput/DashboardFormInput';
 
-const answerQuestions = [
-  'Это тестирование основного функционала приложения',
-  'Тестирование отдельной функции',
-  'Тестирование требований',
-  'Тесты на уже протестированных участках приложения',
-  'Один из видов тестирования, направленного на проверку соответствий функциональных требовний ПО к его реальным характеристикам',
-  'Не знаю',
-];
-
-const question = ['Что такое регрессионное тестирование?'];
-const DashboardForm = () => {
-  const itemsAnswersQuestions = answerQuestions.map(answer => {
+const DashboardForm = ({
+  question,
+  questionNumber,
+  questionQuantity,
+  checkAnswer,
+}) => {
+  const itemsAnswersQuestions = question.choices.map(choice => {
+    // ставим условия для того чтобы когда user вернется назад опции которые были выбраны стояли выбраными
+    if (question.optionChoosed && choice.id === question.optionChoosed) {
+      return (
+        <DashboardFormInput
+          key={choice.title}
+          checked={true}
+          choiceText={choice.title}
+          checkAnswer={() =>
+            checkAnswer(
+              question.id,
+              choice.id,
+              questionNumber,
+              questionQuantity,
+              question.optionChoosed,
+            )
+          }
+        />
+      );
+    }
     return (
-      <li className={styles.answer_item}>
-        <label>
-          <input
-            className={styles.answer_item__input}
-            type="radio"
-            name="answer"
-          />
-          <p className={styles.answer_item__text}>{answer}</p>
-        </label>
-      </li>
+      <DashboardFormInput
+        key={choice.title}
+        choiceText={choice.title}
+        checkAnswer={() =>
+          checkAnswer(
+            question.id,
+            choice.id,
+            questionNumber,
+            questionQuantity,
+            question.optionChoosed,
+          )
+        }
+      />
     );
   });
 
   return (
     <div className={styles.dashboardform}>
       <p className={styles.dashboardform__counter}>
-        вопрос <span>{3}</span> / 12 {}
+        Вопрос <span> {questionNumber}</span> / {questionQuantity}
       </p>
-      <h2 className={styles.dashboardform__question}>{question}</h2>
-      <i className={styles.dashboardform__hr}></i>
-      <ul className={styles.dashboardform__answers}>{itemsAnswersQuestions}</ul>
+      <h2 className={styles.dashboardform__question}>{question.question}</h2>
+
+      <form className={styles.dashboardform__answers}>
+        {itemsAnswersQuestions}
+      </form>
     </div>
   );
+};
+
+DashboardForm.propTypes = {
+  question: T.shape({
+    id: T.string.isRequired,
+    examId: T.string.isRequired,
+    question: T.string.isRequired,
+    choices: T.arrayOf(
+      T.shape({
+        id: T.number.isRequired,
+        title: T.string.isRequired,
+      }).isRequired,
+    ),
+  }).isRequired,
+  questionNumber: T.number.isRequired,
+  questionQuantity: T.number.isRequired,
+  checkAnswer: T.func.isRequired,
 };
 
 export default DashboardForm;

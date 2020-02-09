@@ -1,17 +1,66 @@
 import axios from 'axios';
 
+/* DEFAULTS SETTINGS */
+axios.defaults.baseURL =
+  'http://ec2-3-133-102-159.us-east-2.compute.amazonaws.com/api';
 axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
-axios.defaults.baseURL =
-  'http://ec2-3-133-102-159.us-east-2.compute.amazonaws.com/api';
 
-axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMzBhMzcxYTU2NGFkNjQ2OTQzYjY0YyIsImlhdCI6MTU4MDI0NTg3M30.ppdY2GwGmAU4N7q2noVQrZywAwkl8AJPl0R00pV9LVI`;
+/* SET && UNSET TOKEN */
+const setToken = token => {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+};
+const unsetToken = () => {
+  axios.defaults.headers.common['Authorization'] = '';
+};
 
-export const postAllTests = idTest => {
-  console.log(idTest);
+/* AUTHORIZATION */
+const register = (path, credentials) => axios.post(path, credentials);
+const login = credentials => axios.post('/auth/sign-in', credentials);
+const getUser = () => axios.get('/users/current');
+const logOut = () => axios.delete('/auth/sign-out');
+
+/* TESTS */
+const postAllTests = idTest => {
   return axios
     .post(`/exams/start?testId=${idTest}`)
     .then(response => response.data)
     .catch(error => error);
+};
+
+const sendResultRequest = (result, examId) => {
+  return axios.put(`/exams/${examId}/questions`, result);
+};
+
+const putResultsFinished = examId => axios.put(`/exams/${examId}/finish`);
+
+const getResultsStatus = examId => {
+  return axios
+    .get(`/exams/${examId}`)
+    .then(response => response.data)
+    .catch(error => error);
+};
+
+const getResultsById = examId => {
+  return axios
+    .get(`/exams/${examId}/result`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => error);
+};
+
+export default {
+  setToken,
+  unsetToken,
+  register,
+  login,
+  getUser,
+  logOut,
+  postAllTests,
+  sendResultRequest,
+  putResultsFinished,
+  getResultsStatus,
+  getResultsById,
 };

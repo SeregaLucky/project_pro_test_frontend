@@ -1,8 +1,22 @@
 import React from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import T from 'prop-types';
 import AuthForm from '../../components/AuthForm';
+import authActions from '../../redux/auth/authActions';
+import authOperations from '../../redux/auth/authOperations';
 import styles from './AuthPage.module.css';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 
-const AuthPage = () => {
+const AuthPage = ({ location, setGoogleToken, getCurrentUser, dispatch }) => {
+  if (location.search) {
+    const token = new URLSearchParams(location.search).get('token');
+    if (token) {
+      setGoogleToken(token);
+      getCurrentUser(token);
+    }
+  }
+
   return (
     <section className={styles.authPage}>
       <div className={`${styles.container} ${styles.addFlex}`}>
@@ -17,10 +31,25 @@ const AuthPage = () => {
             <span className={styles.textSpan}>_ ]</span>
           </p>
         </div>
-        <AuthForm className={styles.divForm} />
+        <AuthForm className={styles.divForm} dispatch={dispatch} />
       </div>
     </section>
   );
 };
 
-export default AuthPage;
+AuthPage.propTypes = {
+  location: T.shape().isRequired,
+  setGoogleToken: T.func.isRequired,
+  getCurrentUser: T.func.isRequired,
+  dispatch: T.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => ({
+  setGoogleToken: token => dispatch(authActions.googleToken(token)),
+  getCurrentUser: token => dispatch(authOperations.getCurrentUser(token)),
+});
+
+export default compose(
+  withAuthRedirect,
+  connect(null, mapDispatchToProps),
+)(AuthPage);
