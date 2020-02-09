@@ -51,7 +51,7 @@ class DashboardPageContainer extends Component {
       questionNumber,
     } = this.state;
     // если последний элемент выбран => со стейта забираем значения
-    if (questions[questions.length - 1].optionChoosed && !result) {
+    if (questions && questions[questions.length - 1].optionChoosed && !result) {
       this.getResultFromState(questions);
     }
     // делаем put запрос
@@ -60,13 +60,21 @@ class DashboardPageContainer extends Component {
     }
 
     // Disable по кнопкам двойная проверка чтобы не было зацикливания
-    if (!questions[questionNumber - 1].optionChoosed && !isDisabledForwardBtn) {
+    if (
+      questions &&
+      !questions[questionNumber - 1].optionChoosed &&
+      !isDisabledForwardBtn
+    ) {
       this.setState({
         isDisabledForwardBtn: true,
       });
     }
 
-    if (questions[questionNumber - 1].optionChoosed && isDisabledForwardBtn) {
+    if (
+      questions &&
+      questions[questionNumber - 1].optionChoosed &&
+      isDisabledForwardBtn
+    ) {
       this.setState({
         isDisabledForwardBtn: false,
       });
