@@ -30,6 +30,9 @@ export default class MaterialsPage extends Component {
             ...state,
             extendedEmployments: !state.extendedEmployments,
           };
+
+        default:
+          return state;
       }
     });
   };
