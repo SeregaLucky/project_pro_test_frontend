@@ -45,10 +45,12 @@ const getResultsById = examId => {
 export default {
   setToken,
   unsetToken,
+
   register,
   login,
   getUser,
   logOut,
+
   postAllTests,
   sendResultRequest,
   putResultsFinished,
