@@ -25,8 +25,8 @@ import api from '../../servises/api.js';
 
 const sendResult = (result, examId) => dispatch => {
   //делаем put запрос на основе данных questions
-
   dispatch(questionActions.sendResultStart());
+
   api
     .sendResultRequest(result, examId)
     .then(res => dispatch(questionActions.sendResultSuccess(res)))
@@ -36,6 +36,7 @@ const sendResult = (result, examId) => dispatch => {
 const putResultsFinished = () => (dispatch, getState) => {
   const examIdFinished = getState().questions.questions.idTestBlock;
   dispatch(questionActions.resultsFinishedStart());
+
   api
     .putResultsFinished(examIdFinished)
     .then(() => dispatch(questionActions.resultsFinishedSuccess()))
@@ -44,6 +45,7 @@ const putResultsFinished = () => (dispatch, getState) => {
 
 const getResultsStatus = () => dispatch => {
   dispatch(questionActions.resultsStart());
+
   api
     .getResultsStatus()
     .then(data => dispatch(questionActions.resultsSuccess(data)))
@@ -53,6 +55,7 @@ const getResultsStatus = () => dispatch => {
 const getResultsById = () => (dispatch, getState) => {
   const examId = getState().questions.questions.idTestBlock;
   dispatch(questionActions.resultsStart());
+
   api
     .getResultsById(examId)
     .then(data => dispatch(questionActions.resultsSuccess(data)))
