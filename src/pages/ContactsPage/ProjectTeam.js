@@ -7,6 +7,7 @@ import Poddubniy from '../../assets/staff/Poddubniy.jpg';
 import Sariieva from '../../assets/staff/Sariieva.jpg';
 import Mazuryk from '../../assets/staff/Mazuryk.jpg';
 import Oherchuk from '../../assets/staff/Oherchuk.jpg';
+import Plietnikov from '../../assets/staff/Plietnikov.jpg';
 
 const projectTeam = [
   {
@@ -87,7 +88,7 @@ const projectTeam = [
     nameRu: 'Денис Плетников',
     position: 'front end developer',
     eMail: 'denys.plietnikov.@gmail.com',
-    imgSrc: null,
+    imgSrc: Plietnikov,
   },
 ];
 
