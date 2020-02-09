@@ -1,28 +1,6 @@
 import questionActions from './questionsActions';
 import api from '../../servises/api.js';
 
-// const checkAnswer = (
-//   examQuestionId,
-//   choiceId,
-//   questionNumber,
-//   questionQuantity,
-//   choosed,
-// ) => {
-//   if (questionNumber === questionQuantity) {
-//     questionActions.checkAnswer(examQuestionId, choiceId);
-//     return;
-//   }
-
-//   if (choosed) {
-//     questionActions.checkAnswer(examQuestionId, choiceId);
-//     return;
-//   }
-
-//   questionActions.checkAnswer(examQuestionId, choiceId);
-//   questionActions.increaseQuestionNumber();
-//   return;
-// };
-
 const sendResult = (result, examId) => dispatch => {
   //делаем put запрос на основе данных questions
   dispatch(questionActions.sendResultStart());
