@@ -99,7 +99,7 @@ const Mobile = ({
 Mobile.propTypes = {
   isOpen: T.bool.isRequired,
   isMobile: T.bool.isRequired,
-  name: T.string.isRequired,
+  name: T.string,
   handleClick: T.func.isRequired,
   auth: T.bool.isRequired,
   handleSignOut: T.func.isRequired,

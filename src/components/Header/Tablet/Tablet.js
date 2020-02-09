@@ -6,7 +6,7 @@ import routes from '../../../routes';
 import styles from '../Header.module.css';
 import T from 'prop-types';
 
-const Tablet = ({ auth, isMobile, handleLogOut, name }) => {
+const Tablet = ({ auth, isMobile, handleSignOut, name }) => {
   return (
     <div className={styles.NavAndUserContainer}>
       <nav className={styles.mainNav}>
@@ -58,7 +58,7 @@ const Tablet = ({ auth, isMobile, handleLogOut, name }) => {
           <button
             type="click"
             className={styles.headerBtn}
-            onClick={handleLogOut}
+            onClick={handleSignOut}
           >
             <SignOutLogo className={styles.SignOutLogo} />
           </button>
@@ -70,7 +70,7 @@ const Tablet = ({ auth, isMobile, handleLogOut, name }) => {
 
 Tablet.propTypes = {
   isMobile: T.bool.isRequired,
-  name: T.bool.isRequired,
+  name: T.string,
   auth: T.bool.isRequired,
   handleSignOut: T.func.isRequired,
 };

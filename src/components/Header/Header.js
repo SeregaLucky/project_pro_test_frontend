@@ -44,9 +44,12 @@ class Header extends Component {
   };
 
   render() {
+    const { modalOpen, name, auth } = this.props;
+    const { isOpen, isMobile } = this.state;
+
     return (
       <header className={styles.header}>
-        {this.props.modalOpen && <Modal />}
+        {modalOpen && <Modal />}
         <NavLink
           to={routes.MAIN_PAGE}
           className={styles.logoLink}
@@ -65,19 +68,19 @@ class Header extends Component {
           {matches =>
             matches.small ? (
               <Mobile
-                isOpen={this.state.isOpen}
-                name={this.props.name}
-                auth={this.props.auth}
+                isOpen={isOpen}
+                name={name}
+                auth={auth}
                 handleClick={this.handleClick}
                 handleSignOut={this.handleSignOut}
-                isMobile={this.state.isMobile}
+                isMobile={isMobile}
               />
             ) : (
               <Tablet
-                name={this.props.name}
-                auth={this.props.auth}
+                name={name}
+                auth={auth}
                 handleSignOut={this.handleSignOut}
-                isMobile={this.state.isMobile}
+                isMobile={isMobile}
               />
             )
           }
