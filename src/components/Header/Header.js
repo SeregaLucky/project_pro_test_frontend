@@ -7,14 +7,23 @@ import authSelectors from '../../redux/auth/authSelectors';
 import globalSelectors from '../../redux/global/globalSelectors';
 import globalActions from '../../redux/global/globalActions';
 import { ReactComponent as MainLogo } from '../../assets/images/logo.svg';
-import render from './render';
+import Mobile from './Mobile/Mobile';
+import Tablet from './Tablet/Tablet';
 import Modal from '../Modal';
+import T from 'prop-types';
 import styles from './Header.module.css';
 
 class Header extends Component {
   state = {
     isOpen: false,
     isMobile: false,
+  };
+
+  static propTypes = {
+    onOpen: T.func.isRequired,
+    modalOpen: T.bool.isRequired,
+    auth: T.bool,
+    name: T.string,
   };
 
   handleClick = () => {
@@ -35,9 +44,12 @@ class Header extends Component {
   };
 
   render() {
+    const { modalOpen, name, auth } = this.props;
+    const { isOpen, isMobile } = this.state;
+
     return (
       <header className={styles.header}>
-        {this.props.modalOpen && <Modal />}
+        {modalOpen && <Modal />}
         <NavLink
           to={routes.MAIN_PAGE}
           className={styles.logoLink}
@@ -54,21 +66,23 @@ class Header extends Component {
           }
         >
           {matches =>
-            matches.small
-              ? render.mobile(
-                  this.state.isOpen,
-                  this.state.isMobile,
-                  this.props.name,
-                  this.handleClick,
-                  this.props.auth,
-                  this.handleSignOut,
-                )
-              : render.tablet(
-                  this.props.auth,
-                  this.state.isMobile,
-                  this.handleSignOut,
-                  this.props.name,
-                )
+            matches.small ? (
+              <Mobile
+                isOpen={isOpen}
+                name={name}
+                auth={auth}
+                handleClick={this.handleClick}
+                handleSignOut={this.handleSignOut}
+                isMobile={isMobile}
+              />
+            ) : (
+              <Tablet
+                name={name}
+                auth={auth}
+                handleSignOut={this.handleSignOut}
+                isMobile={isMobile}
+              />
+            )
           }
         </Media>
       </header>
