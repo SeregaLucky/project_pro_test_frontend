@@ -11,6 +11,7 @@ const loadingReducer = (state = false, { type }) => {
     case authTypes.LOGOUT_START:
     case questionsTypes.RESULTS_START:
     case questionsTypes.RESULTS_FINISHED_START:
+    case questionsTypes.POST_TEST_START:
       return true;
 
     case authTypes.REGISTER_SUCCESS:
@@ -25,6 +26,8 @@ const loadingReducer = (state = false, { type }) => {
     case questionsTypes.RESULTS_FAILURE:
     case questionsTypes.RESULTS_FINISHED_SUCCESS:
     case questionsTypes.RESULTS_FINISHED_FAILURE:
+    case questionsTypes.POST_TEST_SUCCESS:
+    case questionsTypes.POST_TEST_FAILURE:
       return false;
 
     default:
