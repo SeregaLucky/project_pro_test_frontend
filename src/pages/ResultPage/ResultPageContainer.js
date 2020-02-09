@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import routes from '../../routes';
 import ResultPage from './ResultPage.js';
-import * as selects from '../../redux/questions/questionsSelectors';
+import selects from '../../redux/questions/questionsSelectors';
 import resultsOperations from '../../redux/questions/questionsOperations.js';
 
 class ResultPageContainer extends Component {
+  static defaultProps = {
+    result: null,
+    getIsResultSended: null,
+  };
+
   static propTypes = {
     putFinished: T.func.isRequired,
     getResults: T.func.isRequired,
+    getIsResultSended: T.shape({}),
     finished: T.bool.isRequired,
     result: T.shape({
       answeredRight: T.number.isRequired,
       answeredWrong: T.number.isRequired,
-    }).isRequired,
+    }),
   };
 
   componentDidMount() {
@@ -29,7 +37,7 @@ class ResultPageContainer extends Component {
   }
 
   render() {
-    const { result } = this.props;
+    const { result, isResultSended } = this.props;
 
     return (
       <>
@@ -39,7 +47,7 @@ class ResultPageContainer extends Component {
             answeredWrong={result.answeredWrong}
           />
         )}
-        {!result && <div> Not Results yet </div>}
+        {!isResultSended && <Redirect to={routes.MAIN_PAGE} />}
       </>
     );
   }
@@ -48,6 +56,7 @@ class ResultPageContainer extends Component {
 const mapStateToProps = state => ({
   finished: selects.getFinishedResults(state),
   result: selects.getResults(state),
+  isResultSended: selects.getIsResultSended(state),
 });
 
 const mapDispatchToProps = dispatch => ({

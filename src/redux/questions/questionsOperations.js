@@ -23,6 +23,7 @@ const sendResult = (result, examId) => dispatch => {
 
 const putResultsFinished = () => (dispatch, getState) => {
   const examIdFinished = getState().questions.examId;
+  if (!examIdFinished) return;
   dispatch(questionActions.resultsFinishedStart());
 
   api
