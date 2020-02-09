@@ -1,3 +1,4 @@
+import Stryzh from '../../assets/staff/Stryzh.jpg';
 import Lutsyshyna from '../../assets/staff/Lutsyshyna.jpg';
 import Pushkovskiy from '../../assets/staff/Pushkovskiy.jpg';
 import Arkhypchenko from '../../assets/staff/Arkhypchenko.JPG';
@@ -5,8 +6,17 @@ import Halat from '../../assets/staff/Halat.jpg';
 import Poddubniy from '../../assets/staff/Poddubniy.jpg';
 import Sariieva from '../../assets/staff/Sariieva.jpg';
 import Mazuryk from '../../assets/staff/Mazuryk.jpg';
+import Oherchuk from '../../assets/staff/Oherchuk.jpg';
 
 const projectTeam = [
+  {
+    id: 0,
+    name: ' Sergii Stryzh',
+    nameRu: 'Сергей Стриж',
+    position: 'Team Lead',
+    eMail: 'strizgsergey@gmail.com',
+    imgSrc: Stryzh,
+  },
   {
     id: 1,
     name: ' Olha Lutsyshyna',
@@ -17,7 +27,7 @@ const projectTeam = [
   },
   {
     id: 2,
-    name: 'Pushkovskiy Sergey',
+    name: 'Sergey Pushkovskiy',
     nameRu: 'Сергей Пушковский',
     position: 'front end developer',
     eMail: 'spushkovskiy@gmail.com',
@@ -63,5 +73,22 @@ const projectTeam = [
     eMail: 'p.a.mazuryk@gmail.com',
     imgSrc: Mazuryk,
   },
+  {
+    id: 8,
+    name: 'Ihor Oherchuk',
+    nameRu: 'Игорь Огерчук',
+    position: 'front end developer',
+    eMail: 'igor.ogerchuk@gmail.com',
+    imgSrc: Oherchuk,
+  },
+  {
+    id: 9,
+    name: 'Denys Plietnikov',
+    nameRu: 'Денис Плетников',
+    position: 'front end developer',
+    eMail: 'denys.plietnikov.@gmail.com',
+    imgSrc: null,
+  },
 ];
+
 export default projectTeam;
