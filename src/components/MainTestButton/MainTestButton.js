@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import T from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import routes from '../../routes';
@@ -7,6 +8,13 @@ import questionsOperations from '../../redux/questions/questionsOperations';
 import styles from './MainTestButton.module.css';
 
 class MainTestButton extends Component {
+  static propTypes = {
+    text: T.string.isRequired,
+    bg: T.string.isRequired,
+    idTest: T.string.isRequired,
+    giveTest: T.func.isRequired,
+  };
+
   handleClick = () => {
     const { giveTest, idTest } = this.props;
     giveTest(idTest);
