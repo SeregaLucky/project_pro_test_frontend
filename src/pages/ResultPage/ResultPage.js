@@ -1,5 +1,4 @@
 import React from 'react';
-import T from 'prop-types';
 import { objCommentImage } from './commentaryImages.js';
 import { objCommentInfo } from './commentaryInfo.js';
 import ResultProgressBar from '../../components/ResultProgressBar/ResultProgressBar.js';
@@ -35,11 +34,6 @@ const ResultPage = ({ answeredRight = 8, answeredWrong = 4 }) => {
       </div>
     </section>
   );
-};
-
-ResultPage.propTypes = {
-  answeredRight: T.number.isRequired,
-  answeredWrong: T.number.isRequired,
 };
 
 export default ResultPage;

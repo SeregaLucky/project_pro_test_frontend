@@ -23,7 +23,7 @@ class ResultPageContainer extends Component {
     return (
       result && (
         <ResultPage
-          answeredRight={result.answeredRight}
+          answeredRight={console.log(result.answeredRight)}
           answeredWrong={result.answeredWrong}
         />
       )
