@@ -22,11 +22,9 @@ const getUser = () => axios.get('/users/current');
 const logOut = () => axios.delete('/auth/sign-out');
 
 /* TESTS */
-const postAllTests = idTest => {
-  return axios
-    .post(`/exams/start?testId=${idTest}`)
-    .then(response => response.data)
-    .catch(error => error);
+const postAllTests = async idTest => {
+  const response = await axios.post(`/exams/start?testId=${idTest}`);
+  return response.data;
 };
 
 const sendResultRequest = (result, examId) => {
