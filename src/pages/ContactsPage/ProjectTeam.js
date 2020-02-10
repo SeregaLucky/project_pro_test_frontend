@@ -1,3 +1,5 @@
+import Popov from '../../assets/staff/Popov.jpg';
+import Shvartsman from '../../assets/staff/Shvartsman.jpg';
 import Stryzh from '../../assets/staff/Stryzh.jpg';
 import Lutsyshyna from '../../assets/staff/Lutsyshyna.jpg';
 import Pushkovskiy from '../../assets/staff/Pushkovskiy.jpg';
@@ -11,23 +13,39 @@ import Plietnikov from '../../assets/staff/Plietnikov.jpg';
 
 const projectTeam = [
   {
-    id: 0,
-    name: ' Sergii Stryzh',
+    id: 1,
+    name: 'Dmytro Popov',
+    nameRu: 'Дмитрий Попов',
+    position: 'Project Manager / Product Owner',
+    eMail: 'dm87ua@gmail.com',
+    imgSrc: Popov,
+  },
+  {
+    id: 2,
+    name: 'Maryna Shvartsman',
+    nameRu: 'Марина Шварцман',
+    position: 'Project Manager / Product Owner',
+    eMail: 'Mary.shvartsman@gmail.com',
+    imgSrc: Shvartsman,
+  },
+  {
+    id: 3,
+    name: 'Sergii Stryzh',
     nameRu: 'Сергей Стриж',
     position: 'Team Lead',
     eMail: 'strizgsergey@gmail.com',
     imgSrc: Stryzh,
   },
   {
-    id: 1,
-    name: ' Olha Lutsyshyna',
+    id: 4,
+    name: 'Olha Lutsyshyna',
     nameRu: 'Ольга Луцишина',
     position: 'front end developer',
     eMail: 'olhalutsyshyna@gmail.com',
     imgSrc: Lutsyshyna,
   },
   {
-    id: 2,
+    id: 5,
     name: 'Sergey Pushkovskiy',
     nameRu: 'Сергей Пушковский',
     position: 'front end developer',
@@ -35,7 +53,7 @@ const projectTeam = [
     imgSrc: Pushkovskiy,
   },
   {
-    id: 3,
+    id: 6,
     name: 'Iryna Arkhypchenko',
     nameRu: 'Ирина Архипченко',
     position: 'front end developer',
@@ -43,7 +61,7 @@ const projectTeam = [
     imgSrc: Arkhypchenko,
   },
   {
-    id: 4,
+    id: 7,
     name: 'Oleh Halat',
     nameRu: 'Олег Галат',
     position: 'front end developer',
@@ -51,7 +69,7 @@ const projectTeam = [
     imgSrc: Halat,
   },
   {
-    id: 5,
+    id: 8,
     name: 'Sergey Poddubniy',
     nameRu: 'Сергей Поддубный',
     position: 'front end developer',
@@ -59,7 +77,7 @@ const projectTeam = [
     imgSrc: Poddubniy,
   },
   {
-    id: 6,
+    id: 9,
     name: 'Alla Sariieva',
     nameRu: 'Алла Сариева',
     position: 'front end developer',
@@ -67,7 +85,7 @@ const projectTeam = [
     imgSrc: Sariieva,
   },
   {
-    id: 7,
+    id: 10,
     name: 'Petro Mazuryk',
     nameRu: 'Петр Мазурык',
     position: 'front end developer',
@@ -75,7 +93,7 @@ const projectTeam = [
     imgSrc: Mazuryk,
   },
   {
-    id: 8,
+    id: 11,
     name: 'Ihor Oherchuk',
     nameRu: 'Игорь Огерчук',
     position: 'front end developer',
@@ -83,7 +101,7 @@ const projectTeam = [
     imgSrc: Oherchuk,
   },
   {
-    id: 9,
+    id: 12,
     name: 'Denys Plietnikov',
     nameRu: 'Денис Плетников',
     position: 'front end developer',
