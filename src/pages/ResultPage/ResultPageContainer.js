@@ -25,7 +25,7 @@ class ResultPageContainer extends Component {
       answeredRight: T.number.isRequired,
       answeredWrong: T.number.isRequired,
     }),
-    err: T.string,
+    error: T.string,
   };
 
   componentDidMount() {
