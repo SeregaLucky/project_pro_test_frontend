@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import T from 'prop-types';
@@ -9,69 +9,61 @@ import styles from './Modal.module.css';
 
 const MODAL_ROOT = document.querySelector('#modal-root');
 
-class Modal extends Component {
-  static propTypes = {
-    onClose: T.func.isRequired,
-    onLogOut: T.func.isRequired,
-  };
+function Modal({ onLogOut, onClose }) {
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
 
-  backdropRef = createRef();
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  });
 
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyPress);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyPress);
-  }
-
-  handleKeyPress = e => {
+  const handleKeyPress = e => {
     if (e.code === 'Escape') {
-      this.props.onClose();
+      onClose();
     }
   };
 
-  handleBackdropClick = e => {
-    if (e.target === this.backdropRef.current) {
-      this.props.onClose();
+  const backdropRef = useRef();
+
+  const handleBackdropClick = e => {
+    if (e.target === backdropRef.current) {
+      onClose();
     }
   };
 
-  render() {
-    const { onClose, onLogOut } = this.props;
+  return createPortal(
+    <div
+      className={styles.overlay}
+      ref={backdropRef}
+      onClick={handleBackdropClick}
+      role="presentation"
+    >
+      <div className={styles.modal}>
+        <button type="button" className={styles.button_exit} onClick={onClose}>
+          <span className={styles.icon}></span>
+        </button>
 
-    return createPortal(
-      <div
-        className={styles.overlay}
-        ref={this.backdropRef}
-        onClick={this.handleBackdropClick}
-        role="presentation"
-      >
-        <div className={styles.modal}>
-          <button
-            type="button"
-            className={styles.button_exit}
-            onClick={onClose}
-          >
-            <div className={styles.icon}></div>
+        <h1 className={styles.text}>Вы точно хотите выйти?</h1>
+
+        <div className={styles.item}>
+          <button className={styles.button} type="button" onClick={onLogOut}>
+            Дa
           </button>
-
-          <h1 className={styles.text}>Вы точно хотите выйти?</h1>
-
-          <div className={styles.item}>
-            <button className={styles.button} type="button" onClick={onLogOut}>
-              Дa
-            </button>
-            <button className={styles.button} type="button" onClick={onClose}>
-              Нет
-            </button>
-          </div>
+          <button className={styles.button} type="button" onClick={onClose}>
+            Нет
+          </button>
         </div>
-      </div>,
-      MODAL_ROOT,
-    );
-  }
+      </div>
+    </div>,
+    MODAL_ROOT,
+  );
 }
+
+Modal.propTypes = {
+  onClose: T.func.isRequired,
+  onLogOut: T.func.isRequired,
+};
 
 const mapDispatchToProps = dispatch => ({
   onClose: () => dispatch(globalActions.closeModal()),
