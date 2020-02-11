@@ -126,10 +126,10 @@ const projectTeam = [
   },
   {
     id: 15,
-    name: '',
-    nameRu: '',
-    position: '',
-    eMail: '',
+    name: 'Yiliia Bezuhla',
+    nameRu: 'Юля Безуглая',
+    position: 'QA Engineer',
+    eMail: 'bezuglaya.u@gmail.com',
     imgSrc: null,
   },
   {
