@@ -136,7 +136,7 @@ const projectTeam = [
     id: 16,
     name: '',
     nameRu: '',
-    position: '',
+    position: 'QA Engineer',
     eMail: '',
     imgSrc: null,
   },
