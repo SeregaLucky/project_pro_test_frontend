@@ -1,6 +1,8 @@
 const getQuestionNumber = state => state.questions.questionNumber;
 const getQuestions = state =>
   state.questions.questions && state.questions.questions.questions;
+const getIdQuestions = state =>
+  state.questions.questions && state.questions.questions.idTestBlock;
 const getResult = state => state.questions.resultTest;
 const getIsResultSended = state => state.questions.isResultSended;
 
@@ -18,6 +20,7 @@ const getError = state => state.questions.error;
 export default {
   getQuestionNumber,
   getQuestions,
+  getIdQuestions,
   getResult,
   getIsResultSended,
   getError,

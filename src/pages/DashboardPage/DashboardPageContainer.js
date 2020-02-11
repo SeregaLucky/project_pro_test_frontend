@@ -12,6 +12,7 @@ const DashboardPageContainer = ({
   isResultSended,
   sendResult,
   check,
+  idQuestions,
 }) => {
   const [isDisabledBackBtn, setIsDisabledBackBtn] = useState(true);
   const [isDisabledForwardBtn, setIsDisabledForwardBtn] = useState(true);
@@ -28,11 +29,14 @@ const DashboardPageContainer = ({
 
   const isDisableButtons = () => {
     // если questions = null чтобы не было ошибки
-
-    // если последний вопрос будет выбран
-    if (questions[questions.length - 1].optionChoosed && !result) {
-      getResultFromState(questions);
+    if (!questions) {
+      return;
     }
+    // // если последний вопрос будет выбран
+    // if (questions[questions.length - 1].optionChoosed && !result) {
+    //   console.log('last');
+    //   getResultFromState(questions);
+    // }
 
     // Disable по кнопкам двойная проверка чтобы не было зацикливания
     if (!questions[questionNumber - 1].optionChoosed && !isDisabledForwardBtn) {
@@ -72,6 +76,7 @@ const DashboardPageContainer = ({
     // когда последний вопрос, тогда не увеличиваем номер вопроса (increasePageNumber)
     if (questionNumber === questionQuantity) {
       check(examQuestionId, choiceId);
+      getResultFromState();
       return;
     }
     // если юзер вернулся чтобы изменить ответ. При изменении не увеличиваем номер вопроса (increasePageNumber)
@@ -86,8 +91,16 @@ const DashboardPageContainer = ({
     return;
   };
 
+  const sendResults = () => {
+    if (!questions) {
+      return;
+    }
+    console.log('hi');
+    sendResult(result, questions[0].examId);
+  };
+
   useEffect(isDisableButtons, [questionNumber]);
-  useEffect(sendResult(result, questions[0].examId), [result]);
+  useEffect(sendResults, [result]);
 
   return (
     // если приходит ответ на put запрос со статусом 204 ==>redirect
@@ -112,7 +125,7 @@ const DashboardPageContainer = ({
 
 const mapStateToProps = state => {
   return {
-    questionNumber: questionsSelectors.getQuestionNumber(state),
+    idQuestions: questionsSelectors.getIdQuestions(state),
     questions: questionsSelectors.getQuestions(state),
     err: questionsSelectors.getError(state),
     isResultSended: questionsSelectors.getIsResultSended(state),
