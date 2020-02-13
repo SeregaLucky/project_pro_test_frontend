@@ -40,11 +40,11 @@ function Modal({ onLogOut, onClose }) {
       role="presentation"
     >
       <div className={styles.modal}>
-        <button type="button" className={styles.button_exit} onClick={onClose}>
-          <span className={styles.icon}></span>
+        <button type="button" className={styles.buttonExit} onClick={onClose}>
+          <span className={styles.close}>&#215;</span>
         </button>
 
-        <h1 className={styles.text}>Вы точно хотите выйти?</h1>
+        <p className={styles.title}>Вы точно хотите выйти?</p>
 
         <div className={styles.item}>
           <button className={styles.button} type="button" onClick={onLogOut}>
