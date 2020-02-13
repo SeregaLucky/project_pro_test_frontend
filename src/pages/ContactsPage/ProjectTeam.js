@@ -108,6 +108,38 @@ const projectTeam = [
     eMail: 'denys.plietnikov.@gmail.com',
     imgSrc: Plietnikov,
   },
+  {
+    id: 13,
+    name: 'Artur Manuilenko',
+    nameRu: 'Артур Мануйленко',
+    position: 'front end developer',
+    eMail: 'manuilenkoart@gmail.com',
+    imgSrc: null,
+  },
+  {
+    id: 14,
+    name: 'Nataliia Plaksii',
+    nameRu: 'Наталия Плаксий',
+    position: 'QA Engineer',
+    eMail: 'plaksii.natali@gmail.com',
+    imgSrc: null,
+  },
+  {
+    id: 15,
+    name: 'Yiliia Bezuhla',
+    nameRu: 'Юля Безуглая',
+    position: 'QA Engineer',
+    eMail: 'bezuglaya.u@gmail.com',
+    imgSrc: null,
+  },
+  {
+    id: 16,
+    name: '',
+    nameRu: '',
+    position: 'QA Engineer',
+    eMail: '',
+    imgSrc: null,
+  },
 ];
 
 export default projectTeam;
