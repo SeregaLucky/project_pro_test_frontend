@@ -41,7 +41,7 @@ function Modal({ onLogOut, onClose }) {
     >
       <div className={styles.modal}>
         <button type="button" className={styles.buttonExit} onClick={onClose}>
-          <span className={styles.close}>&#215;</span>
+          &#215;
         </button>
 
         <p className={styles.title}>Вы точно хотите выйти?</p>
