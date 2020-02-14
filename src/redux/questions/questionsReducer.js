@@ -39,7 +39,9 @@ const examIdReduсer = (state = null, { type, payload }) => {
 const isResultSendedReducer = (state = false, { type, payload }) => {
   switch (type) {
     case questionsTypes.SEND_RESULT_SUCCESS:
-      return payload.res;
+      const isResultSended =
+        payload.res && payload.res.status === 204 ? true : false;
+      return isResultSended;
 
     case questionsTypes.RESET_QUESTIONS:
       return false;

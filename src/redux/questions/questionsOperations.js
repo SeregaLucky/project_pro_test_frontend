@@ -14,7 +14,6 @@ const startTest = idTest => dispatch => {
 const sendResult = (result, examId) => dispatch => {
   //делаем put запрос на основе данных questions
   dispatch(questionActions.sendResultStart());
-
   api
     .sendResultRequest(result, examId)
     .then(res => dispatch(questionActions.sendResultSuccess(res)))

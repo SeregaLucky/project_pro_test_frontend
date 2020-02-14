@@ -62,7 +62,6 @@ DashboardPage.propTypes = {
   questions: T.arrayOf(
     T.shape({
       id: T.string.isRequired,
-      examId: T.string.isRequired,
       question: T.string.isRequired,
       choices: T.arrayOf(
         T.shape({

@@ -2,6 +2,8 @@ const getQuestionNumber = state => state.questions.questionNumber;
 
 const getQuestions = state => state.questions && state.questions.questions;
 
+const getExamId = state => state.questions && state.questions.examId;
+
 const getResult = state => state.questions.resultTest;
 
 const getIsResultSended = state => state.questions.isResultSended;
@@ -15,6 +17,7 @@ const getError = state => state.questions.error;
 export default {
   getQuestionNumber,
   getQuestions,
+  getExamId,
   getResult,
   getIsResultSended,
   getFinishedResults,
