@@ -1,31 +1,18 @@
 import questionActions from './questionsActions';
 import api from '../../servises/api.js';
+import questionsActions from './questionsActions';
 
-// const checkAnswer = (
-//   examQuestionId,
-//   choiceId,
-//   questionNumber,
-//   questionQuantity,
-//   choosed,
-// ) => {
-//   if (questionNumber === questionQuantity) {
-//     questionActions.checkAnswer(examQuestionId, choiceId);
-//     return;
-//   }
+const startTest = idTest => dispatch => {
+  dispatch(questionsActions.postTestStart());
 
-//   if (choosed) {
-//     questionActions.checkAnswer(examQuestionId, choiceId);
-//     return;
-//   }
-
-//   questionActions.checkAnswer(examQuestionId, choiceId);
-//   questionActions.increaseQuestionNumber();
-//   return;
-// };
+  api
+    .postAllTests(idTest)
+    .then(dataTest => dispatch(questionActions.postTestSuccess(dataTest)))
+    .catch(error => dispatch(questionActions.postTestFailure(error)));
+};
 
 const sendResult = (result, examId) => dispatch => {
   //делаем put запрос на основе данных questions
-
   dispatch(questionActions.sendResultStart());
   api
     .sendResultRequest(result, examId)
@@ -34,42 +21,29 @@ const sendResult = (result, examId) => dispatch => {
 };
 
 const putResultsFinished = () => (dispatch, getState) => {
-  const examIdFinished = getState().questions.questions.idTestBlock;
+  const examIdFinished = getState().questions.examId;
+  if (!examIdFinished) return;
   dispatch(questionActions.resultsFinishedStart());
+
   api
     .putResultsFinished(examIdFinished)
     .then(() => dispatch(questionActions.resultsFinishedSuccess()))
     .catch(error => dispatch(questionActions.resultsFinishedFailure(error)));
 };
 
-const getResultsStatus = () => dispatch => {
-  dispatch(questionActions.resultsStart());
-  api
-    .getResultsStatus()
-    .then(data => dispatch(questionActions.resultsSuccess(data)))
-    .catch(error => dispatch(questionActions.resultsFailure(error)));
-};
-
 const getResultsById = () => (dispatch, getState) => {
-  const examId = getState().questions.questions.idTestBlock;
+  const examId = getState().questions.examId;
   dispatch(questionActions.resultsStart());
+
   api
     .getResultsById(examId)
     .then(data => dispatch(questionActions.resultsSuccess(data)))
     .catch(error => dispatch(questionActions.resultsFailure(error)));
 };
 
-const startTest = idTest => dispatch => {
-  api
-    .postAllTests(idTest)
-    .then(dataTest => dispatch(questionActions.postTestSuccess(dataTest)))
-    .catch(error => dispatch(questionActions.postTestFailure(error)));
-};
-
 export default {
+  startTest,
   sendResult,
   putResultsFinished,
-  getResultsStatus,
   getResultsById,
-  startTest,
 };

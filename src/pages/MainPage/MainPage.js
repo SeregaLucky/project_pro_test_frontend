@@ -9,7 +9,7 @@ const ID_NEED_TEST = {
 };
 
 const TEXT_BUTTON = ['Техническая подготовка QA', 'Теория тестирования'];
-const BUTTON_COLOR = ['buttonOrange', 'buttonBlue'];
+const BUTTON_COLOR = ['orange', 'blue'];
 
 const MainPage = () => {
   const randomNumber = Math.floor(Math.random() * listQuotes.length);

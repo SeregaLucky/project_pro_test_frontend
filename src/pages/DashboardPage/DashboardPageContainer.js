@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import T from 'prop-types';
+import T from 'prop-types';
 import questionsSelectors from '../../redux/questions/questionsSelectors';
 import questionsActions from '../../redux/questions/questionsActions';
 import questionsOperations from '../../redux/questions/questionsOperations';
@@ -12,18 +12,18 @@ const DashboardPageContainer = ({
   isResultSended,
   sendResult,
   check,
-  idQuestions,
+  examId,
 }) => {
   const [isDisabledBackBtn, setIsDisabledBackBtn] = useState(true);
   const [isDisabledForwardBtn, setIsDisabledForwardBtn] = useState(true);
   const [questionNumber, setQuestionNumber] = useState(1);
-  const [result, setResult] = useState(null);
+  const [lastCheck, setLastCheck] = useState(false);
 
-  const increasePageNumber = () => {
+  const increaseQuestionNumber = () => {
     setQuestionNumber(questionNumber + 1);
   };
 
-  const decreasePageNumber = () => {
+  const decreaseQuestionNumber = () => {
     setQuestionNumber(questionNumber - 1);
   };
 
@@ -32,38 +32,24 @@ const DashboardPageContainer = ({
     if (!questions) {
       return;
     }
-    // // если последний вопрос будет выбран
-    // if (questions[questions.length - 1].optionChoosed && !result) {
-    //   console.log('last');
-    //   getResultFromState(questions);
-    // }
 
-    // Disable по кнопкам двойная проверка чтобы не было зацикливания
-    if (!questions[questionNumber - 1].optionChoosed && !isDisabledForwardBtn) {
+    // forwardBtn - disable
+    if (!questions[questionNumber - 1].optionChoosed) {
       setIsDisabledForwardBtn(true);
     }
 
-    if (questions[questionNumber - 1].optionChoosed && isDisabledForwardBtn) {
+    if (questions[questionNumber - 1].optionChoosed) {
       setIsDisabledForwardBtn(false);
     }
 
-    if (questionNumber > 1 && isDisabledBackBtn) {
-      setIsDisabledBackBtn(false);
-    }
-
-    if (questionNumber === 1 && !isDisabledBackBtn) {
+    // backBtn - disable
+    if (questionNumber === 1) {
       setIsDisabledBackBtn(true);
     }
-  };
 
-  const getResultFromState = questions => {
-    const result = questions.map(question => {
-      return {
-        examQuestionId: question.id,
-        choiceId: question.optionChoosed,
-      };
-    });
-    setResult(result);
+    if (questionNumber > 1) {
+      setIsDisabledBackBtn(false);
+    }
   };
 
   const checkAnswer = (
@@ -76,9 +62,10 @@ const DashboardPageContainer = ({
     // когда последний вопрос, тогда не увеличиваем номер вопроса (increasePageNumber)
     if (questionNumber === questionQuantity) {
       check(examQuestionId, choiceId);
-      getResultFromState();
+      setLastCheck(true);
       return;
     }
+
     // если юзер вернулся чтобы изменить ответ. При изменении не увеличиваем номер вопроса (increasePageNumber)
     if (choosed) {
       check(examQuestionId, choiceId);
@@ -86,7 +73,7 @@ const DashboardPageContainer = ({
     }
 
     // делаем задержку на 200 мс, чтобы пользователь видел куда нажал
-    setTimeout(() => increasePageNumber(), 200);
+    setTimeout(() => increaseQuestionNumber(), 200);
     check(examQuestionId, choiceId);
     return;
   };
@@ -95,23 +82,30 @@ const DashboardPageContainer = ({
     if (!questions) {
       return;
     }
-    console.log('hi');
-    sendResult(result, questions[0].examId);
+
+    const result = questions.map(question => {
+      return {
+        examQuestionId: question.id,
+        choiceId: question.optionChoosed,
+      };
+    });
+
+    // форма обьекта как требует back-end
+    const answersShape = { answers: result };
+    sendResult(answersShape, examId);
   };
 
   useEffect(isDisableButtons, [questionNumber]);
-  useEffect(sendResults, [result]);
+  useEffect(sendResults, [lastCheck]);
 
   return (
-    // если приходит ответ на put запрос со статусом 204 ==>redirect
     questions && (
       <>
-        {isResultSended && isResultSended.status === 204 && (
-          <Redirect to="/result" />
-        )}
+        {/* если приходит ответ на put запрос со статусом 204 ==>redirect */}
+        {isResultSended && <Redirect to="/result" />}
         <DashboardPage
-          increaseQuestionNumber={increasePageNumber}
-          decreaseQuestionNumber={decreasePageNumber}
+          increaseQuestionNumber={increaseQuestionNumber}
+          decreaseQuestionNumber={decreaseQuestionNumber}
           checkAnswer={checkAnswer}
           questionNumber={questionNumber}
           questions={questions}
@@ -123,9 +117,28 @@ const DashboardPageContainer = ({
   );
 };
 
+DashboardPageContainer.propTypes = {
+  isResultSended: T.bool.isRequired,
+  sendResult: T.func.isRequired,
+  check: T.func.isRequired,
+  questions: T.arrayOf(
+    T.shape({
+      id: T.string.isRequired,
+      examId: T.string.isRequired,
+      question: T.string.isRequired,
+      choices: T.arrayOf(
+        T.shape({
+          id: T.number.isRequired,
+          title: T.string.isRequired,
+        }).isRequired,
+      ),
+    }).isRequired,
+  ),
+};
+
 const mapStateToProps = state => {
   return {
-    idQuestions: questionsSelectors.getIdQuestions(state),
+    examId: questionsSelectors.getExamId(state),
     questions: questionsSelectors.getQuestions(state),
     err: questionsSelectors.getError(state),
     isResultSended: questionsSelectors.getIsResultSended(state),
@@ -145,172 +158,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(DashboardPageContainer);
-
-// class DashboardPageContainer extends Component {
-//   static defaultProps = {
-//     err: null,
-//     isResultSended: {},
-//   };
-
-//   static propTypes = {
-//     err: T.string,
-//     questions: T.arrayOf(
-//       T.shape({
-//         id: T.string.isRequired,
-//         examId: T.string.isRequired,
-//         question: T.string.isRequired,
-//         choices: T.arrayOf(
-//           T.shape({
-//             id: T.number.isRequired,
-//             title: T.string.isRequired,
-//           }).isRequired,
-//         ),
-//       }).isRequired,
-//     ),
-
-//     check: T.func.isRequired,
-//     sendResult: T.func.isRequired,
-//   };
-
-//   state = {
-//     isDisabledBackBtn: true,
-//     isDisabledForwardBtn: true,
-//     result: null,
-//     questionNumber: 1,
-//   };
-
-//   timerId = null;
-
-//   componentDidUpdate() {
-//     const { questions, sendResult, isResultSended } = this.props;
-//     const {
-//       isDisabledBackBtn,
-//       isDisabledForwardBtn,
-//       result,
-//       questionNumber,
-//     } = this.state;
-//     // если последний элемент выбран => со стейта забираем значения
-//     if (questions[questions.length - 1].optionChoosed && !result) {
-//       this.getResultFromState(questions);
-//     }
-//     // делаем put запрос
-//     if (result && !isResultSended) {
-//       sendResult(result, questions[0].examId);
-//     }
-
-//     // Disable по кнопкам двойная проверка чтобы не было зацикливания
-//     if (!questions[questionNumber - 1].optionChoosed && !isDisabledForwardBtn) {
-//       this.setState({
-//         isDisabledForwardBtn: true,
-//       });
-//     }
-
-//     if (questions[questionNumber - 1].optionChoosed && isDisabledForwardBtn) {
-//       this.setState({
-//         isDisabledForwardBtn: false,
-//       });
-//     }
-
-//     if (questionNumber > 1 && isDisabledBackBtn) {
-//       this.setState({
-//         isDisabledBackBtn: false,
-//       });
-//     }
-
-//     if (questionNumber === 1 && !isDisabledBackBtn) {
-//       this.setState({
-//         isDisabledBackBtn: true,
-//       });
-//     }
-//   }
-
-//   //снимаем setTimeout
-//   componentWillUnmount() {
-//     clearTimeout(this.timerId);
-//   }
-
-//   getResultFromState = questions => {
-//     const result = questions.map(question => {
-//       return {
-//         examQuestionId: question.id,
-//         choiceId: question.optionChoosed,
-//       };
-//     });
-//     this.setState({
-//       result: {
-//         answers: result,
-//       },
-//     });
-//   };
-
-//   increasePageNumber = () => {
-//     this.setState(prevState => {
-//       return {
-//         questionNumber: prevState.questionNumber + 1,
-//       };
-//     });
-//   };
-
-//   decreasePageNumber = () => {
-//     this.setState(prevState => {
-//       return {
-//         questionNumber: prevState.questionNumber - 1,
-//       };
-//     });
-//   };
-
-//   checkAnswer = (
-//     examQuestionId,
-//     choiceId,
-//     questionNumber,
-//     questionQuantity,
-//     choosed,
-//   ) => {
-//     // получаем check с редакса
-//     const { check } = this.props;
-//     // когда последний вопрос, тогда не увеличиваем номер вопроса (increasePageNumber)
-//     if (questionNumber === questionQuantity) {
-//       check(examQuestionId, choiceId);
-//       return;
-//     }
-//     // если юзер вернулся чтобы изменить ответ. При изменении не увеличиваем номер вопроса (increasePageNumber)
-//     if (choosed) {
-//       check(examQuestionId, choiceId);
-//       return;
-//     }
-
-//     // делаем задержку на 200 мс, чтобы пользователь видел куда нажал
-//     this.timerId = setTimeout(() => this.increasePageNumber(), 200);
-//     check(examQuestionId, choiceId);
-//     return;
-//   };
-
-//   render() {
-//     const { questions, isResultSended } = this.props;
-//     const {
-//       isDisabledBackBtn,
-//       isDisabledForwardBtn,
-//       questionNumber,
-//     } = this.state;
-
-//     return (
-//       // если приходит ответ на put запрос со статусом 204 ==>redirect
-//       questions && (
-//         <>
-//           {isResultSended && isResultSended.status === 204 && (
-//             <Redirect to="/result" />
-//           )}
-//           <DashboardPage
-//             increaseQuestionNumber={this.increasePageNumber}
-//             decreaseQuestionNumber={this.decreasePageNumber}
-//             checkAnswer={this.checkAnswer}
-//             questionNumber={questionNumber}
-//             questions={questions}
-//             isDisabledBackBtn={isDisabledBackBtn}
-//             isDisabledForwardBtn={isDisabledForwardBtn}
-//           />
-//         </>
-//       )
-//     );
-//   }
-// }

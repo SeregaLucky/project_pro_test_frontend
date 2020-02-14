@@ -57,9 +57,9 @@ const isAuthReducer = (state = false, { type }) => {
 const errorReducer = (state = null, { type, payload }) => {
   switch (type) {
     case actionTypes.REGISTER_FAILURE:
-    case actionTypes.LOGOUT_FAILURE:
     case actionTypes.LOGIN_FAILURE:
     case actionTypes.GET_CURRENT_FAILURE:
+    case actionTypes.LOGOUT_FAILURE:
       return payload.error;
     case authTypes.REGISTER_START:
     case authTypes.LOGIN_START:

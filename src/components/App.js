@@ -1,34 +1,26 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import T from 'prop-types';
 import routes from '../routes';
 import authOperations from '../redux/auth/authOperations';
 import globalSelectors from '../redux/global/globalSelectors';
 /* import - components and pages */
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
-// import AuthPage from '../pages/AuthPage/AuthPage';
-// import MainPage from '../pages/MainPage/MainPage';
-// import DashboardPage from '../pages/DashboardPage/DashboardPageContainer';
-// import ResultPage from '../pages/ResultPage/ResultPageContainer';
-// import MaterialsPage from '../pages/MaterialsPage/MaterialsPage';
-// import ContactsPage from '../pages/ContactsPage/ContactsPage';
-
-import Loader from './Loader/Loader';
+import Header from './Header';
+import Footer from './Footer';
+import Loader from './Loader';
 import PrivateRoute from '../servises/PrivateRoute';
 
 const AuthPage = lazy(() =>
-  import('../pages/AuthPage/AuthPage' /*webpackChunkName: "AuthPage"*/),
+  import('../pages/AuthPage' /*webpackChunkName: "AuthPage"*/),
 );
 
 const MainPage = lazy(() =>
-  import('../pages/MainPage/MainPage' /*webpackChunkName: "MainPage"*/),
+  import('../pages/MainPage' /*webpackChunkName: "MainPage"*/),
 );
 
 const DashboardPage = lazy(() =>
-  import(
-    '../pages/DashboardPage/DashboardPageContainer' /*webpackChunkName: "DashboardPage"*/
-  ),
+  import('../pages/DashboardPage' /*webpackChunkName: "DashboardPage"*/),
 );
 
 const ResultPage = lazy(() =>
@@ -36,15 +28,11 @@ const ResultPage = lazy(() =>
 );
 
 const MaterialsPage = lazy(() =>
-  import(
-    '../pages/MaterialsPage/MaterialsPage' /*webpackChunkName: "MaterialsPage"*/
-  ),
+  import('../pages/MaterialsPage' /*webpackChunkName: "MaterialsPage"*/),
 );
 
 const ContactsPage = lazy(() =>
-  import(
-    '../pages/ContactsPage/ContactsPage' /*webpackChunkName: "ContactsPage"*/
-  ),
+  import('../pages/ContactsPage' /*webpackChunkName: "ContactsPage"*/),
 );
 
 class App extends Component {
@@ -63,6 +51,7 @@ class App extends Component {
         <Suspense fallback={<Loader />}>
           <Switch>
             <Route path={routes.AUTH_PAGE} component={AuthPage} />
+
             <PrivateRoute exact path={routes.MAIN_PAGE} component={MainPage} />
 
             <PrivateRoute
@@ -87,6 +76,11 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  isLoading: T.bool.isRequired,
+  getCurrentUser: T.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   isLoading: globalSelectors.getIsLoading(state),

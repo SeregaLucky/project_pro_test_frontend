@@ -22,11 +22,9 @@ const getUser = () => axios.get('/users/current');
 const logOut = () => axios.delete('/auth/sign-out');
 
 /* TESTS */
-const postAllTests = idTest => {
-  return axios
-    .post(`/exams/start?testId=${idTest}`)
-    .then(response => response.data)
-    .catch(error => error);
+const postAllTests = async idTest => {
+  const response = await axios.post(`/exams/start?testId=${idTest}`);
+  return response.data;
 };
 
 const sendResultRequest = (result, examId) => {
@@ -35,32 +33,24 @@ const sendResultRequest = (result, examId) => {
 
 const putResultsFinished = examId => axios.put(`/exams/${examId}/finish`);
 
-const getResultsStatus = examId => {
-  return axios
-    .get(`/exams/${examId}`)
-    .then(response => response.data)
-    .catch(error => error);
-};
-
 const getResultsById = examId => {
   return axios
     .get(`/exams/${examId}/result`)
-    .then(response => {
-      return response.data;
-    })
+    .then(response => response.data)
     .catch(error => error);
 };
 
 export default {
   setToken,
   unsetToken,
+
   register,
   login,
   getUser,
   logOut,
+
   postAllTests,
   sendResultRequest,
   putResultsFinished,
-  getResultsStatus,
   getResultsById,
 };

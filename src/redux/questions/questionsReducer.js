@@ -4,19 +4,29 @@ import questionsTypes from './questionsTypes';
 const questionsReduсer = (state = null, { type, payload }) => {
   switch (type) {
     case questionsTypes.POST_TEST_SUCCESS:
-      return {
-        idTestBlock: payload.data.exam.id,
-        questions: payload.data.questions,
-      };
+      return payload.data.questions;
 
     case questionsTypes.CHECK_ANSWER:
-      const questions = state.questions.map(question => {
+      const questions = state.map(question => {
         if (payload.examQuestionId === question.id) {
           return { ...question, ...{ optionChoosed: payload.choiceId } };
         }
         return question;
       });
-      return { ...state, questions };
+      return questions;
+
+    case questionsTypes.RESET_QUESTIONS:
+      return null;
+
+    default:
+      return state;
+  }
+};
+
+const examIdReduсer = (state = null, { type, payload }) => {
+  switch (type) {
+    case questionsTypes.POST_TEST_SUCCESS:
+      return payload.data.exam.id;
 
     case questionsTypes.RESET_QUESTIONS:
       return null;
@@ -29,7 +39,9 @@ const questionsReduсer = (state = null, { type, payload }) => {
 const isResultSendedReducer = (state = false, { type, payload }) => {
   switch (type) {
     case questionsTypes.SEND_RESULT_SUCCESS:
-      return payload.res;
+      const isResultSended =
+        payload.res && payload.res.status === 204 ? true : false;
+      return isResultSended;
 
     case questionsTypes.RESET_QUESTIONS:
       return false;
@@ -88,6 +100,7 @@ const errorReducer = (state = null, { type, payload }) => {
 };
 
 export default combineReducers({
+  examId: examIdReduсer,
   questions: questionsReduсer,
   isResultSended: isResultSendedReducer,
   finished: finishedReducer,
