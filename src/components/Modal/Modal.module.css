@@ -15,7 +15,7 @@
   transform: translate(-50%, -50%);
   width: 300px;
   background-color: var(--background-color);
-  padding: 20px;
+  padding: 30px;
 }
 
 .title {
@@ -43,6 +43,7 @@
   background-color: var(--orange);
   color: var(--background-color);
   transition: background-color 200ms ease-in-out;
+  border: 0;
 }
 
 .button:hover,
@@ -50,18 +51,15 @@
   background-color: #e96105;
 }
 
-.button,
 .buttonExit {
-  border: 0;
-}
-
-.close {
-  width: 44px;
-  height: 44px;
-  line-height: 44px;
   position: absolute;
   right: 0;
   top: 0;
+  border: 0;
+  background: none;
+  width: 40px;
+  height: 40px;
+  line-height: 44px;
   text-decoration: none;
   text-align: center;
   color: #333;
@@ -71,7 +69,8 @@
   opacity: 0.6;
 }
 
-.close:hover {
+.buttonExit:hover,
+.buttonExit:focus {
   opacity: 1;
   color: black;
 }
