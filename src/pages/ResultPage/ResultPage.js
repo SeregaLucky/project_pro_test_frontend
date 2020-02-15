@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 import { objCommentImage } from './commentaryImages.js';
-import { objCommentInfo } from './commentaryInfo.js';
+import { objCommentInfo } from './commentaryInfo.tsx';
 import ResultProgressBar from '../../components/ResultProgressBar/ResultProgressBar.js';
 import Button from '../../components/Button';
 import styles from './ResultPage.module.css';
