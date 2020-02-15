@@ -12,7 +12,7 @@ import img10 from '../../assets/images/cats/010.png';
 import img11 from '../../assets/images/cats/011.png';
 import img12 from '../../assets/images/cats/012.png';
 
-export const objCommentImage = {
+export const objCommentImage: any = {
   0: img0,
   1: img1,
   2: img2,
