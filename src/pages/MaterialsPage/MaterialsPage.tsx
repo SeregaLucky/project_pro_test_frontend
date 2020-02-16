@@ -94,7 +94,7 @@ const MaterialsPage: React.FC = () => {
           <ol className={styles.list}>
             {literature.slice(0, booksToShow).map(book => (
               <li key={book.name} className={styles.listItem}>
-                {book.name} <span className="author">{book.author}</span>
+                {book.name} <span className={styles.author}>{book.author}</span>
               </li>
             ))}
           </ol>
