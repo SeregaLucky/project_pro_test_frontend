@@ -3,7 +3,7 @@ import Shvartsman from '../../assets/staff/Shvartsman.jpg';
 import Stryzh from '../../assets/staff/Stryzh.jpg';
 import Lutsyshyna from '../../assets/staff/Lutsyshyna.jpg';
 import Pushkovskiy from '../../assets/staff/Pushkovskiy.jpg';
-import Arkhypchenko from '../../assets/staff/Arkhypchenko.JPG';
+import Arkhypchenko from '../../assets/staff/Arkhypchenko.jpg';
 import Halat from '../../assets/staff/Halat.jpg';
 import Poddubniy from '../../assets/staff/Poddubniy.jpg';
 import Sariieva from '../../assets/staff/Sariieva.jpg';
@@ -11,7 +11,16 @@ import Mazuryk from '../../assets/staff/Mazuryk.jpg';
 import Oherchuk from '../../assets/staff/Oherchuk.jpg';
 import Plietnikov from '../../assets/staff/Plietnikov.jpg';
 
-const projectTeam = [
+interface IprojectTeam {
+  id: number;
+  name: string;
+  nameRu: string;
+  position: string;
+  eMail: string;
+  imgSrc: any;
+}
+
+const projectTeam: Array<IprojectTeam> = [
   {
     id: 1,
     name: 'Dmytro Popov',

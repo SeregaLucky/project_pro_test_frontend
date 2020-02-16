@@ -1,8 +1,21 @@
 import React from 'react';
-import T from 'prop-types';
 import styles from './ContactsListItem.module.css';
 
-const ContactsListItem = ({ image, name, nameRu, position, eMail }) => (
+interface IProps {
+  image: string;
+  name: string;
+  nameRu: string;
+  position: string;
+  eMail: string;
+}
+
+const ContactsListItem: React.FC<IProps> = ({
+  image,
+  name,
+  nameRu,
+  position,
+  eMail,
+}) => (
   <li className={styles.card}>
     <figure>
       <img src={image} className={styles.image} alt={name} height="246" />
@@ -15,17 +28,5 @@ const ContactsListItem = ({ image, name, nameRu, position, eMail }) => (
     </figure>
   </li>
 );
-
-ContactsListItem.defaultProps = {
-  image: null,
-};
-
-ContactsListItem.propTypes = {
-  image: T.string,
-  name: T.string.isRequired,
-  nameRu: T.string.isRequired,
-  position: T.string.isRequired,
-  eMail: T.string.isRequired,
-};
 
 export default ContactsListItem;

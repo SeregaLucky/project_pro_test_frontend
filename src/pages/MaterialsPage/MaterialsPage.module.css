@@ -56,6 +56,11 @@
   text-decoration: underline;
 }
 
+.author {
+  font-style: italic;
+  font-family: 'MontserratLight', sans-serif;
+}
+
 .showMoreButton {
   font-family: 'MontserratBold', sans-serif;
   border: none;
