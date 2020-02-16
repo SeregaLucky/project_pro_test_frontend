@@ -1,7 +1,7 @@
 import React from 'react';
 import  './ContactsPage.css';
 import ContactsListItemTS from '../../components/ContactsListItem/ContactsListItemTS';
-import projectTeam from './ProjectTeam.js';
+import projectTeamTS from './projectTeamTS';
 
 
 const ContactsPage:React.FC =()=> (
@@ -9,7 +9,7 @@ const ContactsPage:React.FC =()=> (
     <div className='container'>
       <h2 className='mainTitle'>Наша команда</h2>
       <ul className='contactsListItemContainer'>
-        {projectTeam.map(el => (
+        {projectTeamTS.map(el => (
           <ContactsListItemTS
             key={el.id}
             name={el.name}
