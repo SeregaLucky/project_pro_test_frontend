@@ -12,14 +12,15 @@ import Oherchuk from '../../assets/staff/Oherchuk.jpg';
 import Plietnikov from '../../assets/staff/Plietnikov.jpg';
 
 interface IprojectTeam {
-id:number,
-name: string,
-nameRu: string,
-position: string,
-eMail: string,
-imgSrc: any};
+  id: number;
+  name: string;
+  nameRu: string;
+  position: string;
+  eMail: string;
+  imgSrc: any;
+}
 
-const projectTeam:Array<IprojectTeam>=[
+const projectTeam: Array<IprojectTeam> = [
   {
     id: 1,
     name: 'Dmytro Popov',
