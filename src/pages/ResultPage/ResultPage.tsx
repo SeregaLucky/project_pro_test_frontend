@@ -1,7 +1,7 @@
 import React from 'react';
 import { objCommentImage } from './commentaryImages';
 import { objCommentInfo } from './commentaryInfo';
-import ResultProgressBar from '../../components/ResultProgressBar/ResultProgressBar.js';
+import ResultProgressBar from '../../components/ResultProgressBar/ResultProgressBar';
 import Button from '../../components/Button';
 import styles from './ResultPage.module.css';
 
