@@ -2,7 +2,7 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import styles from './ResultProgressBar.module.css';
 
-const getChartData = (correct, incorrect) => {
+const getChartData = (correct: number, incorrect: number) => {
   const data = {
     labels: [`${correct}% Верно`, `${incorrect}% Не верно`],
     datasets: [
@@ -26,7 +26,7 @@ const options = {
   tooltips: {
     mode: 'point',
     callbacks: {
-      label: (tooltipItem, data) => {
+      label: (tooltipItem: any, data: any) => {
         let label = data.labels[tooltipItem.index] || '';
         return `${label}`;
       },
@@ -34,7 +34,15 @@ const options = {
   },
 };
 
-const ResultProgressBar = ({ correctAnswers, allAnswers = 12 }) => {
+interface IProps {
+  correctAnswers: number;
+  allAnswers: number;
+}
+
+const ResultProgressBar: React.FC<IProps> = ({
+  correctAnswers,
+  allAnswers = 12,
+}) => {
   const chartCorrect = Math.ceil((correctAnswers * 100) / allAnswers);
   const chartInCorrect = 100 - chartCorrect;
 
