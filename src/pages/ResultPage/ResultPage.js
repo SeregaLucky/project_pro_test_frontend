@@ -2,7 +2,7 @@ import React from 'react';
 import T from 'prop-types';
 import { objCommentImage } from './commentaryImages.js';
 import { objCommentInfo } from './commentaryInfo.js';
-import ResultProgressBar from '../../components/ResultProgressBar/ResultProgressBar.js';
+import ResultProgressBar from '../../components/ResultProgressBar/ResultProgressBar';
 import Button from '../../components/Button';
 import styles from './ResultPage.module.css';
 
