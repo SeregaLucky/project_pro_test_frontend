@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import routes from '../../routes';
-import ResultPage from './ResultPage.js';
+import ResultPage from './ResultPage';
 import selects from '../../redux/questions/questionsSelectors';
 import resultsOperations from '../../redux/questions/questionsOperations.js';
 import { ToastContainer, toast } from 'react-toastify';
