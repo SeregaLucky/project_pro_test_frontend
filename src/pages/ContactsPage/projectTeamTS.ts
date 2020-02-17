@@ -3,7 +3,7 @@ import Shvartsman from '../../assets/staff/Shvartsman.jpg';
 import Stryzh from '../../assets/staff/Stryzh.jpg';
 import Lutsyshyna from '../../assets/staff/Lutsyshyna.jpg';
 import Pushkovskiy from '../../assets/staff/Pushkovskiy.jpg';
-import Arkhypchenko from '../../assets/staff/Arkhypchenko.jpg';
+// import Arkhypchenko from '../../assets/staff/Arkhypchenko.jpg';
 import Halat from '../../assets/staff/Halat.jpg';
 import Poddubniy from '../../assets/staff/Poddubniy.jpg';
 import Sariieva from '../../assets/staff/Sariieva.jpg';
@@ -61,14 +61,14 @@ const projectTeam: Array<IprojectTeam> = [
     eMail: 'spushkovskiy@gmail.com',
     imgSrc: Pushkovskiy,
   },
-  {
-    id: 6,
-    name: 'Iryna Arkhypchenko',
-    nameRu: 'Ирина Архипченко',
-    position: 'front end developer',
-    eMail: 'arkhypchenko.iryna@gmail.com',
-    imgSrc: Arkhypchenko,
-  },
+  // {
+  //   id: 6,
+  //   name: 'Iryna Arkhypchenko',
+  //   nameRu: 'Ирина Архипченко',
+  //   position: 'front end developer',
+  //   eMail: 'arkhypchenko.iryna@gmail.com',
+  //   imgSrc: Arkhypchenko,
+  // },
   {
     id: 7,
     name: 'Oleh Halat',
