@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 /* DEFAULTS SETTINGS */
-axios.defaults.baseURL =
-  'http://ec2-3-133-102-159.us-east-2.compute.amazonaws.com/api';
+axios.defaults.baseURL = 'https://pro-test.goit.co.ua/api';
 axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';

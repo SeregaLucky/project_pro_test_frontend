@@ -9,8 +9,10 @@ import styles from './AuthPage.module.css';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 const AuthPage = ({ location, setGoogleToken, getCurrentUser, dispatch }) => {
+  console.log(location);
   if (location.search) {
     const token = new URLSearchParams(location.search).get('token');
+    console.log(token);
     if (token) {
       setGoogleToken(token);
       getCurrentUser(token);

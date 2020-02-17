@@ -17,7 +17,7 @@ const AuthForm = ({ onLogin, values }) => {
         Для авторизации можете использовать Google Account:
       </p>
       <a
-        href="http://ec2-3-133-102-159.us-east-2.compute.amazonaws.com/api/auth/google"
+        href="https://pro-test.goit.co.ua/api/auth/google"
         className={styles.googleSignUpButton}
       >
         <div className={styles.googleBtnContentWraper}>
