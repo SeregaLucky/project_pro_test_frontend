@@ -6,6 +6,7 @@ import questionsSelectors from '../../redux/questions/questionsSelectors';
 import questionsActions from '../../redux/questions/questionsActions';
 import questionsOperations from '../../redux/questions/questionsOperations';
 import DashboardPage from './DashboardPage';
+import ErrorInfo from '../../components/ErrorInfo/ErrorInfo';
 
 const DashboardPageContainer = ({
   questions,
@@ -13,6 +14,7 @@ const DashboardPageContainer = ({
   sendResult,
   check,
   examId,
+  error,
 }) => {
   const [isDisabledBackBtn, setIsDisabledBackBtn] = useState(true);
   const [isDisabledForwardBtn, setIsDisabledForwardBtn] = useState(true);
@@ -99,21 +101,25 @@ const DashboardPageContainer = ({
   useEffect(sendResults, [lastCheck]);
 
   return (
-    questions && (
-      <>
-        {/* если приходит ответ на put запрос со статусом 204 ==>redirect */}
-        {isResultSended && <Redirect to="/result" />}
-        <DashboardPage
-          increaseQuestionNumber={increaseQuestionNumber}
-          decreaseQuestionNumber={decreaseQuestionNumber}
-          checkAnswer={checkAnswer}
-          questionNumber={questionNumber}
-          questions={questions}
-          isDisabledBackBtn={isDisabledBackBtn}
-          isDisabledForwardBtn={isDisabledForwardBtn}
-        />
-      </>
-    )
+    <>
+      {questions && (
+        <>
+          {/* если приходит ответ на put запрос со статусом 204 ==>redirect */}
+          {isResultSended && <Redirect to="/result" />}
+          <DashboardPage
+            increaseQuestionNumber={increaseQuestionNumber}
+            decreaseQuestionNumber={decreaseQuestionNumber}
+            checkAnswer={checkAnswer}
+            questionNumber={questionNumber}
+            questions={questions}
+            isDisabledBackBtn={isDisabledBackBtn}
+            isDisabledForwardBtn={isDisabledForwardBtn}
+          />
+        </>
+      )}
+
+      {error && <ErrorInfo />}
+    </>
   );
 };
 
@@ -140,7 +146,7 @@ const mapStateToProps = state => {
   return {
     examId: questionsSelectors.getExamId(state),
     questions: questionsSelectors.getQuestions(state),
-    err: questionsSelectors.getError(state),
+    error: questionsSelectors.getError(state),
     isResultSended: questionsSelectors.getIsResultSended(state),
   };
 };
