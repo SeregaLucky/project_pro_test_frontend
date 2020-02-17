@@ -1,4 +1,10 @@
-const listQuotes = [
+interface Iquotes {
+  quote: string;
+  author?: string;
+  description?: string;
+}
+
+const listQuotes: Array<Iquotes> = [
   {
     quote:
       '"Регрессионное тестирование? Что это? Если система компилируется, то это хорошо, если загружается, то это просто здорово!“',
