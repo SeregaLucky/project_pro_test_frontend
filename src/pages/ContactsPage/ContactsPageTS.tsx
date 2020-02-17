@@ -1,13 +1,13 @@
 import React from 'react';
-import './ContactsPage.css';
+import styles from './ContactsPage.module.css';
 import projectTeamTS from './projectTeamTS';
 import ContactsListItem from '../../components/ContactsListItem/ContactsListItem';
 
 const ContactsPage: React.FC = () => (
-  <section className="section">
-    <div className="container">
-      <h2 className="mainTitle">Наша команда</h2>
-      <ul className="contactsListItemContainer">
+  <section className={styles.section}>
+    <div className={styles.container}>
+      <h2 className={styles.mainTitle}>Наша команда</h2>
+      <ul className={styles.contactsListItemContainer}>
         {projectTeamTS.map(el => (
           <ContactsListItem
             key={el.id}
