@@ -34,7 +34,13 @@
   font-family: 'MontserratRegular', sans-serif;
   text-transform: capitalize;
 }
-
+.linkedin {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 16px;
+  color: #000000;
+  font-family: 'MontserratMedium', sans-serif;
+}
 .eMail {
   font-size: 11px;
   letter-spacing: 0.08em;

@@ -7,6 +7,7 @@ interface IProps {
   nameRu: string;
   position: string;
   eMail: string;
+  linkedin: string | null;
 }
 
 const ContactsListItem: React.FC<IProps> = ({
@@ -15,6 +16,7 @@ const ContactsListItem: React.FC<IProps> = ({
   nameRu,
   position,
   eMail,
+  linkedin,
 }) => (
   <li className={styles.card}>
     <figure>
@@ -24,6 +26,16 @@ const ContactsListItem: React.FC<IProps> = ({
         <p className={styles.nameRu}>{nameRu}</p>
         <p className={styles.position}>{position}</p>
         <p className={styles.eMail}>{eMail}</p>
+        {linkedin && (
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.linkedin}
+          >
+            Linkedin: {linkedin}
+          </a>
+        )}
       </figcaption>
     </figure>
   </li>
