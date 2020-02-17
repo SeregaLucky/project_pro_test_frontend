@@ -4,8 +4,8 @@ import listQuotes from './listQuotes';
 import styles from './MainPage.module.css';
 
 interface IId {
-  id1: string,
-  id2: string,
+  id1: string;
+  id2: string;
 }
 
 const ID_NEED_TEST: IId = {
@@ -13,9 +13,11 @@ const ID_NEED_TEST: IId = {
   id2: '5e2de905933b4f3b74d81d59',
 };
 
-const TEXT_BUTTON: Array<string> = ['Техническая подготовка QA', 'Теория тестирования'];
+const TEXT_BUTTON: Array<string> = [
+  'Техническая подготовка QA',
+  'Теория тестирования',
+];
 const BUTTON_COLOR: Array<string> = ['orange', 'blue'];
-
 
 const MainPage: React.FC = () => {
   const randomNumber: number = Math.floor(Math.random() * listQuotes.length);
