@@ -5,7 +5,6 @@ import authSelectors from '../redux/auth/authSelectors';
 
 const withAuthRedirect = Component => {
   function WithAuthRedirects({ isAuthenticated, ...restProps }) {
-    console.log(restProps);
     return isAuthenticated ? <Redirect to="/" /> : <Component {...restProps} />;
   }
 
