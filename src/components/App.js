@@ -1,11 +1,5 @@
 import React, { Component, lazy, Suspense } from 'react';
-import {
-  BrowserRouter,
-  HashRouter,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import T from 'prop-types';
 import routes from '../routes';

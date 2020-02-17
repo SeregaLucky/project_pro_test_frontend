@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import T from 'prop-types';
+import styles from './DashboardPageContainer.module.css';
 import questionsSelectors from '../../redux/questions/questionsSelectors';
+import globalSelectors from '../../redux/global/globalSelectors';
 import questionsActions from '../../redux/questions/questionsActions';
 import questionsOperations from '../../redux/questions/questionsOperations';
 import DashboardPage from './DashboardPage';
@@ -14,6 +16,7 @@ const DashboardPageContainer = ({
   sendResult,
   check,
   examId,
+  isLoading,
   error,
 }) => {
   const [isDisabledBackBtn, setIsDisabledBackBtn] = useState(true);
@@ -118,6 +121,14 @@ const DashboardPageContainer = ({
         </>
       )}
 
+      {!questions && !isLoading && (
+        <div className={styles.noQuestions}>
+          <h3 className={styles.smallTitle}>Выбирите тест</h3>
+        </div>
+      )}
+
+      {isLoading && <div className={styles.noQuestions}></div>}
+
       {error && <ErrorInfo />}
     </>
   );
@@ -148,6 +159,7 @@ const mapStateToProps = state => {
     questions: questionsSelectors.getQuestions(state),
     error: questionsSelectors.getError(state),
     isResultSended: questionsSelectors.getIsResultSended(state),
+    isLoading: globalSelectors.getIsLoading(state),
   };
 };
 
