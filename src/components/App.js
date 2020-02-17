@@ -1,5 +1,5 @@
 import React, { Component, lazy, Suspense } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import T from 'prop-types';
 import routes from '../routes';
@@ -44,7 +44,7 @@ class App extends Component {
   render() {
     const { isLoading } = this.props;
     return (
-      <BrowserRouter>
+      <HashRouter>
         {isLoading && <Loader />}
         <Header />
 
@@ -72,7 +72,7 @@ class App extends Component {
         </Suspense>
 
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

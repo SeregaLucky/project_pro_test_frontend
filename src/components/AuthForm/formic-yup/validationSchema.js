@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 const schema = Yup.object().shape({
   email: Yup.string()
     .email('Невалидный e-mail')
-    .max(30, 'E-mail должен быть меньше 30 символов')
+    .max(50, 'E-mail должен быть меньше 50 символов')
     .matches(
       /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
       'Некоректный e-mail',
