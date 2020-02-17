@@ -3,13 +3,17 @@ import Shvartsman from '../../assets/staff/Shvartsman.jpg';
 import Stryzh from '../../assets/staff/Stryzh.jpg';
 import Lutsyshyna from '../../assets/staff/Lutsyshyna.jpg';
 import Pushkovskiy from '../../assets/staff/Pushkovskiy.jpg';
-// import Arkhypchenko from '../../assets/staff/Arkhypchenko.jpg';
+import Arkhypchenko from '../../assets/staff/Arkhypchenko.jpg';
 import Halat from '../../assets/staff/Halat.jpg';
 import Poddubniy from '../../assets/staff/Poddubniy.jpg';
+import Manuilenko from '../../assets/staff/Manuilenko.jpg';
 import Sariieva from '../../assets/staff/Sariieva.jpg';
 import Mazuryk from '../../assets/staff/Mazuryk.jpg';
 import Oherchuk from '../../assets/staff/Oherchuk.jpg';
 import Plietnikov from '../../assets/staff/Plietnikov.jpg';
+import Plaksii1 from '../../assets/staff/Plaksii1.jpg';
+import Bezuhla1 from '../../assets/staff/Bezuhla1.jpg';
+import Evgeniya from '../../assets/staff/Evgeniya.jpg';
 
 interface IprojectTeam {
   id: number;
@@ -61,14 +65,14 @@ const projectTeam: Array<IprojectTeam> = [
     eMail: 'spushkovskiy@gmail.com',
     imgSrc: Pushkovskiy,
   },
-  // {
-  //   id: 6,
-  //   name: 'Iryna Arkhypchenko',
-  //   nameRu: 'Ирина Архипченко',
-  //   position: 'front end developer',
-  //   eMail: 'arkhypchenko.iryna@gmail.com',
-  //   imgSrc: Arkhypchenko,
-  // },
+  {
+    id: 6,
+    name: 'Iryna Arkhypchenko',
+    nameRu: 'Ирина Архипченко',
+    position: 'front end developer',
+    eMail: 'arkhypchenko.iryna@gmail.com',
+    imgSrc: Arkhypchenko,
+  },
   {
     id: 7,
     name: 'Oleh Halat',
@@ -123,7 +127,7 @@ const projectTeam: Array<IprojectTeam> = [
     nameRu: 'Артур Мануйленко',
     position: 'front end developer',
     eMail: 'manuilenkoart@gmail.com',
-    imgSrc: null,
+    imgSrc: Manuilenko,
   },
   {
     id: 14,
@@ -131,7 +135,7 @@ const projectTeam: Array<IprojectTeam> = [
     nameRu: 'Наталия Плаксий',
     position: 'QA Engineer',
     eMail: 'plaksii.natali@gmail.com',
-    imgSrc: null,
+    imgSrc: Plaksii1,
   },
   {
     id: 15,
@@ -139,15 +143,15 @@ const projectTeam: Array<IprojectTeam> = [
     nameRu: 'Юля Безуглая',
     position: 'QA Engineer',
     eMail: 'bezuglaya.u@gmail.com',
-    imgSrc: null,
+    imgSrc: Bezuhla1,
   },
   {
     id: 16,
-    name: '',
-    nameRu: '',
+    name: 'Ruzhinskaya Evgeniya',
+    nameRu: 'Евгения Ружинская',
     position: 'QA Engineer',
-    eMail: '',
-    imgSrc: null,
+    eMail: 'evakaralina@gmail.com',
+    imgSrc: Evgeniya,
   },
 ];
 

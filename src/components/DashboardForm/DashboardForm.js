@@ -9,12 +9,12 @@ const DashboardForm = ({
   questionQuantity,
   checkAnswer,
 }) => {
-  const itemsAnswersQuestions = question.choices.map(choice => {
+  const itemsAnswersQuestions = question.choices.map((choice, idx) => {
     // ставим условия для того чтобы когда user вернется назад опции которые были выбраны стояли выбраными
     if (question.optionChoosed && choice.id === question.optionChoosed) {
       return (
         <DashboardFormInput
-          key={choice.title}
+          key={idx}
           checked={true}
           choiceText={choice.title}
           checkAnswer={() =>
@@ -31,7 +31,7 @@ const DashboardForm = ({
     }
     return (
       <DashboardFormInput
-        key={choice.title}
+        key={idx}
         choiceText={choice.title}
         checkAnswer={() =>
           checkAnswer(
