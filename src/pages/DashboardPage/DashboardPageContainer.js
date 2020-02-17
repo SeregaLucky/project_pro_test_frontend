@@ -121,7 +121,7 @@ const DashboardPageContainer = ({
         </>
       )}
 
-      {!questions && !isLoading && (
+      {!error && !questions && !isLoading && (
         <div className={styles.noQuestions}>
           <h3 className={styles.smallTitle}>Выбирите тест</h3>
         </div>
