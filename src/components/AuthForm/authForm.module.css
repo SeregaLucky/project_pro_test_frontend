@@ -15,6 +15,7 @@
 }
 
 .googleBtnContentWraper {
+  color: #000;
   letter-spacing: 0.03em;
   display: flex;
   justify-content: center;
@@ -30,7 +31,7 @@
 .googleBtnContentWraper > img {
   width: 18px;
   margin: 0 12px 0 0;
-  height: auto;
+  height: 18px;
 }
 
 .googleSignUpButton {
