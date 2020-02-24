@@ -2,7 +2,7 @@
   background-color: var(--background-color);
   padding-top: 120px;
   padding-bottom: 60px;
-  min-height: var(--height-section);
+  min-height: var(--height-section-mob);
 }
 .container {
   width: 320px;
@@ -35,9 +35,10 @@
   .section {
     padding-top: 60px;
     padding-bottom: 64px;
+    min-height: var(--height-section);
   }
   .container {
-    width: 768px;
+    width: 748px;
   }
   .mainTitle {
     font-size: 22px;
@@ -50,7 +51,7 @@
 
   @media screen and (min-width: 1280px) {
     .container {
-      width: 1280px;
+      width: 1260px;
     }
   }
 }

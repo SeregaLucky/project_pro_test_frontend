@@ -34,20 +34,30 @@
   font-family: 'MontserratRegular', sans-serif;
   text-transform: capitalize;
 }
-.linkedin {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  line-height: 16px;
-  color: #000000;
-  font-family: 'MontserratMedium', sans-serif;
-  word-break: break-word;
-}
 .eMail {
   font-size: 11px;
   letter-spacing: 0.08em;
   line-height: 16px;
   color: #000000;
   font-family: 'MontserratMedium', sans-serif;
+  margin: 0 0 6px 0;
+}
+.spanLinkedin {
+  display: flex;
+  justify-content: center;
+}
+.linkedin {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 16px;
+  color: #000000;
+  font-family: 'MontserratMedium', sans-serif;
+  /* word-break: break-word; */
+  display: inline-block;
+}
+.linkedin svg {
+  display: block;
+  fill: #0e76a8;
 }
 
 @media screen and (min-width: 768px) {

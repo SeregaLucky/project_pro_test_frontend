@@ -3,7 +3,7 @@
     top right 45%;
   background-size: cover;
   padding: 116px 0 45px 0;
-  min-height: var(--height-section);
+  min-height: var(--height-section-mob);
 }
 
 .container {
@@ -76,7 +76,10 @@
   .wrapper {
     background-position: top 50% right 35%;
     background-size: auto 130%;
-    padding: 125px 0;
+    padding: 60px 0;
+    min-height: var(--height-section);
+    display: flex;
+    justify-content: center;
   }
 
   .container {
@@ -122,7 +125,6 @@
   .wrapper {
     background-position: top right 33%;
     background-size: cover;
-    padding: 105px 0;
   }
 
   .container {

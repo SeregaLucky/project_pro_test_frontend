@@ -2,5 +2,6 @@
   --orange: #ff6b08;
   --dark-blue: #121d2e;
   --background-color: #f4f6fb;
+  --height-section-mob: calc(100vh - 59px);
   --height-section: calc(100vh - 130px);
 }

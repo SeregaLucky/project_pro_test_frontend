@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ContactsListItem.module.css';
+import { ReactComponent as IconLinkedin } from '../../assets/icons/svg/linkedin.svg';
 
 interface IProps {
   image: string;
@@ -27,14 +28,16 @@ const ContactsListItem: React.FC<IProps> = ({
         <p className={styles.position}>{position}</p>
         <p className={styles.eMail}>{eMail}</p>
         {linkedin && (
-          <a
-            href={linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.linkedin}
-          >
-            Linkedin: {linkedin}
-          </a>
+          <span className={styles.spanLinkedin}>
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.linkedin}
+            >
+              <IconLinkedin />
+            </a>
+          </span>
         )}
       </figcaption>
     </figure>

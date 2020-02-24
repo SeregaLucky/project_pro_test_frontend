@@ -2,7 +2,7 @@
   background-color: #f4f6fb;
   padding-top: 95px;
   padding-bottom: 40px;
-  min-height: var(--height-section);
+  min-height: var(--height-section-mob);
 }
 
 .container {
@@ -48,12 +48,16 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    width: 768px;
-  }
-
   .mainPage {
-    padding: 100px 0;
+    min-height: var(--height-section);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .container {
+    width: 748px;
   }
 
   .mainPage_quote,
@@ -78,7 +82,7 @@
 
 @media screen and (min-width: 1280px) {
   .container {
-    width: 1280px;
+    width: 1260px;
   }
 
   .mainPage_quote {

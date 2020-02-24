@@ -127,8 +127,6 @@ const DashboardPageContainer = ({
         </div>
       )}
 
-      {isLoading && <div className={styles.noQuestions}></div>}
-
       {error && <ErrorInfo />}
     </>
   );

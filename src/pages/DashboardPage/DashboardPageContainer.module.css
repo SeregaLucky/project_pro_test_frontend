@@ -1,9 +1,9 @@
-.noQuestions {
+/* .noQuestions {
   min-height: var(--height-section);
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 .smallTitle {
   font-family: 'MontserratMedium', sans-serif;
   letter-spacing: 0.03em;

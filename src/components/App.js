@@ -9,6 +9,7 @@ import globalSelectors from '../redux/global/globalSelectors';
 import Header from './Header';
 import Footer from './Footer';
 import Loader from './Loader';
+import Layout from './Layout';
 import PrivateRoute from '../servises/PrivateRoute';
 
 const AuthPage = lazy(() =>
@@ -47,29 +48,34 @@ class App extends Component {
       <HashRouter>
         {isLoading && <Loader />}
         <Header />
+        <Layout>
+          <Suspense fallback={<Loader />}>
+            <Switch>
+              <Route path={routes.AUTH_PAGE} component={AuthPage} />
 
-        <Suspense fallback={<Loader />}>
-          <Switch>
-            <Route path={routes.AUTH_PAGE} component={AuthPage} />
+              <PrivateRoute
+                exact
+                path={routes.MAIN_PAGE}
+                component={MainPage}
+              />
 
-            <PrivateRoute exact path={routes.MAIN_PAGE} component={MainPage} />
+              <PrivateRoute
+                path={routes.DASHBOARD_PAGE}
+                component={DashboardPage}
+              />
 
-            <PrivateRoute
-              path={routes.DASHBOARD_PAGE}
-              component={DashboardPage}
-            />
+              <PrivateRoute path={routes.RESULT_PAGE} component={ResultPage} />
 
-            <PrivateRoute path={routes.RESULT_PAGE} component={ResultPage} />
+              <PrivateRoute
+                path={routes.MATERIALS_PAGE}
+                component={MaterialsPage}
+              />
+              <Route path={routes.CONTACTS_PAGE} component={ContactsPage} />
 
-            <PrivateRoute
-              path={routes.MATERIALS_PAGE}
-              component={MaterialsPage}
-            />
-            <Route path={routes.CONTACTS_PAGE} component={ContactsPage} />
-
-            <Redirect to={routes.MAIN_PAGE} />
-          </Switch>
-        </Suspense>
+              <Redirect to={routes.MAIN_PAGE} />
+            </Switch>
+          </Suspense>
+        </Layout>
 
         <Footer />
       </HashRouter>

@@ -4,7 +4,7 @@
 .dashboardPage {
   background-color: var(--background-color);
   padding: 90px 0 20px 0;
-  min-height: var(--height-section);
+  min-height: var(--height-section-mob);
 }
 
 .dashboardPageContainer {
@@ -90,6 +90,7 @@
 @media screen and (min-width: 768px) {
   .dashboardPage {
     padding: 50px 0 268px 0;
+    min-height: var(--height-section);
   }
   .dashboardPageContainer {
     width: 655px;

@@ -1,7 +1,7 @@
 .authPage {
   padding: 114px 0 46px 0;
   background-color: var(--background-color);
-  min-height: var(--height-section);
+  min-height: var(--height-section-mob);
 }
 
 .container {
@@ -39,7 +39,11 @@
  */
 @media screen and (min-width: 768px) {
   .authPage {
-    padding: 80px 0;
+    padding: 20px 0;
+    min-height: var(--height-section);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .container {
@@ -65,10 +69,6 @@
  * 1280 - starting
  */
 @media screen and (min-width: 1280px) {
-  .authPage {
-    padding: 98px 0;
-  }
-
   .container {
     width: 1070px;
   }

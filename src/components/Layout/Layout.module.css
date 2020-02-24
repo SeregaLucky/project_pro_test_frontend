@@ -1,0 +1,9 @@
+.layout {
+  min-height: var(--height-section-mob);
+}
+
+@media screen and (min-width: 768px) {
+  .layout {
+    min-height: var(--height-section);
+  }
+}

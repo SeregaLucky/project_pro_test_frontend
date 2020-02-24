@@ -1,7 +1,7 @@
 .section {
   background-color: var(--background-color);
   padding: 15px 0;
-  min-height: var(--height-section);
+  min-height: var(--height-section-mob);
 }
 
 .container {
@@ -58,8 +58,11 @@
 }
 
 @media screen and (min-width: 768px) {
+  .section {
+    min-height: var(--height-section);
+  }
   .container {
-    width: 768px;
+    width: 748px;
   }
 
   .result_bar {
@@ -79,6 +82,6 @@
 
 @media screen and (min-width: 1280px) {
   .container {
-    width: 1280px;
+    width: 1260px;
   }
 }
